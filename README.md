@@ -4,6 +4,13 @@ Your users do not always report errors, LaraBug does. LaraBug is a simple to use
 
 This repository contains the actual code on https://www.larabug.com
 
+## Requirements
+
+* PHP >= 7.3
+* Git
+* Composer
+* MySQL (>=5.7) or PostgreSQL (>=9.4)
+
 ## Installation
 
 ```bash
