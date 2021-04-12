@@ -63,4 +63,4 @@ Each sponsor gets listed on the LaraBug sponsor page and when chosen the right t
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The GPL-3.0 License (GPL-3.0). Please see [License File](LICENSE.md) for more information.
