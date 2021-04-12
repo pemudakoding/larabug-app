@@ -56,6 +56,7 @@ Each sponsor gets listed on the LaraBug sponsor page and when chosen the right t
 
 ## Credits
 
+- [ploi.io](https://ploi.io/?ref=larabug-app-github)
 - [Cannonb4ll](https://github.com/cannonb4ll)
 - [SebastiaanKloos](https://github.com/SebastiaanKloos)
 - [Spatie Skeleton Package](https://github.com/spatie/package-skeleton-laravel)
