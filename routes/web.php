@@ -34,7 +34,7 @@ Route::group([], function () {
     // Route::post('contact', [ContactController::class, 'send')->name('contact.send');
 
     Route::get('docs', [DocumentationController::class, 'index'])->name('docs.index');
-    Route::get('docs/{category}/{documentation}', [DocumentationController::class, 'show'])->name('docs.show');
+    Route::get('docs/{category}/{item}', [DocumentationController::class, 'show'])->name('docs.show');
 });
 
 Route::get('exception/{hash}', [PageController::class, 'exception'])->name('public.exception');

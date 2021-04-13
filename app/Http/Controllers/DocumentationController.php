@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documentation;
 use App\Models\DocumentationCategory;
 
 class DocumentationController extends Controller
@@ -9,28 +10,13 @@ class DocumentationController extends Controller
     public function index()
     {
         return redirect()->route('docs.show', ['general', 'welcome']);
-
-        $categories = DocumentationCategory::whereHas('items')
-            ->with(['items' => function ($query) {
-                return $query->orderBy('order_column', 'asc');
-            }])
-            ->get();
-
-        return view('frontend.documentation.index', compact('categories'));
     }
 
-    public function show($categorySlug, $documentationSlug)
+    public function show(DocumentationCategory $category, Documentation $item)
     {
-        $categories = DocumentationCategory::whereHas('items')
-            ->with(['items' => function ($query) {
-                return $query->orderBy('order_column', 'asc');
-            }])
-            ->get();
+        $categories = DocumentationCategory::whereHas('items')->with('items')->get();
 
-        $category = DocumentationCategory::where('slug', $categorySlug)->firstOrFail();
-
-        $item = $category->items()->where('slug', $documentationSlug)->firstOrFail();
-
-        return view('frontend.documentation.show', compact('categories', 'category', 'item'));
+        return view('frontend.documentation.show')
+            ->with(compact('categories', 'category', 'item'));
     }
 }
