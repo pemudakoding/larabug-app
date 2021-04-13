@@ -47,9 +47,6 @@ Route::get('login/{provider}/callback', [LoginController::class, 'handleProvider
 Route::get('scripts/feedback', [FeedbackController::class, 'script'])->name('feedback.script');
 
 Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
-    Route::get('documentation', [DocumentationController::class, 'index'])->name('documentation');
-    Route::get('documentation/{documentation}', [DocumentationController::class, 'show'])->name('documentation.show');
-
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('introduction', [HomeController::class, 'introduction'])->name('introduction');
 
