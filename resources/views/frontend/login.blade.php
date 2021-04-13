@@ -21,9 +21,9 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                         Email address
                     </label>
-                    <input type="email" name="email" value="{{ old('email') }}" autofocus id="email" class="mb-4 bg-gray-100 border border-gray-100 rounded px-4 h-12 w-full appearance-none
-        | focus:outline-none focus:shadow-outline focus:bg-white focus:border-primary-200
-        | lg:mb-0 lg:mr-4 @error('email') border border-red-500 @enderror" type="email" placeholder="Enter your email address">
+                    <input type="email" name="email" value="{{ old('email') }}" autofocus id="email" class="mb-4 bg-gray-100 placeholder-gray-400 border border-gray-100 rounded px-4 h-12 w-full appearance-none
+        | focus:outline-none focus:ring focus:ring-primary-200 focus:bg-white focus:border-primary-200
+        | lg:mb-0 lg:mr-4 @error('email') border border-red-500 @enderror" placeholder="Enter your email address">
 
                     @error('email')
                     <p class="text-red-500 italic">{{ $message }}</p>
@@ -34,9 +34,9 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                         Password
                     </label>
-                    <input type="password" name="password" id="password" class="mb-4 bg-gray-100 border border-gray-100 rounded px-4 h-12 w-full appearance-none
-        | focus:outline-none focus:shadow-outline focus:bg-white focus:border-primary-200
-        | lg:mb-0 lg:mr-4 @error('password') border border-red-500 @enderror" type="email" placeholder="Enter your password">
+                    <input type="password" name="password" id="password" class="mb-4 bg-gray-100 placeholder-gray-400 border border-gray-100 rounded px-4 h-12 w-full appearance-none
+        | focus:outline-none focus:ring focus:ring-primary-200 focus:bg-white focus:border-primary-200
+        | lg:mb-0 lg:mr-4 @error('password') border border-red-500 @enderror" placeholder="Enter your password">
 
                     @error('password')
                     <p class="text-red-500 italic">{{ $message }}</p>
@@ -44,14 +44,15 @@
                 </div>
 
                 <div class="flex items-center">
-                    <input id="remember_me" {{ old('remember') ? 'checked' : '' }} name="remember" type="checkbox" class="form-checkbox h-4 w-4 text-primary-500 transition duration-150 ease-in-out">
+                    <input id="remember_me" {{ old('remember') ? 'checked' : '' }} name="remember" type="checkbox" class="text-primary-500 rounded border-gray-300 transition
+        | focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-offset-0">
                     <label for="remember_me" class="ml-2 block text-sm leading-5 text-gray-900">
                         Remember me
                     </label>
                 </div>
 
                 <button class="mr-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
-          | focus:outline-none focus:shadow-outline focus:border-primary-600 | hover:bg-primary-400">
+          | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
                     {{ __('Login') }}
                 </button>
 

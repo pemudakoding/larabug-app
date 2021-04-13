@@ -2,9 +2,8 @@
     <component
             :is="as"
             :class="[
-      'inline-flex px-3 h-9 items-center justify-center font-bold text-sm rounded-lg',
-      'transition duration-150 ease-in-out',
-      'focus:outline-none focus:shadow-focus',
+      'inline-flex px-3 h-9 items-center justify-center font-bold text-sm rounded-lg transition',
+      'focus:outline-none focus:ring focus:ring-blue-200',
 
       { 'bg-primary-600 text-white shadow': primary },
       { 'hover:bg-primary-500': primary },
@@ -13,11 +12,11 @@
       { 'border border-gray-300 text-gray-800 shadow-sm': secondary },
       { 'hover:border-gray-200': secondary },
       { 'focus:text-gray-900 focus:border-gray-300': secondary },
-      
+
       { 'bg-red-600 text-white shadow': danger },
       { 'hover:bg-red-500': danger },
       { 'focus:bg-red-700': danger },
-      
+
       { 'bg-green-600 text-white shadow': success },
       { 'hover:bg-green-500': success },
       { 'focus:bg-green-700': success },

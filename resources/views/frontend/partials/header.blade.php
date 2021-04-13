@@ -23,7 +23,7 @@
             </nav>
             @guest
                 <a href="{{ route('register') }}"
-                   class="flex-shrink-0 rounded shadow font-medium tracking-wider h-10 text-sm px-4 text-white inline-flex justify-center items-center text-center bg-primary-500 border border-primary-500 | focus:outline-none focus:shadow-outline focus:border-primary-600 | hover:bg-primary-400">
+                   class="flex-shrink-0 rounded shadow font-medium tracking-wider h-10 text-sm px-4 text-white inline-flex justify-center items-center text-center bg-primary-500 border border-primary-500 | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
                     Start
                 </a>
             @endguest
