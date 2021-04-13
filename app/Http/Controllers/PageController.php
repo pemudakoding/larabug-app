@@ -46,11 +46,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function exception($hash)
+    public function exception(Exception $exception)
     {
-        $exception = Exception::where('publish_hash', $hash)
-            ->withCount('occurences')
-            ->firstOrFail();
+        $exception->loadCount('occurences');
 
         return view('frontend.exception', compact('exception'));
     }

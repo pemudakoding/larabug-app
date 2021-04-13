@@ -37,7 +37,7 @@ Route::group([], function () {
     Route::get('docs/{category}/{item}', [DocumentationController::class, 'show'])->name('docs.show');
 });
 
-Route::get('exception/{hash}', [PageController::class, 'exception'])->name('public.exception');
+Route::get('exception/{exception:publish_hash}', [PageController::class, 'exception'])->name('public.exception');
 
 Auth::routes();
 

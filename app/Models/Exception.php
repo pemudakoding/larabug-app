@@ -72,13 +72,13 @@ class Exception extends Model
         return route('panel.exceptions.show', [$this->project_id, $this]);
     }
 
-    public function getPublicRouteUrlAttribute()
+    public function getPublicRouteUrlAttribute(): ?string
     {
-        if ($this->publish_hash) {
-            return route('public.exception', $this->publish_hash);
+        if (! $this->publish_hash) {
+            return null;
         }
 
-        return '';
+        return route('public.exception', $this);
     }
 
     public function getStatusTextAttribute()
