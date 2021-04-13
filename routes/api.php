@@ -1,7 +1,9 @@
 <?php
 
-Route::post('/feedback', 'ApiController@feedback')->name('api.feedback');
+use App\Http\Controllers\Api\ApiController;
 
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::post('/log', 'ApiController@log')->name('exceptions.log');
+Route::post('/feedback', [ApiController::class, 'feedback'])->name('api.feedback');
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/log', [ApiController::class, 'log'])->name('exceptions.log');
 });

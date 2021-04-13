@@ -40,27 +40,23 @@ function months()
 
 function canonical_url()
 {
-    $route = Route::current();
-    if (!$route) {
+    if (!$route = Route::current()) {
         return false;
     }
-    $action = $route->getAction();
-    if (!$action) {
+
+    if (!$action = $route->getAction()) {
         return false;
     }
-    if (!array_has($action, 'uses') or $action['uses'] instanceof Closure) {
+
+    if (!array_has($action, 'uses') || $action['uses'] instanceof Closure) {
         return false;
     }
-    $uses = explode('App\Http\Controllers\\', $action['uses'])[1];
-    if (!$uses) {
+
+    if (!$uses = $action['uses']) {
         return false;
     }
-    $parameters = $route->parameters();
-    if ($parameters) {
-        return action($uses, $parameters);
-    } else {
-        return action($uses);
-    }
+
+    return action($uses, $route->parameters() ?? []);
 }
 
 function countries($key = null)

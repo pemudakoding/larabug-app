@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "730bd25e3c6bb6fdc7aa560530c5f3d7",
+    "content-hash": "9b5cce25463ec708f8dbe6a39b3db8ed",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1004,16 +1004,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v1.9.2",
+            "version": "v1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/filament.git",
-                "reference": "4a472625c8ed8b54512347fa43ddd2decbb5642a"
+                "reference": "68608002a7083d5dffee15726c6e3789370e9fc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/filament/zipball/4a472625c8ed8b54512347fa43ddd2decbb5642a",
-                "reference": "4a472625c8ed8b54512347fa43ddd2decbb5642a",
+                "url": "https://api.github.com/repos/laravel-filament/filament/zipball/68608002a7083d5dffee15726c6e3789370e9fc8",
+                "reference": "68608002a7083d5dffee15726c6e3789370e9fc8",
                 "shasum": ""
             },
             "require": {
@@ -1077,7 +1077,7 @@
             "description": "The elegant TALL stack admin panel for Laravel artisans.",
             "support": {
                 "issues": "https://github.com/laravel-filament/filament/issues",
-                "source": "https://github.com/laravel-filament/filament/tree/v1.9.2"
+                "source": "https://github.com/laravel-filament/filament/tree/v1.9.3"
             },
             "funding": [
                 {
@@ -1085,7 +1085,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-12T00:07:42+00:00"
+            "time": "2021-04-12T22:02:46+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -2224,30 +2224,29 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.3.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b"
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/a1f82c6283c8373ea1958b8a27c3d5c98cade351",
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^7.0|^8.0",
-                "illuminate/filesystem": "^7.0|^8.0",
-                "illuminate/support": "^7.0|^8.0",
-                "php": "^7.2.5"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0|^9.0"
+                "illuminate/console": "^8.0",
+                "illuminate/filesystem": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
             },
             "type": "library",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
                 "laravel": {
                     "providers": [
                         "Laravel\\Ui\\UiServiceProvider"
@@ -2277,9 +2276,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v2.3.0"
+                "source": "https://github.com/laravel/ui/tree/v3.2.0"
             },
-            "time": "2020-09-09T12:07:59+00:00"
+            "time": "2021-01-06T19:20:22+00:00"
         },
         {
             "name": "league/commonmark",
