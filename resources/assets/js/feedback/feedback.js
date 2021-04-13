@@ -214,7 +214,7 @@ class LaraBug {
         };
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://larabug-website.test/api/feedback', true);
+        xhr.open("POST", 'https://www.larabug.com/api/feedback', true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         let instance = this;
