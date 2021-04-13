@@ -159,7 +159,7 @@
                                     <tr class="bg-white" v-for="(detail, key) in exception.storage.HEADERS">
                                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                                             v-text="key"></th>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500"
                                             v-text="detail[0]"></td>
                                     </tr>
                                     </tbody>
@@ -178,7 +178,7 @@
                                     <tr class="bg-white" v-for="(detail, key) in exception.storage.SERVER">
                                         <th class="w-1/5 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
                                             v-text="key"></th>
-                                        <td class="w-4/5 px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                        <td class="w-4/5 px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500"
                                             v-text="detail"></td>
                                     </tr>
                                     </tbody>

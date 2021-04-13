@@ -67,7 +67,10 @@
                 </p>
                 <span class="inline-flex rounded-md shadow-sm">
                   <a href="https://github.com/sponsors/Cannonb4ll" target="sponsor" title="Sponsor LaraBug"
-                     class="inline-flex items-center px-6 py-3 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                     class="
+                        inline-flex items-center px-6 py-3 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white
+                        focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 transition
+                  ">
                 Sponsor LaraBug
                   </a>
                 </span>
@@ -80,7 +83,7 @@
                     </h2>
 
                     <div class="border-t border-gray-200 pt-10">
-                        <dl class="space-y-10 md:grid md:col-gap-8 md:row-gap-12">
+                        <dl class="space-y-10 md:grid md:gap-x-8 md:gap-y-12">
                             <div class="space-y-2">
                                 <dt class="text-lg leading-6 font-medium text-gray-900">
                                     Free? So there must be some other catch, then?

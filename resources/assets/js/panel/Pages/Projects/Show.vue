@@ -71,7 +71,7 @@
             <header class="flex items-center px-6 py-4 space-x-4 bg-primary-50">
                 <input
                         placeholder="Search exceptions..."
-                        class="flex-1 rounded-lg shadow-sm form-input"
+                        class="flex-1 placeholder-gray-400 rounded-lg border-gray-300 shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300"
                         type="text"
                         v-model="form.search"
                 />
@@ -84,9 +84,8 @@
                         <div class="flex items-center space-x-2">
                             <input
                                     :class="[
-        'form-checkbox text-primary-600',
-        'transition duration-150 ease-in-out',
-        'focus:outline-none focus:shadow-focus',
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
       ]"
                                     id="newsletter"
                                     type="checkbox"

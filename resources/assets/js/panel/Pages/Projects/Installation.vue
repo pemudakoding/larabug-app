@@ -35,10 +35,10 @@
                     <TransitionGroup
                             mode="out-in"
                             enter-from-class="-translate-x-6 opacity-0"
-                            enter-active-class="transition duration-300 ease-in-out transform"
+                            enter-active-class="transition duration-300 transform"
                             enter-to-class="translate-x-0 opacity-100"
                             leave-from-class="translate-x-0 opacity-100"
-                            leave-active-class="absolute transition duration-300 ease-in-out transform"
+                            leave-active-class="absolute transition duration-300 transform"
                             leave-to-class="translate-x-6 opacity-0"
                     >
                         <div key="step-1" v-if="step === 1">

@@ -33,9 +33,8 @@
                 <div class="flex items-center space-x-2">
                     <input
                             :class="[
-        'form-checkbox text-primary-600',
-        'transition duration-150 ease-in-out',
-        'focus:outline-none focus:shadow-focus',
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
       ]"
                             id="newsletter"
                             type="checkbox"

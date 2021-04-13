@@ -14,7 +14,7 @@
             <header class="flex items-center px-6 py-4 space-x-4 bg-primary-50">
                 <input
                         placeholder="Search projects..."
-                        class="flex-1 rounded-lg shadow-sm form-input"
+                        class="flex-1 placeholder-gray-400 rounded-lg border-gray-300 shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-300"
                         type="text"
                         v-model="form.search"
                 />

@@ -6,10 +6,10 @@
         <Transition
                 mode="out-in"
                 enter-from-class="-translate-y-2 opacity-0"
-                enter-active-class="transition duration-300 ease-in-out transform"
+                enter-active-class="transition duration-300 transform"
                 enter-to-class="translate-y-0 opacity-100"
                 leave-from-class="translate-y-0 opacity-100"
-                leave-active-class="transition duration-300 ease-in-out transform"
+                leave-active-class="transition duration-300 transform"
                 leave-to-class="translate-y-2 opacity-0"
         >
             <FormErrorText v-if="$attrs.error" key="errorText">
