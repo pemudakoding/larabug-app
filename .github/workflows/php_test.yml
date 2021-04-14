@@ -25,9 +25,15 @@ jobs:
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
+        
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
+        
+      - name: Generate key
+        run: php artisan key:generate
  
       - name: Run test suite
         run: ./vendor/bin/phpunit tests --verbose
