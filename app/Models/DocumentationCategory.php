@@ -8,7 +8,9 @@ class DocumentationCategory extends Model
 {
     public function items()
     {
-        return $this->hasMany(Documentation::class);
+        return $this
+            ->hasMany(Documentation::class)
+            ->orderBy('order_column');
     }
 
     public function getRouteKeyName()
