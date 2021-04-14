@@ -6,7 +6,7 @@ This repository contains the actual code on https://www.larabug.com
 
 ## Requirements
 
-* PHP >= 7.3
+* PHP 7.4
 * Git
 * Composer
 * MySQL (>=5.7) or PostgreSQL (>=9.4)
@@ -38,7 +38,7 @@ and generalize stuff better.
 ## Testing
 
 ```bash
-composer test
+./vendor/bin/phpunit tests
 ```
 
 ## Changelog
