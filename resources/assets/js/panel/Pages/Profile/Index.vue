@@ -107,7 +107,6 @@ export default {
                 onStart: () => this.sending = true,
                 onFinish: () => {
                     this.sending = false;
-                    this.toast.success('Your profile has been updated');
                 }
             });
         },
