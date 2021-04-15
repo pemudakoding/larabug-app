@@ -16,7 +16,7 @@ class FeedbackTest extends TestCase
         Notification::fake();
         Mail::fake();
 
-        $feedback = factory(Feedback::class)->create();
+        $feedback = Feedback::factory()->create();
 
         $this->assertInstanceof(Exception::class, $feedback->exception);
     }
