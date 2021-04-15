@@ -1,11 +1,29 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
+use App\Models\Exception;
+use App\Models\Project;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(\App\Models\Exception::class, function (Faker $faker) {
-    return [
-        'project_id' => factory(\App\Models\Project::class)
-    ];
-});
+class ExceptionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Exception::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'project_id' => Project::factory()
+        ];
+    }
+}
