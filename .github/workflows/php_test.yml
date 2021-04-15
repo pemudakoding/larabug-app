@@ -35,6 +35,5 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
  
-      # Tests don't work yet
-      #- name: Run test suite
-      #  run: ./vendor/bin/phpunit tests --verbose
+      - name: Run test suite
+       run: ./vendor/bin/phpunit tests --verbose
