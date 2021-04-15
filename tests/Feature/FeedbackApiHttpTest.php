@@ -18,15 +18,15 @@ class FeedbackApiHttpTest extends TestCase
         parent::setUp();
 
         Mail::fake();
-        $this->project = factory(Project::class)->create();
-        $this->user = factory(User::class)->create();
+        $this->project = Project::factory()->create();
+        $this->user = User::factory()->create();
         $this->user->projects()->save($this->project, ['owner' => true]);
     }
 
     /** @test */
     public function it_adds_feedback_to_an_exception()
     {
-        $exception = factory(Exception::class)->create([
+        $exception = Exception::factory()->create([
             'project_id' => $this->project->id
         ]);
 

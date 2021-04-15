@@ -12,8 +12,5 @@ _ide_helper.php
 .phpstorm.meta.php
 .php_cs.cache
 public/sitemap.xml
-<<<<<<< HEAD
-.php_cs.cache
-=======
 /public/js/resources*.js
->>>>>>> b5617108e7b7382948c366d400d81f1d6174b096
+.phpunit.result.cache

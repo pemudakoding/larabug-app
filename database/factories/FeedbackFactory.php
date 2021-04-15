@@ -1,14 +1,32 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
+use App\Models\Exception;
+use App\Models\Feedback;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(\App\Models\Feedback::class, function (Faker $faker) {
-    return [
-        'exception_id' => factory(\App\Models\Exception::class),
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'feedback' => $faker->sentence
-    ];
-});
+class FeedbackFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Feedback::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'exception_id' => Exception::factory(),
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'feedback' => $this->faker->sentence
+        ];
+    }
+}

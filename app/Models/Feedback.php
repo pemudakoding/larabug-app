@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
     use Uuid,
-        Filterable;
+        Filterable,
+        HasFactory;
 
     protected $fillable = [
         'name',
