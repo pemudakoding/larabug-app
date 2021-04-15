@@ -7,6 +7,7 @@ use EloquentFilter\Filterable;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\ProjectWasCreated;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -25,7 +26,8 @@ class Project extends Model implements HasMedia
     use Uuid,
         Filterable,
         Notifiable,
-        InteractsWithMedia;
+        InteractsWithMedia,
+        HasFactory;
 
     protected $fillable = [
         'url',

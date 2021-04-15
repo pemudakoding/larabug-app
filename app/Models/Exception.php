@@ -7,6 +7,7 @@ use DateTimeInterface;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\ExceptionWasCreated;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property mixed exception
@@ -22,7 +23,9 @@ use App\Notifications\ExceptionWasCreated;
  */
 class Exception extends Model
 {
-    use Uuid, Filterable;
+    use Uuid, 
+        Filterable,
+        HasFactory;
 
     /**
      * Status vars
