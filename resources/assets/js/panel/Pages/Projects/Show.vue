@@ -62,9 +62,8 @@
 
                 <ButtonRack>
                     <ButtonRackItem @click="handleMarking('read')">Mark {{ selected.length ? 'selected' : 'all' }} read</ButtonRackItem>
-                    <ButtonRackItem @click="handleMarking('fixed')">Mark {{ selected.length ? 'selected' : 'all' }} fixed
-                    </ButtonRackItem>
-                    <ButtonRackItem @click="deleteAllExceptions">Delete all</ButtonRackItem>
+                    <ButtonRackItem @click="handleMarking('fixed')">Mark {{ selected.length ? 'selected' : 'all' }} fixed</ButtonRackItem>
+                    <ButtonRackItem @click="deleteSelected">Delete {{ selected.length ? 'selected' : 'all' }}</ButtonRackItem>
                 </ButtonRack>
             </template>
 
@@ -252,6 +251,16 @@ export default {
                 .catch(() => {
                     this.sending = false;
                 })
+        },
+
+        deleteSelected() {
+            this.$inertia.post(this.route('panel.exceptions.delete-selected', this.project.id), {
+              exceptions: this.selected,
+            }, {
+                onSuccess: () => {
+                    this.selected = [];
+                },
+            });
         },
 
         markSelectedAs(type) {

@@ -190,4 +190,17 @@ class ExceptionController extends Controller
 
         return redirect()->route('panel.projects.show', $id)->with('success', 'All exceptions have been cleared up');
     }
+
+    public function deleteSelected(Request $request, $id)
+    {
+        $project = $request->user()
+            ->projects()
+            ->findOrFail($id);
+
+        $project->exceptions()
+            ->whereIn('id', $request->get('exceptions'))
+            ->delete();
+
+        return redirect()->route('panel.projects.show', $id)->with('success', 'The selected exceptions have been cleared up');
+    }
 }
