@@ -63,7 +63,8 @@
                 <ButtonRack>
                     <ButtonRackItem @click="handleMarking('read')">Mark {{ selected.length ? 'selected' : 'all' }} read</ButtonRackItem>
                     <ButtonRackItem @click="handleMarking('fixed')">Mark {{ selected.length ? 'selected' : 'all' }} fixed</ButtonRackItem>
-                    <ButtonRackItem @click="deleteSelected">Delete {{ selected.length ? 'selected' : 'all' }}</ButtonRackItem>
+                    <ButtonRackItem @click="deleteSelected" v-if="selected.length">Delete {{ selected.length ? 'selected' : 'all' }}</ButtonRackItem>
+                    <ButtonRackItem @click="deleteAllExceptions">Delete all</ButtonRackItem>
                 </ButtonRack>
             </template>
 
