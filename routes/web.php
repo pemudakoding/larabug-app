@@ -73,5 +73,6 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
 
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('profile/password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
     Route::patch('profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
 });
