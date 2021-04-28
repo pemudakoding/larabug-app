@@ -56,7 +56,10 @@
                     {{ __('Login') }}
                 </button>
 
+                @if(config('services.github.client_id') && config('services.github.client_secret'))
                 <a class="text-primary-500 mr-4 border-r pr-5" href="{{ route('socialite.login', 'github') }}">Github Login</a>
+                @endif
+
                 <a class="text-primary-500" href="{{ route('password.request') }}">Forgot password</a>
             </form>
         </article>
