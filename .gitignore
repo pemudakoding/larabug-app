@@ -1,5 +1,4 @@
 /node_modules
-/public/storage
 /vendor
 /.idea
 Homestead.json
@@ -12,5 +11,13 @@ _ide_helper.php
 .phpstorm.meta.php
 .php_cs.cache
 public/sitemap.xml
-/public/js/resources*.js
+/public/storage
 .phpunit.result.cache
+
+# Ignore compiled frontend code
+/public/js/frontend.js
+/public/js/app.js
+/public/css/frontend.css
+/public/css/app.css
+/public/js/resources*.js
+/public/mix-manifest.json
