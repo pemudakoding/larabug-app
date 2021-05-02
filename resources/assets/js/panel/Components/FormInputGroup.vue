@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import Label from '@/components/Label'
-import Input from '@/components/Input'
-import FormErrorText from '@/components/FormErrorText'
-import FormHelperText from '@/components/FormHelperText'
+import Label from '@/Components/Label'
+import Input from '@/Components/Input'
+import FormErrorText from '@/Components/FormErrorText'
+import FormHelperText from '@/Components/FormHelperText'
 
 export default {
     inheritAttrs: false,
