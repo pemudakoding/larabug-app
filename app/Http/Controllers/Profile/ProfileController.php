@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Profile;
 
+use Validator;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -36,6 +39,39 @@ class ProfileController extends Controller
         $request->user()->update($request->all());
 
         return redirect()->route('panel.profile.show')->with('success', 'Profile updated');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $data = $request->only([
+            'password',
+            'password_confirmation',
+        ]);
+
+        $validator = Validator::make($data, [
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8)
+                    ->letters()
+                    ->numbers()
+                    ->uncompromised()
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('panel.profile.show')->with('error', $validator->errors()->first());
+        }
+
+        if (! Hash::check($request->current, $request->user()->password)) {
+            return redirect()->route('panel.profile.show')->with('error', 'Your current password is incorrect');
+        }
+
+        $request->user()->update([
+            'password' => $request->new,
+        ]);
+
+        return redirect()->route('panel.profile.show')->with('success', 'Your password has been successfully changed!');
     }
 
     public function settings(Request $request)

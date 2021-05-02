@@ -23,6 +23,26 @@
         </Card>
 
         <Card contained>
+          <template #header>
+            <h2 class="text-xl font-bold">Password</h2>
+          </template>
+
+          <form class="space-y-6" action="">
+            <FormInputGroup v-model="password.current" type="password" label="Current Password" id="current_password" required/>
+
+            <FormInputGroup v-model="password.password" type="password" label="New Password" id="new_password" required/>
+
+            <FormInputGroup v-model="password.password_confirmation" type="password" label="Confirm New Password" id="confirm_new_password" required/>
+          </form>
+
+          <template #footer>
+            <div class="flex items-center space-x-3">
+              <Button @click="changePassword" primary>Change password</Button>
+            </div>
+          </template>
+        </Card>
+
+        <Card contained>
             <template #header>
                 <h2 class="text-xl font-bold">Preferences</h2>
             </template>
@@ -95,6 +115,11 @@ export default {
                 newsletter: this.user.newsletter,
                 settings: this.settings
             },
+            password: {
+              current: null,
+              password: null,
+              password_confirmation: null
+            },
         }
     },
     props: {
@@ -107,6 +132,19 @@ export default {
                 onStart: () => this.sending = true,
                 onFinish: () => {
                     this.sending = false;
+                }
+            });
+        },
+        changePassword() {
+            this.$inertia.patch(this.route('panel.profile.changePassword'), this.password, {
+                onStart: () => this.sending = true,
+                onFinish: () => {
+                    this.sending = false;
+                    this.password = {
+                        current: null,
+                        password: null,
+                        password_confirmation: null
+                    };
                 }
             });
         },
