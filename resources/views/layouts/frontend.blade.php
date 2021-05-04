@@ -15,6 +15,7 @@
     @endif
 </head>
 <body class="flex flex-col w-full min-h-screen font-sans antialiased text-gray-900">
+@if(!env('MINIMAL_FRONTEND', false))
 <div class="relative bg-red-700">
     <div class="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div class="pr-16 sm:text-center sm:px-16">
@@ -31,14 +32,21 @@
         </div>
     </div>
 </div>
+@endif
 
+@if(!env('MINIMAL_FRONTEND', false))
 @include('frontend.partials.header')
+@else
+@include('exceptions.partials.header')
+@endif
 
 <main class="flex-grow">
     @yield('content')
 </main>
 
+@if(!env('MINIMAL_FRONTEND', false))
 @include('frontend.partials.footer')
+@endif
 
 <script src="{{ mix('js/frontend.js') }}"></script>
 
