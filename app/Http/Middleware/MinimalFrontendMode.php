@@ -17,7 +17,7 @@ class MinimalFrontendMode
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!Auth::guard($guard)->check() && env('MINIMAL_FRONTEND')) {
+        if (!Auth::guard($guard)->check() && config('larabug.minimal_frontend')) {
             return redirect('/login');
         }
 

@@ -15,7 +15,7 @@
     @endif
 </head>
 <body class="flex flex-col w-full min-h-screen font-sans antialiased text-gray-900">
-@if(!env('MINIMAL_FRONTEND', false))
+@if(!config('larabug.minimal_frontend'))
 <div class="relative bg-red-700">
     <div class="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div class="pr-16 sm:text-center sm:px-16">
@@ -34,7 +34,7 @@
 </div>
 @endif
 
-@if(!env('MINIMAL_FRONTEND', false))
+@if(!config('larabug.minimal_frontend'))
 @include('frontend.partials.header')
 @else
 @include('exceptions.partials.header')
@@ -44,7 +44,7 @@
     @yield('content')
 </main>
 
-@if(!env('MINIMAL_FRONTEND', false))
+@if(!config('larabug.minimal_frontend'))
 @include('frontend.partials.footer')
 @endif
 
