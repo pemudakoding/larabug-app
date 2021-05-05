@@ -15,9 +15,6 @@ public/sitemap.xml
 .phpunit.result.cache
 
 # Ignore compiled frontend code
-/public/js/frontend.js
-/public/js/app.js
-/public/css/frontend.css
-/public/css/app.css
-/public/js/resources*.js
+/public/css/*.css
+/public/js/*.js
 /public/mix-manifest.json
