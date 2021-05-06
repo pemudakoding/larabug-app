@@ -1,7 +1,7 @@
 <template>
     <div id="modals"></div>
       <div class="flex flex-col md:flex-row min-h-screen bg-primary-100">
-        <div class="flex flex-col w-full md:w-72 text-white bg-primary-900 flex-shrink-0 sm:h-screen sm:sticky sm:top-0">
+        <div class="flex flex-col w-full md:w-72 text-white bg-primary-900 flex-shrink-0 md:h-screen md:sticky md:top-0">
           <div class="flex-shrink-0 p-4 flex flex-row items-center justify-between space-y-1">
             <p class="text-xl font-bold">LaraBug</p>
             <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
@@ -75,7 +75,7 @@
                 Profile
               </NavListItem>
             </NavList>
-          <div :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center text-sm sm:block">
+          <div :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center text-sm md:block">
             <a href="https://github.com/sponsors/Cannonb4ll" class="hover:text-primary-300 flex items-center space-x-2" target="_blank">
               <svg width="1em" height="1em" class="text-yellow-300" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -85,14 +85,14 @@
                     </span>
             </a>
           </div>
-          <div :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center text-sm sm:block">
+          <div :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center text-sm md:block">
             <a href="https://www.larabug.com/discord" class="hover:text-primary-300 flex items-center space-x-2" target="_blank">
                     <span>
                         Join our Discord server
                     </span>
             </a>
           </div>
-          <footer :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center sm:grid">
+          <footer :class="{'block': open, 'hidden': !open}" class="p-4 border-t justify-start gap-4 border-primary-800 grid grid-flow-col items-center md:grid">
             <img :src="$page.props.auth.user.avatar" class="w-10 h-10 rounded-full bg-primary-800" />
 
             <div>
