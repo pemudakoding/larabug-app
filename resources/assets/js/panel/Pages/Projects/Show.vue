@@ -57,7 +57,7 @@
         </Card>
 
         <Card>
-            <template #header>
+            <template #buttonheader>
                 <h2 class="text-xl font-bold">Exceptions</h2>
 
                 <ButtonRack>

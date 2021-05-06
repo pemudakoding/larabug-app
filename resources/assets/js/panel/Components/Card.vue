@@ -4,6 +4,10 @@
       <slot name="header"></slot>
     </header>
 
+    <header class="px-6 py-4 flex items-center justify-between flex-col sm:flex-row" v-if="$slots.buttonheader">
+      <slot name="buttonheader"></slot>
+    </header>
+
     <div :class="{ 'p-6': contained }">
       <slot></slot>
     </div>
