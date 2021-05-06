@@ -104,10 +104,10 @@
                     </button>
                     <button
                             class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
-                            :class="[ tab === 'headers' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'headers'"
+                            :class="[ tab === 'request' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                            @click="tab = 'request'"
                     >
-                        Headers
+                        Request
                     </button>
                     <button
                             class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
@@ -150,9 +150,25 @@
                          :data-line="exception.line"><code v-text="exception.executor_output"></code></pre>
                 </div>
 
-                <div class="flex flex-col" v-if="tab === 'headers' && exception.storage && exception.storage.HEADERS">
+                <div class="flex flex-col" v-if="tab === 'request' && exception.storage && (exception.storage.PARAMETERS || exception.storage.HEADERS)">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.PARAMETERS">
+                            <h3 class="mb-3">Parameters</h3>
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <tbody>
+                                    <tr class="bg-white" v-for="(detail, key) in exception.storage.PARAMETERS">
+                                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                            v-text="key"></th>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500"
+                                            v-text="detail"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.HEADERS">
+                            <h3 class="mb-3">Headers</h3>
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <tbody>
