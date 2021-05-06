@@ -38,4 +38,9 @@ return [
         'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
     ],
 
+    /**
+     * Use minimal frontend mode
+     */
+    'minimal_frontend' => env('MINIMAL_FRONTEND', true),
+
 ];

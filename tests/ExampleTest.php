@@ -11,7 +11,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->get('/')
+        $this->get('/login')
              ->assertOk();
     }
 }
