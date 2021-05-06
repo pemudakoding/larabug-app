@@ -5,12 +5,12 @@
             <BreadcrumbsDivider/>
             <BreadcrumbsItem :href="route('panel.projects.show', project.id)">{{ project.title }}</BreadcrumbsItem>
             <BreadcrumbsDivider/>
-            <BreadcrumbsItem href="/projects/show/exception">{{ exception.short_exception_text }}</BreadcrumbsItem>
+            <BreadcrumbsItem href="/projects/show/exception" class="whitespace-nowrap sm:whitespace-normal">{{ exception.short_exception_text }}</BreadcrumbsItem>
         </Breadcrumbs>
     </header>
 
-    <div class="flex flex-row flex-1">
-        <aside class="w-1/4 h-full bg-white border-r border-gray-200">
+    <div class="flex flex-col sm:flex-row flex-1">
+        <aside class="w-full sm:w-1/4 sm:h-full bg-white border-r border-gray-200">
             <dl class="px-6 py-4 space-y-4">
                 <div>
                     <dt class="text-sm font-medium">Method</dt>
@@ -103,28 +103,28 @@
                         Exception
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'headers' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'headers'"
                     >
                         Headers
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'server' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'server'"
                     >
                         Server
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'stack-trace' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'stack-trace'"
                     >
                         Stack trace
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'user' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'user'"
                             v-if="exception.user"
@@ -132,7 +132,7 @@
                         User
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'feedback' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'feedback'"
                     >
