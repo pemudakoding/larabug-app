@@ -23015,7 +23015,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_assets_js_panel_Pages_Dashboard_vue":"54325010e4709db36be5","resources_assets_js_panel_Pages_Exceptions_Show_vue":"94899a7e5f13e258d64a","resources_assets_js_panel_Pages_Profile_Index_vue":"4f73742b3a27712b25b1","resources_assets_js_panel_Pages_Projects_Create_vue":"0483ab21ef5bdb3f0052","resources_assets_js_panel_Pages_Projects_Edit_vue":"1994d59c02370a9195e2","resources_assets_js_panel_Pages_Projects_Index_vue":"f5ddaa8f7cda459e5fee","resources_assets_js_panel_Pages_Projects_Installation_vue":"8778356179350eacb160","resources_assets_js_panel_Pages_Projects_Show_vue":"f943501fb060af672efd"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_assets_js_panel_Pages_Dashboard_vue":"1c8f264edee5265cba6c","resources_assets_js_panel_Pages_Exceptions_Show_vue":"94899a7e5f13e258d64a","resources_assets_js_panel_Pages_Profile_Index_vue":"32c55457b7419af7e1ce","resources_assets_js_panel_Pages_Projects_Create_vue":"de8f17b9703b03e2ab89","resources_assets_js_panel_Pages_Projects_Edit_vue":"655d1f50b921ee25ad7f","resources_assets_js_panel_Pages_Projects_Index_vue":"09cb64b9606a32b8bcfc","resources_assets_js_panel_Pages_Projects_Installation_vue":"64bf952901cc7a83137c","resources_assets_js_panel_Pages_Projects_Show_vue":"03f1095662c322fc31b2"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	
