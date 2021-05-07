@@ -49,7 +49,7 @@
                     This is how the new structure will look like:
                 </p>
                 <ul>
-                    <li><strong>Website</strong>: closed source, but completely free to use</li>
+                    <li><strong>Website</strong>: open source, free to use under GPL-3.0 license</li>
                     <li><strong>Package</strong>: open source and welcome to receive PRs that improve the package</li>
                     <li><strong>Sponsors</strong>: we will be opening GitHub sponsors to receive a small amount of
                         funding to keep LaraBug going

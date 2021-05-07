@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb65286ae3769fa598e0a1bd5a5bdba3",
+    "content-hash": "91b052757f34bf9fda8cb1ea1bee6cbe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -64,16 +64,16 @@
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
-            "version": "v1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-heroicons.git",
-                "reference": "fcb102a569f085cb369d6a725f04f4b539fefd11"
+                "reference": "99d82616a72e36492edc9b95c6a2112d8632e9a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-heroicons/zipball/fcb102a569f085cb369d6a725f04f4b539fefd11",
-                "reference": "fcb102a569f085cb369d6a725f04f4b539fefd11",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-heroicons/zipball/99d82616a72e36492edc9b95c6a2112d8632e9a7",
+                "reference": "99d82616a72e36492edc9b95c6a2112d8632e9a7",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
             ],
             "support": {
                 "issues": "https://github.com/blade-ui-kit/blade-heroicons/issues",
-                "source": "https://github.com/blade-ui-kit/blade-heroicons/tree/v1.1.0"
+                "source": "https://github.com/blade-ui-kit/blade-heroicons/tree/1.2.0"
             },
             "funding": [
                 {
@@ -129,7 +129,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-25T13:40:51+00:00"
+            "time": "2021-05-05T14:59:46+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
@@ -1004,16 +1004,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v1.9.6",
+            "version": "v1.9.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/filament.git",
-                "reference": "5375e275b85f521ddd26eac3a1af5ea9934cfee3"
+                "reference": "2507a6bbca80d435b0cca08eb46656f723bd47e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/filament/zipball/5375e275b85f521ddd26eac3a1af5ea9934cfee3",
-                "reference": "5375e275b85f521ddd26eac3a1af5ea9934cfee3",
+                "url": "https://api.github.com/repos/laravel-filament/filament/zipball/2507a6bbca80d435b0cca08eb46656f723bd47e4",
+                "reference": "2507a6bbca80d435b0cca08eb46656f723bd47e4",
                 "shasum": ""
             },
             "require": {
@@ -1077,7 +1077,7 @@
             "description": "The elegant TALL stack admin panel for Laravel artisans.",
             "support": {
                 "issues": "https://github.com/laravel-filament/filament/issues",
-                "source": "https://github.com/laravel-filament/filament/tree/v1.9.6"
+                "source": "https://github.com/laravel-filament/filament/tree/v1.9.7"
             },
             "funding": [
                 {
@@ -1085,7 +1085,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-23T22:36:10+00:00"
+            "time": "2021-05-07T11:00:08+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -1485,23 +1485,27 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "v0.3.6",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "726b1e0d4fc399089dd29820a78e40d1c9aad2eb"
+                "reference": "96c60a7f01ac1032e3dd974b465b8ded41b299dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/726b1e0d4fc399089dd29820a78e40d1c9aad2eb",
-                "reference": "726b1e0d4fc399089dd29820a78e40d1c9aad2eb",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/96c60a7f01ac1032e3dd974b465b8ded41b299dc",
+                "reference": "96c60a7f01ac1032e3dd974b465b8ded41b299dc",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^5.4|^6.0|^7.0|^8.0"
+                "ext-json": "*",
+                "laravel/framework": "^5.4|^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.0"
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "roave/security-advisories": "dev-master"
             },
             "type": "library",
             "extra": {
@@ -1537,7 +1541,7 @@
             ],
             "support": {
                 "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-                "source": "https://github.com/inertiajs/inertia-laravel/tree/v0.3.6"
+                "source": "https://github.com/inertiajs/inertia-laravel/tree/v0.4.1"
             },
             "funding": [
                 {
@@ -1545,7 +1549,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-08T13:16:40+00:00"
+            "time": "2021-04-02T17:50:29+00:00"
         },
         {
             "name": "intervention/image",
@@ -3065,16 +3069,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.46.0",
+            "version": "2.47.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4"
+                "reference": "606262fd8888b75317ba9461825a24fc34001e1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4",
-                "reference": "2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/606262fd8888b75317ba9461825a24fc34001e1e",
+                "reference": "606262fd8888b75317ba9461825a24fc34001e1e",
                 "shasum": ""
             },
             "require": {
@@ -3154,7 +3158,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-24T17:30:44+00:00"
+            "time": "2021-04-13T21:54:02+00:00"
         },
         {
             "name": "nicmart/tree",
@@ -3204,16 +3208,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.4",
+            "version": "v4.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e"
+                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c6d052fc58cb876152f89f532b95a8d7907e7f0e",
-                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
+                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
                 "shasum": ""
             },
             "require": {
@@ -3254,9 +3258,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.4"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.5"
             },
-            "time": "2020-12-20T10:01:03+00:00"
+            "time": "2021-05-03T19:11:20+00:00"
         },
         {
             "name": "opis/closure",
@@ -3611,16 +3615,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -3644,7 +3648,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -3655,9 +3659,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.3"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -9104,16 +9108,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.8.4",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "87fb348dab0ae1a7c206c3e902a5a44ba541742f"
+                "reference": "e7db3b601ce742568b92648818ef903904d20164"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/87fb348dab0ae1a7c206c3e902a5a44ba541742f",
-                "reference": "87fb348dab0ae1a7c206c3e902a5a44ba541742f",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/e7db3b601ce742568b92648818ef903904d20164",
+                "reference": "e7db3b601ce742568b92648818ef903904d20164",
                 "shasum": ""
             },
             "require": {
@@ -9177,7 +9181,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-04-29T13:55:26+00:00"
+            "time": "2021-05-05T06:45:12+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -9370,16 +9374,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.18.6",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "5fed214993e7863cef88a08f214344891299b9e4"
+                "reference": "d5b8a9d852b292c2f8a035200fa6844b1f82300b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/5fed214993e7863cef88a08f214344891299b9e4",
-                "reference": "5fed214993e7863cef88a08f214344891299b9e4",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/d5b8a9d852b292c2f8a035200fa6844b1f82300b",
+                "reference": "d5b8a9d852b292c2f8a035200fa6844b1f82300b",
                 "shasum": ""
             },
             "require": {
@@ -9427,6 +9431,11 @@
                 "php-cs-fixer"
             ],
             "type": "application",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.19-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PhpCsFixer\\": "src/"
@@ -9462,7 +9471,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.18.6"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.19.0"
             },
             "funding": [
                 {
@@ -9470,7 +9479,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-19T19:45:11+00:00"
+            "time": "2021-05-03T21:43:24+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -11881,20 +11890,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "e48be16da1952ffca868c77f509a767d3fc632bc"
+                "reference": "9af7c8bbd8b2977a814147bb646f4fcce77faf4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/e48be16da1952ffca868c77f509a767d3fc632bc",
-                "reference": "e48be16da1952ffca868c77f509a767d3fc632bc",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/9af7c8bbd8b2977a814147bb646f4fcce77faf4a",
+                "reference": "9af7c8bbd8b2977a814147bb646f4fcce77faf4a",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/contracts": "^7.20|^8.0",
-                "illuminate/database": "^7.20|^8.13",
-                "illuminate/queue": "^7.20|^8.13",
-                "illuminate/support": "^7.20|^8.13",
+                "illuminate/contracts": "^7.20|^8.19",
+                "illuminate/database": "^7.20|^8.19",
+                "illuminate/queue": "^7.20|^8.19",
+                "illuminate/support": "^7.20|^8.19",
                 "php": "^7.3|^8.0",
                 "spatie/backtrace": "^1.0",
                 "spatie/ray": "^1.21.2",
@@ -11942,7 +11951,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.17.4"
+                "source": "https://github.com/spatie/laravel-ray/tree/master"
             },
             "funding": [
                 {
@@ -11954,7 +11963,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-04-30T08:20:24+00:00"
+            "time": "2021-05-03T06:54:12+00:00"
         },
         {
             "name": "spatie/macroable",

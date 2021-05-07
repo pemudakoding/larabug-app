@@ -3,9 +3,6 @@
     <div class="w-full max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 gap-8 | lg:grid-cols-4 lg:gap-8">
             <article class="text-gray-400 leading-relaxed | lg:col-span-2">
-                <p class="mb-2">
-                    Registered company in The Netherlands under chamber of commerce number 57213429
-                </p>
                 <p class="mb-2">Proudly managed & deployed with <a class="text-primary-500" href="https://ploi.io" target="ploi">ploi.io</a></p>
                 <p>
                     &copy; 2016 - {{ date('Y') }}

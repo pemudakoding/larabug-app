@@ -3,6 +3,9 @@ const path = require('path')
 const tailwindcss = require('tailwindcss')
 
 mix
+    .alias({
+        ziggy: path.resolve('vendor/tightenco/ziggy/dist'),
+    })
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css', {},
         [tailwindcss('tailwind.config.js')]
     )
@@ -10,16 +13,20 @@ mix
         [tailwindcss('tailwind.panel.js')]
     )
 
-    .js('resources/assets/js/panel/app.js', 'public/js')
-    .js('resources/assets/js/frontend/frontend.js', 'public/js')
-
     .options({
         processCssUrls: false,
-        autoprefixer: false
     })
-    .vue()
-    .alias({
-        '@': path.join(__dirname, 'resources/assets/js/panel'),
+
+    .js('resources/assets/js/panel/app.js', 'public/js').vue({version: 3})
+    .js('resources/assets/js/frontend/frontend.js', 'public/js')
+
+    .webpackConfig({
+        output: {chunkFilename: 'js/[name].js?id=[chunkhash]'},
+        resolve: {
+            alias: {
+                '@': path.resolve('resources/assets/js/panel'),
+            },
+        },
     })
 
 if (mix.inProduction()) {
