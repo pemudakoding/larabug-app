@@ -3,9 +3,6 @@ const path = require('path')
 const tailwindcss = require('tailwindcss')
 
 mix
-    .alias({
-        ziggy: path.resolve('vendor/tightenco/ziggy/dist'),
-    })
     .sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css', {},
         [tailwindcss('tailwind.config.js')]
     )
@@ -28,6 +25,9 @@ mix
             },
         },
     })
+    .babelConfig({
+        plugins: ['@babel/plugin-syntax-dynamic-import'],
+    });
 
 if (mix.inProduction()) {
     mix.version();
