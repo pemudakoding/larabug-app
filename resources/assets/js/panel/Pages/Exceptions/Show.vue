@@ -5,12 +5,12 @@
             <BreadcrumbsDivider/>
             <BreadcrumbsItem :href="route('panel.projects.show', project.id)">{{ project.title }}</BreadcrumbsItem>
             <BreadcrumbsDivider/>
-            <BreadcrumbsItem href="/projects/show/exception">{{ exception.short_exception_text }}</BreadcrumbsItem>
+            <BreadcrumbsItem href="/projects/show/exception" class="whitespace-nowrap sm:whitespace-normal">{{ exception.short_exception_text }}</BreadcrumbsItem>
         </Breadcrumbs>
     </header>
 
-    <div class="flex flex-row flex-1">
-        <aside class="w-1/4 h-full bg-white border-r border-gray-200">
+    <div class="flex flex-col sm:flex-row flex-1">
+        <aside class="w-full sm:w-1/4 sm:h-full bg-white border-r border-gray-200">
             <dl class="px-6 py-4 space-y-4">
                 <div>
                     <dt class="text-sm font-medium">Method</dt>
@@ -104,27 +104,27 @@
                     </button>
                     <button
                             class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
-                            :class="[ tab === 'headers' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'headers'"
+                            :class="[ tab === 'request' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                            @click="tab = 'request'"
                     >
-                        Headers
+                        Request
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'server' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'server'"
                     >
                         Server
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'stack-trace' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'stack-trace'"
                     >
                         Stack trace
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'user' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'user'"
                             v-if="exception.user"
@@ -132,7 +132,7 @@
                         User
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
                             :class="[ tab === 'feedback' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
                             @click="tab = 'feedback'"
                     >
@@ -150,9 +150,25 @@
                          :data-line="exception.line"><code v-text="exception.executor_output"></code></pre>
                 </div>
 
-                <div class="flex flex-col" v-if="tab === 'headers' && exception.storage && exception.storage.HEADERS">
+                <div class="flex flex-col" v-if="tab === 'request' && exception.storage && (exception.storage.PARAMETERS || exception.storage.HEADERS)">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.PARAMETERS">
+                            <h3 class="mb-3">Parameters</h3>
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <tbody>
+                                    <tr class="bg-white" v-for="(detail, key) in exception.storage.PARAMETERS">
+                                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                            v-text="key"></th>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500"
+                                            v-text="detail"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.HEADERS">
+                            <h3 class="mb-3">Headers</h3>
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <tbody>

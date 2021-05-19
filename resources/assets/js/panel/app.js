@@ -1,5 +1,5 @@
 import {createApp, h} from 'vue'
-import {app, plugin} from '@inertiajs/inertia-vue3'
+import { App, plugin } from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 import Toast from "vue-toastification";
 
@@ -17,11 +17,10 @@ const vueApp = createApp({
         titleTemplate: (title) => title ? `${title} - LaraBug` : 'LaraBug'
     },
     render: () =>
-        h(app, {
+        h(App, {
             initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: name => import(`@/Pages/${name}`).then(module => module.default),
+            resolveComponent: (name) => import(`@/Pages/${name}`).then((module) => module.default),
         }),
-
 })
     .use(plugin)
     .use(Toast, {
@@ -36,5 +35,6 @@ vueApp.mixin({
         route: (name, params, absolute) => route(name, params, absolute, Ziggy),
     },
 });
+
 
 vueApp.mount(el);

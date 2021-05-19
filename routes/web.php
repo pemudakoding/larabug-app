@@ -17,9 +17,13 @@ Route::permanentRedirect('what-is-larabug', 'features');
 
 Route::redirect('discord', 'https://discord.gg/AWrdVpc');
 
-Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home')->middleware('minimal');
 
-Route::group([], function () {
+Route::group([
+    'middleware' => [
+        'minimal',
+    ],
+], function () {
     // Route::get('requirements', [PageController::class, 'requirements'])->name('page.requirements');
     Route::get('features', [PageController::class, 'features'])->name('features');
     Route::get('pricing', [PageController::class, 'pricing'])->name('pricing');

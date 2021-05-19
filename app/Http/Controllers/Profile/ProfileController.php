@@ -44,11 +44,13 @@ class ProfileController extends Controller
     public function changePassword(Request $request)
     {
         $data = $request->only([
+            'current',
             'password',
             'password_confirmation',
         ]);
 
         $validator = Validator::make($data, [
+            'current' => 'password',
             'password' => [
                 'required',
                 'confirmed',
@@ -63,12 +65,8 @@ class ProfileController extends Controller
             return redirect()->route('panel.profile.show')->with('error', $validator->errors()->first());
         }
 
-        if (! Hash::check($request->current, $request->user()->password)) {
-            return redirect()->route('panel.profile.show')->with('error', 'Your current password is incorrect');
-        }
-
         $request->user()->update([
-            'password' => $request->new,
+            'password' => $request->password,
         ]);
 
         return redirect()->route('panel.profile.show')->with('success', 'Your password has been successfully changed!');
