@@ -41,7 +41,7 @@
 
         <article class="w-full max-w-6xl mx-auto px-4 text-center">
             <pre class="{{ $exception->markup_language }} line-numbers"
-                 data-start="{{ $exception->executor[0]['line_number'] }}"
+                 data-start="{{ $exception->executor[0]['line_number'] ?? null }}"
                  data-line="{{ $exception->line }}"><code>{{ $exception->executor_output }}</code></pre>
         </article>
     </div>

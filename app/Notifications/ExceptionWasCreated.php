@@ -92,7 +92,7 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
                     'fields' => [
                         [
                             'name' => 'Class',
-                            'value' => $this->exception->class,
+                            'value' => $this->exception->class ?? 'no value',
                             'inline' => true
                         ],
                         [
