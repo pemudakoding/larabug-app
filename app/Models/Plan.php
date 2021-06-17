@@ -23,7 +23,7 @@ class Plan extends Model
         'has_group_management'
     ];
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [
