@@ -6,7 +6,7 @@ This repository contains the actual code on https://www.larabug.com
 
 ## Requirements
 
-* PHP 7.4
+* PHP 8.0 or higher
 * Git
 * Composer
 * MySQL (>=5.7) or PostgreSQL (>=9.4)
@@ -32,7 +32,7 @@ php artisan migrate
 ## Important to know
 
 This project is created by me [back in 2016](https://laraveldaily.com/dennis-larabug-growing-faster-imagine/), it is very old, and the code doesn't even look remotely to what I code now. The point here
-is that there are no tests, and some stuff might look cumbersome. You're more than welcome to clean code
+is that there are no tests, and some stuff might look cumbersome, however the code works beautifully and like intented. You're more than welcome to clean code
 and generalize stuff better.
 
 ## Testing
