@@ -28,10 +28,11 @@ class ApiController extends Controller
                 'error' => 'Did not receive the correct parameters to process this exception'
             ])->setStatusCode(422);
         }
-
+        
         dispatch_sync(new ProcessException([
             'id' => $id = Uuid::uuid4(),
             'host' => array_get($request->input('exception'), 'host'),
+            'environment' => array_get($request->input('exception'), 'environment'),
             'error' => array_get($request->input('exception'), 'error'),
             'additional' => $request->input('additional'),
             'method' => array_get($request->input('exception'), 'method'),
