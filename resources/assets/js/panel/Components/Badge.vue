@@ -6,6 +6,8 @@
       { 'text-orange-700 border border-orange-200 bg-orange-50': warning },
       { 'text-green-700 border border-green-200 bg-green-50': success },
       { 'text-blue-700 border border-blue-200 bg-blue-50': info },
+      { 'text-gray-700 border border-gray-200 bg-gray-50': gray },
+      { 'text-md h-7 px-2': big }
     ]"
   >
     <slot></slot>
@@ -30,7 +32,15 @@ export default {
         info: {
             type: Boolean,
             default: () => false,
-        }
+        },
+        gray: {
+            type: Boolean,
+            default: () => false,
+        },
+        big: {
+            type: Boolean,
+            default: () => false,
+        },
     },
 }
 </script>
