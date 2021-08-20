@@ -12,7 +12,7 @@
     <div class="flex flex-col sm:flex-row flex-1">
         <aside class="w-full sm:w-1/4 sm:h-full bg-white border-r border-gray-200">
             <dl class="px-6 py-4 space-y-4">
-                <div>
+                <div v-if="exception.environment">
                     <dt class="text-sm font-medium">Environment</dt>
                     <dd>
                       <Code>{{ exception.environment }}</Code>
