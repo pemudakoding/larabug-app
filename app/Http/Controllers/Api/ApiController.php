@@ -32,6 +32,7 @@ class ApiController extends Controller
         dispatch_sync(new ProcessException([
             'id' => $id = Uuid::uuid4(),
             'host' => array_get($request->input('exception'), 'host'),
+            'environment' => array_get($request->input('exception'), 'environment'),
             'error' => array_get($request->input('exception'), 'error'),
             'additional' => $request->input('additional'),
             'method' => array_get($request->input('exception'), 'method'),
