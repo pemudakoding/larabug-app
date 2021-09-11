@@ -53,5 +53,7 @@
 @include('cookieConsent::index')
 
 @stack('scripts')
+
+<script src="https://analytics.webbuilds.nl/tracker.js" data-domain="larabug.com" defer></script>
 </body>
 </html>
