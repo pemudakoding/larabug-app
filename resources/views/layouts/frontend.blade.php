@@ -54,6 +54,6 @@
 
 @stack('scripts')
 
-<script src="https://analytics.webbuilds.nl/tracker.js" data-domain="larabug.com" defer></script>
+<script src="https://analytics.webbuilds.nl/tracker.js" data-domain="www.larabug.com" defer></script>
 </body>
 </html>
