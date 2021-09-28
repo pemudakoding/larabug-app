@@ -173,7 +173,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            $user->api_token = str_random(25);
+            $user->api_token = str_random(50);
         });
 
         static::created(function ($user) {
