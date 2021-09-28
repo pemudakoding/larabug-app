@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Exception;
 use App\Models\Project;
+use App\Models\Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ExceptionFactory extends Factory

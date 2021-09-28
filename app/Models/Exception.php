@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Exception extends Model
 {
-    use Uuid, 
+    use Uuid,
         Filterable,
         HasFactory;
 

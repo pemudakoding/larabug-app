@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Traits\Planable;
 use App\Mail\User\WelcomeEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -173,7 +173,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            $user->api_token = str_random(25);
+            $user->api_token = str_random(50);
         });
 
         static::created(function ($user) {
