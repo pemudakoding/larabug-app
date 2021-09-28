@@ -17,7 +17,7 @@
     "fruitcake/laravel-cors": "^2.0",
     "google/recaptcha": "~1.1",
     "guzzlehttp/guzzle": "^7.3",
-    "inertiajs/inertia-laravel": "^v0.4.1",
+    "inertiajs/inertia-laravel": "^v0.4.4",
     "kblais/laravel-uuid": "^1.1",
     "laravel-notification-channels/webhook": "^2.2",
     "laravel/framework": "^8.0",
@@ -45,7 +45,7 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.2",
     "barryvdh/laravel-ide-helper": "^2.8",
-    "friendsofphp/php-cs-fixer": "^2.16",
+    "friendsofphp/php-cs-fixer": "^3.1.0",
     "facade/ignition": "^2.5",
     "fakerphp/faker": "^1.9.1",
     "mockery/mockery": "^1.4.2",
