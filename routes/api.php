@@ -9,6 +9,8 @@ Route::post('login', [\App\Http\Controllers\Api\Auth\LoginController::class, 'lo
 Route::middleware('auth:api')->group(function () {
     Route::post('/log', [ApiController::class, 'log'])->name('exceptions.log');
 
+    Route::get('user', [\App\Http\Controllers\Api\UserController::class, 'show'])->name('api.user.show');
+
     Route::group(['prefix' => 'projects', 'as' => 'api.projects.'], function(){
         Route::get('/', [\App\Http\Controllers\Api\ProjectController::class, 'index'])->name('index');
         Route::get('{project}', [\App\Http\Controllers\Api\ProjectController::class, 'show'])->name('show');
