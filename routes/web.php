@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DocumentationController;
-use App\Http\Controllers\ExceptionController;
-use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ExceptionController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DocumentationController;
+use App\Http\Controllers\Profile\ProfileController;
 
 Route::permanentRedirect('terms', 'terms-of-service');
 Route::permanentRedirect('privacy', 'privacy-policy');

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Feedback extends Model
 {
