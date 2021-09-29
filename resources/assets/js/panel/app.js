@@ -1,5 +1,5 @@
 import {createApp, h} from 'vue'
-import { App, plugin } from '@inertiajs/inertia-vue3'
+import { App, plugin, Link } from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 import Toast from "vue-toastification";
 
@@ -36,5 +36,6 @@ vueApp.mixin({
     },
 });
 
+vueApp.component('InertiaLink', Link)
 
 vueApp.mount(el);
