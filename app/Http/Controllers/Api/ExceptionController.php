@@ -2,35 +2,39 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Api\ExceptionResource;
 use App\Models\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ExceptionController extends Controller
 {
-    public function recentExceptions(Request $request)
+    public function index(Request $request)
     {
-        $projects = $request->user()->projects()->get(['id'])->pluck('id')->toArray();
-
-        return Exception::whereIn('project_id', $projects)
-            ->latest()
-            ->paginate(15, [
-                'class',
-                'created_at',
-                'error',
-                'exception',
-                'id',
-                'project_id',
-                'line',
-                'status'
-            ]);
+        return ExceptionResource::collection(
+            Exception::whereIn('project_id', $request->user()->projects()->pluck('id')->toArray())
+                ->with('project:id,title')
+                ->latest('created_at')
+                ->limit(8)
+                ->get([
+                    'id',
+                    'status',
+                    'class',
+                    'fullUrl',
+                    'method',
+                    'file',
+                    'file_type',
+                    'line',
+                    'project_id',
+                    'exception',
+                    'created_at',
+                ])
+        );
     }
 
     public function show(Request $request, $exceptionId)
     {
-        $projects = $request->user()->projects()->get(['id'])->pluck('id')->toArray();
-
-        $exception = Exception::whereIn('project_id', $projects)
+        $exception = Exception::whereIn('project_id', $request->user()->projects()->pluck('id')->toArray())
             ->findOrFail($exceptionId, [
                 'class',
                 'created_at',
@@ -47,11 +51,7 @@ class ExceptionController extends Controller
             $exception->markAsMailed();
         }
 
-        $exception->load(['project' => function ($query) {
-            return $query->select('title', 'id');
-        }]);
-
-        return $exception;
+        return new ExceptionResource($exception);
     }
 
     public function markAs(Request $request, $exceptionId)

@@ -11,6 +11,11 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('user', [\App\Http\Controllers\Api\UserController::class, 'show'])->name('api.user.show');
 
+    Route::group(['prefix' => 'exceptions', 'as' => 'api.exceptions'], function(){
+        Route::get('/', [\App\Http\Controllers\Api\ExceptionController::class, 'index'])->name('index');
+        Route::get('{exception}', [\App\Http\Controllers\Api\ExceptionController::class, 'show'])->name('show');
+    });
+
     Route::group(['prefix' => 'projects', 'as' => 'api.projects.'], function(){
         Route::get('/', [\App\Http\Controllers\Api\ProjectController::class, 'index'])->name('index');
         Route::get('{project}', [\App\Http\Controllers\Api\ProjectController::class, 'show'])->name('show');
