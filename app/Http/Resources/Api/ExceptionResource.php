@@ -17,6 +17,7 @@ class ExceptionResource extends JsonResource
         /* @var $this \App\Models\Exception */
         return [
             'id' => $this->id,
+            'status' => strtolower($this->status),
             'project_id' => $this->project_id,
             'class' => $this->class,
             'error' => $this->error,
