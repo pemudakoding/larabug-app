@@ -10,6 +10,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/log', [ApiController::class, 'log'])->name('exceptions.log');
 
     Route::get('user', [\App\Http\Controllers\Api\UserController::class, 'show'])->name('api.user.show');
+    Route::get('sponsors', [\App\Http\Controllers\Api\SponsorController::class, 'index'])->name('api.sponsors');
 
     Route::group(['prefix' => 'exceptions', 'as' => 'api.exceptions'], function(){
         Route::get('/', [\App\Http\Controllers\Api\ExceptionController::class, 'index'])->name('index');
