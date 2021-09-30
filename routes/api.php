@@ -14,10 +14,14 @@ Route::middleware('auth:api')->group(function () {
     Route::group(['prefix' => 'exceptions', 'as' => 'api.exceptions'], function(){
         Route::get('/', [\App\Http\Controllers\Api\ExceptionController::class, 'index'])->name('index');
         Route::get('{exception}', [\App\Http\Controllers\Api\ExceptionController::class, 'show'])->name('show');
+        Route::post('{exception}/read', [\App\Http\Controllers\Api\ExceptionController::class, 'read'])->name('read');
+        Route::post('{exception}/toggle-public', [\App\Http\Controllers\Api\ExceptionController::class, 'togglePublic'])->name('toggle-public');
+        Route::delete('{exception}', [\App\Http\Controllers\Api\ExceptionController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'projects', 'as' => 'api.projects.'], function(){
         Route::get('/', [\App\Http\Controllers\Api\ProjectController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\Api\ProjectController::class, 'store'])->name('store');
         Route::get('{project}', [\App\Http\Controllers\Api\ProjectController::class, 'show'])->name('show');
         Route::get('{project}/exceptions', [\App\Http\Controllers\Api\ProjectController::class, 'exceptions'])->name('exceptions');
         Route::get('{project}/exceptions/{exception}', [\App\Http\Controllers\Api\ProjectController::class, 'exception'])->name('exception');

@@ -54,20 +54,43 @@ class ExceptionController extends Controller
         return new ExceptionResource($exception);
     }
 
-    public function markAs(Request $request, $exceptionId)
+    public function read(Request $request, $exceptionId)
     {
         $projects = $request->user()->projects()->get(['id'])->pluck('id')->toArray();
 
         $exception = Exception::whereIn('project_id', $projects)
             ->findOrFail($exceptionId);
 
-        $exception->markAs($request->input('status'));
+        $exception->markAsRead();
 
         /*
          * Also mark as mailed because the user would already know about this exception
          */
         $exception->markAsMailed();
 
-        return $request->input('status');
+        return new ExceptionResource($exception);
+    }
+
+    public function togglePublic(Request $request, $exceptionId)
+    {
+        $exception = Exception::whereIn('project_id', $request->user()->projects()->pluck('id')->toArray())->findOrFail($exceptionId);
+
+        if ($exception->publish_hash) {
+            $exception->removePublic();
+        }else{
+            $exception->makePublic();
+        }
+
+        return new ExceptionResource($exception);
+    }
+
+    public function destroy(Request $request, $exceptionId)
+    {
+        $exception = Exception::whereIn('project_id', $request->user()->projects()->pluck('id')->toArray())
+            ->findOrFail($exceptionId);
+
+        $exception->delete();
+
+        return response('ok');
     }
 }

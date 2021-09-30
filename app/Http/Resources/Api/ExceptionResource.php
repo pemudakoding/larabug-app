@@ -19,6 +19,8 @@ class ExceptionResource extends JsonResource
             'id' => $this->id,
             'status' => strtolower($this->status),
             'project_id' => $this->project_id,
+            'public_hash' => $this->publish_hash,
+            'public_hash_url' => $this->publish_hash ? route('public.exception', $this->publish_hash) : null,
             'class' => $this->class,
             'error' => $this->error,
             'exception' => $this->exception,

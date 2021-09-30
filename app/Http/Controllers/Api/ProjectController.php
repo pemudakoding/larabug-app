@@ -32,7 +32,11 @@ class ProjectController extends Controller
             ->findOrFail($id);
 
         return ExceptionResource::collection(
-            $project->exceptions()->latest()->paginate()
+            $project->exceptions()
+                ->when($request->input('search'), function ($query, $value) {
+                    return $query->where('exception', 'like', '%' . $value . '%');
+                })
+                ->latest()->paginate()
         );
     }
 
@@ -53,11 +57,10 @@ class ProjectController extends Controller
             'title',
             'description',
             'url',
-            'receive_email'
         ]));
 
         $request->user()->projects()->save($project, ['owner' => true]);
 
-        return $project;
+        return new ProjectResource($project);
     }
 }
