@@ -173,13 +173,6 @@ class User extends Authenticatable
         return $this->hasMany(UserFcmToken::class);
     }
 
-    public function routeNotificationForFcm()
-    {
-        return $this->fcmTokens()->get()->map(function ($fcmToken) {
-            return $fcmToken->token;
-        })->toArray();
-    }
-
     public static function boot()
     {
         parent::boot();

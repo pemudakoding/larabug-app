@@ -66,7 +66,7 @@ class Project extends Model implements HasMedia
 
     public function getFeedbackScriptHtmlAttribute()
     {
-        return '<script src="'. $this->getFeedbackScriptUrl(). '"></script>';
+        return '<script src="' . $this->getFeedbackScriptUrl() . '"></script>';
     }
 
     public function routeNotificationForSlack()
@@ -163,9 +163,19 @@ class Project extends Model implements HasMedia
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where(function ($query) use ($search) {
-                $query->where('title', 'like', '%'.$search.'%');
+                $query->where('title', 'like', '%' . $search . '%');
             });
         });
+    }
+
+    public function routeNotificationForFcm()
+    {
+        return $this->users()->wherePivot('owner', true)->first()
+            ->fcmTokens()
+            ->get()
+            ->map(function ($fcmToken) {
+                return $fcmToken->token;
+            })->toArray();
     }
 
     public static function boot()

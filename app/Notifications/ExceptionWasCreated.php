@@ -60,7 +60,7 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
             $array[] = WebhookChannel::class;
         }
 
-        if ($notifiable->fcmTokens()->exists()) {
+        if ($notifiable->users()->wherePivot('owner', true)->fcmTokens()->exists()) {
             $array[] = FcmChannel::class;
         }
 
