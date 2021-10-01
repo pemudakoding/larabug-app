@@ -14,7 +14,14 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         return ProjectResource::collection(
-            $request->user()->projects()->withCount('unreadExceptions')->paginate()
+            $request->user()
+                ->projects()
+                ->when($request->input('search'), function ($query, $value) {
+                    return $query->where('title', 'like', '%' . $value . '%');
+                })
+                ->withCount('unreadExceptions')
+                ->latest()
+                ->paginate()
         );
     }
 
@@ -36,7 +43,8 @@ class ProjectController extends Controller
                 ->when($request->input('search'), function ($query, $value) {
                     return $query->where('exception', 'like', '%' . $value . '%');
                 })
-                ->latest()->paginate()
+                ->latest()
+                ->paginate()
         );
     }
 
