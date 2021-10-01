@@ -111,7 +111,7 @@
                     </dd>
                 </div>
 
-                <div v-if="exception.snooze_until">
+                <div v-if="exception.snooze_until" class="space-y-2">
                     <Badge class info>Snoozed until {{ exception.snooze_until }}</Badge>
 
                     <div>
