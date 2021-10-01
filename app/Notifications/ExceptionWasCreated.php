@@ -156,6 +156,7 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
     public function toFcm($notifiable)
     {
         return FcmMessage::create()
+            ->setData(['exception_id' => $this->exception->id, 'project_id' => $this->project->id])
             ->setNotification(
                 \NotificationChannels\Fcm\Resources\Notification::create()
                     ->setTitle('New exception in project ' . $this->project->title)
