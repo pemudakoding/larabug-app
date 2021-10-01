@@ -9,7 +9,7 @@ class ExceptionResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -30,6 +30,10 @@ class ExceptionResource extends JsonResource
             'route_url' => $this->route_url,
             'executor' => $this->executor,
             'executor_output' => $this->executor_output,
+            'headers' => $this->storage['HEADERS'] ?? null,
+            'server' => $this->storage['SERVER'] ?? null ,
+            'session' => $this->storage['SESSION'] ?? null,
+            'cookies' => $this->storage['COOKIE'] ?? null,
             'markup_language' => $this->markup_language,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'human_date' => $this->human_date,
