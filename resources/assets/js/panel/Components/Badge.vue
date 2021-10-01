@@ -1,7 +1,7 @@
 <template>
   <span
           :class="[
-      'inline-flex items-center h-5 px-1 text-xs font-bold rounded-full mr-1',
+      'inline-flex items-center h-5 px-2 text-xs font-bold rounded-full mr-1',
       { 'text-red-700 border border-red-200 bg-red-50': danger },
       { 'text-orange-700 border border-orange-200 bg-orange-50': warning },
       { 'text-green-700 border border-green-200 bg-green-50': success },

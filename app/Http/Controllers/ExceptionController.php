@@ -182,6 +182,28 @@ class ExceptionController extends Controller
         return redirect()->back();
     }
 
+    public function snooze(Request $request, $id, $exceptionId)
+    {
+        $project = $request->user()->projects()->findOrFail($id);
+
+        $exception = $project->exceptions()->findOrFail($exceptionId);
+
+        $exception->snooze($request->input('snooze', 30));
+
+        return redirect()->route('panel.exceptions.show', [$id, $exceptionId])->with('success', 'Exception is now snoozed');
+    }
+
+    public function unSnooze(Request $request, $id, $exceptionId)
+    {
+        $project = $request->user()->projects()->findOrFail($id);
+
+        $exception = $project->exceptions()->findOrFail($exceptionId);
+
+        $exception->unsnooze();
+
+        return redirect()->route('panel.exceptions.show', [$id, $exceptionId])->with('success', 'Snooze status has been removed for this exception');
+    }
+
     public function deleteAll(Request $request, $id)
     {
         $project = $request->user()->projects()->findOrFail($id);
