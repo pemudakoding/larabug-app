@@ -8,6 +8,13 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\Discord\DiscordChannel;
 use App\Notifications\Discord\DiscordMessage;
+use NotificationChannels\Fcm\FcmChannel;
+use NotificationChannels\Fcm\FcmMessage;
+use NotificationChannels\Fcm\Resources\AndroidConfig;
+use NotificationChannels\Fcm\Resources\AndroidFcmOptions;
+use NotificationChannels\Fcm\Resources\AndroidNotification;
+use NotificationChannels\Fcm\Resources\ApnsConfig;
+use NotificationChannels\Fcm\Resources\ApnsFcmOptions;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
@@ -51,6 +58,10 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
 
         if ($notifiable->custom_webhook) {
             $array[] = WebhookChannel::class;
+        }
+
+        if ($notifiable->fcmTokens()->exists()) {
+            $array[] = FcmChannel::class;
         }
 
         return $array;
@@ -139,6 +150,29 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
                 'Line' => $this->exception->line,
             ])
             ->userAgent("LaraBug");
+    }
+
+    public function toFcm($notifiable)
+    {
+        return FcmMessage::create()
+            ->setNotification(
+                \NotificationChannels\Fcm\Resources\Notification::create()
+                    ->setTitle('Exception notification')
+                    ->setBody('[' . $this->project->title . '] New exception thrown')
+                    ->setImage('https://www.larabug.com/favicon.ico')
+            )
+            // Android sound
+            ->setAndroid(
+                AndroidConfig::create()
+                    ->setFcmOptions(AndroidFcmOptions::create()->setAnalyticsLabel('analytics'))
+                    ->setNotification(AndroidNotification::create()->setSound('default'))
+            )
+            // Apple sound
+            ->setApns(
+                ApnsConfig::create()
+                    ->setFcmOptions(ApnsFcmOptions::create()->setAnalyticsLabel('analytics_ios'))
+                    ->setPayload(['aps' => ['sound' => 'default']])
+            );
     }
 
     /**
