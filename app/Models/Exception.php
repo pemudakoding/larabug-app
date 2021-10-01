@@ -236,6 +236,22 @@ class Exception extends Model
         return $this->publish_hash ? true : false;
     }
 
+    public function snooze(int $minutes)
+    {
+        $this->snooze_until = now()->addMinutes($minutes);
+        $this->save();
+
+        return true;
+    }
+
+    public function unsnooze()
+    {
+        $this->snooze_until = null;
+        $this->save();
+
+        return true;
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

@@ -98,11 +98,15 @@
                             <div class="flex-1">
                                 <p class="font-medium text-bold"
                                    v-bind:class="{'text-gray-500': exception.status === 'FIXED'}">
-                                    {{ exception.short_exception_text }}</p>
+                                    {{ exception.short_exception_text }}
+                                </p>
+
                                 <p class="text-sm text-gray-600">
                                     <Badge success v-if="exception.status === 'FIXED'">{{ exception.status_text }}</Badge>
                                     <Badge info v-if="exception.status === 'READ'">{{ exception.status_text }}</Badge>
                                     <Badge danger v-if="exception.status === 'OPEN'">{{ exception.status_text }}</Badge>
+                                    <span v-if="exception.snooze_until">&centerdot; </span>
+                                    <Badge info v-if="exception.snooze_until">Snoozed until {{ exception.snooze_until }}</Badge>
                                     &centerdot; {{ exception.human_date }} &centerdot;
                                     {{ exception.created_at }}
                                     <Badge info v-if="exception.file_type === 'javascript'">&centerdot; Javascript</Badge>

@@ -5,7 +5,9 @@
             <BreadcrumbsDivider/>
             <BreadcrumbsItem :href="route('panel.projects.show', project.id)">{{ project.title }}</BreadcrumbsItem>
             <BreadcrumbsDivider/>
-            <BreadcrumbsItem href="/projects/show/exception" class="whitespace-nowrap sm:whitespace-normal">{{ exception.short_exception_text }}</BreadcrumbsItem>
+            <BreadcrumbsItem href="/projects/show/exception" class="whitespace-nowrap sm:whitespace-normal">
+                {{ exception.short_exception_text }}
+            </BreadcrumbsItem>
         </Breadcrumbs>
     </header>
 
@@ -15,7 +17,7 @@
                 <div v-if="exception.environment">
                     <dt class="text-sm font-medium">Environment</dt>
                     <dd>
-                      <Code>{{ exception.environment }}</Code>
+                        <Code>{{ exception.environment }}</Code>
                     </dd>
                 </div>
 
@@ -83,6 +85,39 @@
                 <div v-if="exception.status !== 'FIXED'">
                     <Button success @click="fixed">Mark as fixed</Button>
                 </div>
+
+                <div v-if="!exception.snooze_until">
+                    <dt class="text-sm font-medium mb-1">Snooze exception</dt>
+                    <dd class="grid space-y-2">
+                        <select v-model="snoozeTime"
+                                class="block w-full px-3 h-12 max-w-lg border-gray-300 rounded bg-gray-50 transition">
+                            <option value="30">30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3 hours</option>
+                            <option value="240">4 hours</option>
+                            <option value="300">5 hours</option>
+                            <option value="360">6 hours</option>
+                            <option value="720">12 hours</option>
+                            <option value="1440">24 hours</option>
+                            <option value="10080">A week</option>
+                            <option value="43800">A month</option>
+                            <option value="5256000">Forever</option>
+                        </select>
+
+                        <div>
+                        <Button secondary @click="snooze">Snooze</Button>
+                        </div>
+                    </dd>
+                </div>
+
+                <div v-if="exception.snooze_until" class="space-y-2">
+                    <Badge class info>Snoozed until {{ exception.snooze_until }}</Badge>
+
+                    <div>
+                        <Button secondary @click="unSnooze">Unsnooze</Button>
+                    </div>
+                </div>
             </dl>
         </aside>
 
@@ -103,45 +138,45 @@
             <div class="bg-white">
                 <header class="flex items-center px-3">
                     <button
-                            class="h-12 px-3 text-xs font-medium uppercase border-b-2 rounded-none"
-                            :class="[ tab === 'exception' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'exception'"
+                        class="h-12 px-3 text-xs font-medium uppercase border-b-2 rounded-none"
+                        :class="[ tab === 'exception' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'exception'"
                     >
                         Exception
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
-                            :class="[ tab === 'request' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'request'"
+                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 border-transparent rounded-none"
+                        :class="[ tab === 'request' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'request'"
                     >
                         Request
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
-                            :class="[ tab === 'server' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'server'"
+                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
+                        :class="[ tab === 'server' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'server'"
                     >
                         Server
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
-                            :class="[ tab === 'stack-trace' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'stack-trace'"
+                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
+                        :class="[ tab === 'stack-trace' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'stack-trace'"
                     >
                         Stack trace
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
-                            :class="[ tab === 'user' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'user'"
-                            v-if="exception.user"
+                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
+                        :class="[ tab === 'user' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'user'"
+                        v-if="exception.user"
                     >
                         User
                     </button>
                     <button
-                            class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
-                            :class="[ tab === 'feedback' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                            @click="tab = 'feedback'"
+                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
+                        :class="[ tab === 'feedback' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
+                        @click="tab = 'feedback'"
                     >
                         Feedback
                     </button>
@@ -157,9 +192,11 @@
                          :data-line="exception.line"><code v-text="exception.executor_output"></code></pre>
                 </div>
 
-                <div class="flex flex-col" v-if="tab === 'request' && exception.storage && (exception.storage.PARAMETERS || exception.storage.HEADERS)">
+                <div class="flex flex-col"
+                     v-if="tab === 'request' && exception.storage && (exception.storage.PARAMETERS || exception.storage.HEADERS)">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.PARAMETERS">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                             v-if="exception.storage.PARAMETERS">
                             <h3 class="mb-3">Parameters</h3>
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
@@ -174,7 +211,8 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" v-if="exception.storage.HEADERS">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                             v-if="exception.storage.HEADERS">
                             <h3 class="mb-3">Headers</h3>
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
@@ -266,7 +304,9 @@ export default {
 
     data() {
         return {
-            tab: 'exception'
+            tab: 'exception',
+
+            snoozeTime: 30,
         }
     },
 
@@ -280,6 +320,14 @@ export default {
         },
         fixed() {
             this.$inertia.post(this.route('panel.exceptions.fixed', [this.project.id, this.exception.id]));
+        },
+        snooze() {
+            this.$inertia.post(this.route('panel.exceptions.snooze', [this.project.id, this.exception.id]), {
+                snooze: this.snoozeTime
+            });
+        },
+        unSnooze() {
+            this.$inertia.post(this.route('panel.exceptions.un-snooze', [this.project.id, this.exception.id]));
         }
     }
 }
