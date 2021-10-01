@@ -20,7 +20,8 @@ class ProjectController extends Controller
                     return $query->where('title', 'like', '%' . $value . '%');
                 })
                 ->withCount('unreadExceptions')
-                ->latest()
+                ->latest('last_error_at')
+                ->latest('created_at')
                 ->paginate()
         );
     }
