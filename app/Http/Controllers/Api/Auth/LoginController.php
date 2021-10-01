@@ -24,6 +24,9 @@ class LoginController extends Controller
 
     public function sendLoginResponse(Request $request, User $user)
     {
+        $user->last_mobile_login_at = now();
+        $user->save();
+
         return response()->json([
             'user' => new UserResource($user),
             'token' => $user->api_token
