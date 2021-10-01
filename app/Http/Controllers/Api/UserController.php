@@ -22,6 +22,6 @@ class UserController extends Controller
             ]
         ]);
 
-        return $request->user()->fcmTokens()->create(['token' => $request->input('token')]);
+        return $request->user('api')->fcmTokens()->create(['token' => $request->input('token')]);
     }
 }
