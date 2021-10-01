@@ -12,4 +12,16 @@ class UserController extends Controller
     {
         return new UserResource($request->user());
     }
+
+    public function registerFcmToken(Request $request)
+    {
+        $this->validate($request, [
+            'token' => [
+                'required',
+                'string'
+            ]
+        ]);
+
+        return $request->user()->fcmTokens()->create(['token' => $request->input('token')]);
+    }
 }

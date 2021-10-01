@@ -168,6 +168,11 @@ class User extends Authenticatable
         return $this->hasMany(SocialUser::class)->latest();
     }
 
+    public function fcmTokens()
+    {
+        return $this->hasMany(UserFcmToken::class);
+    }
+
     public static function boot()
     {
         parent::boot();
