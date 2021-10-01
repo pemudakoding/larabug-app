@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\Discord\DiscordChannel;
 use App\Notifications\Discord\DiscordMessage;
+use Illuminate\Support\Str;
 use NotificationChannels\Fcm\FcmChannel;
 use NotificationChannels\Fcm\FcmMessage;
 use NotificationChannels\Fcm\Resources\AndroidConfig;
@@ -157,8 +158,8 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
         return FcmMessage::create()
             ->setNotification(
                 \NotificationChannels\Fcm\Resources\Notification::create()
-                    ->setTitle('Exception notification')
-                    ->setBody('[' . $this->project->title . '] New exception thrown')
+                    ->setTitle('New exception in project ' . $this->project->title)
+                    ->setBody(Str::limit($this->exception->exception))
                     ->setImage('https://www.larabug.com/favicon.ico')
             )
             // Android sound
