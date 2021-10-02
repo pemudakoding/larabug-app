@@ -77,8 +77,17 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
         ->middleware('has.feature:feedback')
         ->name('feedback.index');
 
-    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::patch('profile/password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
-    Route::patch('profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
+
+    Route::group(['prefix' => 'profile'], function(){
+        Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
+        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
+        Route::patch('password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+        Route::patch('settings', [ProfileController::class, 'settings'])->name('profile.settings');
+
+        Route::group(['prefix' => 'fcm-tokens'], function(){
+            Route::get('/', [\App\Http\Controllers\Profile\FcmController::class, 'index'])->name('profile.fcm-tokens.index');
+            Route::delete('{id}', [\App\Http\Controllers\Profile\FcmController::class, 'destroy'])->name('profile.fcm-tokens.destroy');
+        });
+    });
+
 });

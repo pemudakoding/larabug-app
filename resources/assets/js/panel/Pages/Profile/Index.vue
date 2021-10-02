@@ -3,7 +3,7 @@
 
     <div class="flex flex-col space-y-8">
         <Breadcrumbs>
-            <BreadcrumbsItem href="/profile">Profile settings</BreadcrumbsItem>
+            <BreadcrumbsItem href="/panel/profile">Profile settings</BreadcrumbsItem>
         </Breadcrumbs>
 
         <Card contained>
@@ -74,6 +74,20 @@
                     <Button @click="updateSettings" primary>Save preferences</Button>
                 </div>
             </template>
+        </Card>
+
+        <Card contained>
+            <template #header>
+                <h2 class="text-xl font-bold">Mobile devices</h2>
+            </template>
+
+            <form class="space-y-6" action="">
+                <h3 class="text-base font-bold">Manage devices</h3>
+
+                <div class="flex items-center space-x-2">
+                    <Button as="inertia-link" :href="route('panel.profile.fcm-tokens.index')" primary>Manage mobile devices</Button>
+                </div>
+            </form>
         </Card>
 
         <div>
