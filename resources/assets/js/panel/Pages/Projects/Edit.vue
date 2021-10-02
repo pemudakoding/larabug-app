@@ -1,4 +1,8 @@
 <template>
+    <InertiaHead>
+      <title>Edit {{ project.title }} Project</title>
+    </InertiaHead>
+
     <div class="flex flex-col space-y-8">
         <Breadcrumbs>
             <BreadcrumbsItem :href="route('panel.projects.index')">Projects</BreadcrumbsItem>

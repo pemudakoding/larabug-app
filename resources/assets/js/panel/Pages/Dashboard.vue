@@ -1,4 +1,6 @@
 <template>
+  <InertiaHead title="Dashboard" />
+
     <div class="flex flex-col space-y-8">
         <Breadcrumbs>
             <BreadcrumbsItem :href="route('panel.dashboard')">Dashboard</BreadcrumbsItem>

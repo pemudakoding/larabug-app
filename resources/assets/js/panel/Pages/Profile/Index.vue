@@ -1,4 +1,6 @@
 <template>
+    <InertiaHead title="Profile" />
+
     <div class="flex flex-col space-y-8">
         <Breadcrumbs>
             <BreadcrumbsItem href="/profile">Profile settings</BreadcrumbsItem>

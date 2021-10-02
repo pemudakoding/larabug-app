@@ -1,4 +1,8 @@
 <template>
+    <InertiaHead>
+      <title>Exception for {{ project.title }} Project</title>
+    </InertiaHead>
+
     <header class="flex items-center w-full h-16 px-6 bg-white border-b border-gray-200">
         <Breadcrumbs>
             <BreadcrumbsItem :href="route('panel.projects.index')">Projects</BreadcrumbsItem>
