@@ -12,9 +12,22 @@
             </template>
 
             <form class="space-y-6" action="">
-                <FormInputGroup v-model="form.name" label="Name" id="name" required/>
+                <FormInputGroup
+                    v-model="form.name"
+                    :error="form.errors.name"
+                    label="Name"
+                    id="name"
+                    required
+                />
 
-                <FormInputGroup v-model="form.email" type="email" label="E-mail" id="email" required/>
+                <FormInputGroup
+                    v-model="form.email"
+                    :error="form.errors.email"
+                    type="email"
+                    label="E-mail"
+                    id="email"
+                    required
+                />
             </form>
 
             <template #footer>
@@ -108,6 +121,7 @@ import FormInputGroup from '@/Components/FormInputGroup'
 import FormTextareaGroup from '@/Components/FormTextareaGroup'
 import Checkbox from '@/Components/Checkbox'
 import { useToast } from "vue-toastification";
+import { useForm } from '@inertiajs/inertia-vue3'
 
 export default {
     layout: AppLayout,
@@ -124,18 +138,23 @@ export default {
     data() {
         return {
             sending: false,
-            form: {
+            form: useForm ({
                 name: this.user.name,
                 email: this.user.email,
                 password: this.user.password,
                 newsletter: this.user.newsletter,
                 settings: this.settings
-            },
-            password: {
+            }, {
+              key: 'form'
+            }),
+            password: useForm ({
               current: null,
               password: null,
               password_confirmation: null
-            },
+            }, {
+              key: 'password',
+              remember: false,
+            }),
         }
     },
     props: {
@@ -144,7 +163,7 @@ export default {
     },
     methods: {
         update() {
-            this.$inertia.patch(this.route('panel.profile.update'), this.form, {
+            this.form.patch(this.route('panel.profile.update'), this.form, {
                 onStart: () => this.sending = true,
                 onFinish: () => {
                     this.sending = false;
@@ -160,14 +179,14 @@ export default {
                         current: null,
                         password: null,
                         password_confirmation: null
-                    };
+                    }
                 }
             });
         },
         updateSettings() {
             this.sending = true
 
-            this.$inertia.patch(this.route('panel.profile.settings'), {
+            this.form.patch(this.route('panel.profile.settings'), {
                 settings: this.form.settings,
                 newsletter: this.form.newsletter
             })

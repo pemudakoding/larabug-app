@@ -16,26 +16,26 @@
             <form class="space-y-6" action="">
                 <FormInputGroup
                         v-model="form.title"
-                        :error="$page.props.errors.title"
+                        :error="form.errors.title"
                         helper-text="The project's title"
                         label="Title"
                         id="title"
                         required
                 />
-                <FormInputGroup v-model="form.url" :error="$page.props.errors.url" type="url" label="App URL" id="app_url" required/>
+                <FormInputGroup v-model="form.url" :error="form.errors.url" type="url" label="App URL" id="app_url" required/>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <FormInputGroup v-model="form.slack_webhook" :error="$page.props.errors.slack_webhook" label="Slack Webhook URL" id="slack_webhook_url"/>
+                    <FormInputGroup v-model="form.slack_webhook" :error="form.errors.slack_webhook" label="Slack Webhook URL" id="slack_webhook_url"/>
                     <FormInputGroup
                             v-model="form.discord_webhook"
-                            :error="$page.props.errors.discord_webhook"
+                            :error="form.errors.discord_webhook"
                             label="Discord Webhook URL"
                             id="discord_webhook_url"
                     />
 
                     <FormInputGroup
                             v-model="form.custom_webhook"
-                            :error="$page.props.errors.custom_webhook"
+                            :error="form.errors.custom_webhook"
                             label="Custom Webhook URL"
                             id="custom_webhook_url"
                     />
@@ -65,6 +65,7 @@ import Card from '@/Components/Card'
 import Button from '@/Components/Button'
 import FormInputGroup from '@/Components/FormInputGroup'
 import FormTextareaGroup from '@/Components/FormTextareaGroup'
+import { useForm } from '@inertiajs/inertia-vue3'
 
 export default {
     layout: AppLayout,
@@ -80,7 +81,7 @@ export default {
     data() {
         return {
             sending: false,
-            form: {
+            form: useForm ({
                 title: null,
                 url: null,
                 description: null,
@@ -88,13 +89,13 @@ export default {
                 slack_webhook: null,
                 discord_webhook: null,
                 custom_webhook: null,
-            },
+            }),
         }
     },
 
     methods: {
         submit() {
-            this.$inertia.post(this.route('panel.projects.store'), this.form, {
+            this.form.post(this.route('panel.projects.store'), this.form, {
                 onStart: () => this.sending = true,
                 onFinish: () => this.sending = false
             })
