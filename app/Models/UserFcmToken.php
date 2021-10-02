@@ -17,7 +17,7 @@ class UserFcmToken extends Model
 
     public $fillable = [
         'token',
-        'array',
+        'device',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
