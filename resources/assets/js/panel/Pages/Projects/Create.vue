@@ -1,4 +1,6 @@
 <template>
+    <InertiaHead title="Create Project" />
+
     <div class="flex flex-col space-y-8">
         <Breadcrumbs>
             <BreadcrumbsItem href="/panel/projects">Projects</BreadcrumbsItem>
