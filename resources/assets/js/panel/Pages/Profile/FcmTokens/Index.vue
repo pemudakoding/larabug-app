@@ -37,7 +37,7 @@
 
                                 <td class="px-4 py-3">{{ token.created_at }}</td>
                                 <td class="px-4 py-3">
-                                    <Button danger>Delete</Button>
+                                    <Button danger @click="deleteDevice(token)">Delete</Button>
                                 </td>
                             </tr>
                             </tbody>
@@ -81,7 +81,11 @@ export default {
     props: {
         tokens: Array,
     },
-    methods: {},
+    methods: {
+        deleteDevice(token) {
+            this.$inertia.delete(this.route('panel.profile.fcm-tokens.destroy', token.id))
+        }
+    },
 
     setup() {
         const toast = useToast();

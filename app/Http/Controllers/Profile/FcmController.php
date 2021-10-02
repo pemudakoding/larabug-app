@@ -15,4 +15,11 @@ class FcmController extends Controller
             'tokens' => $tokens
         ]);
     }
+
+    public function destroy($id)
+    {
+        auth()->user()->fcmTokens()->findOrFail($id)->delete();
+
+        return redirect()->route('panel.profile.fcm-tokens.index')->with('success', 'Token has been removed');
+    }
 }
