@@ -32,7 +32,9 @@
 
                             <tbody class="divide-y whitespace-nowrap">
                             <tr class="divide-x" v-for="token in tokens">
-                                <td class="px-4 py-3" v-if="token.device">Device</td>
+                                <td class="px-4 py-3" v-if="token.device">
+                                    {{ token.device.name }}
+                                </td>
                                 <td class="px-4 py-3" v-else>Device</td>
 
                                 <td class="px-4 py-3">{{ token.created_at }}</td>
