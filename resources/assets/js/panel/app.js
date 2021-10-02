@@ -1,5 +1,5 @@
 import {createApp, h} from 'vue'
-import { App, plugin, Link } from '@inertiajs/inertia-vue3'
+import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 import Toast from "vue-toastification";
 
@@ -10,32 +10,23 @@ InertiaProgress.init({
     showSpinner: false,
 })
 
-const el = document.getElementById('app')
-
-const vueApp = createApp({
-    metaInfo: {
-        titleTemplate: (title) => title ? `${title} - LaraBug` : 'LaraBug'
+createInertiaApp({
+    title: title => title ? `${title} - LaraBug` : 'LaraBug',
+    resolve: (name) => import(`./Pages/${name}`),
+    setup({ el, app, props, plugin }) {
+        createApp({ render: () => h(app, props) })
+            .use(Toast, {
+                transition: "Vue-Toastification__fade",
+                maxToasts: 5,
+                newestOnTop: true,
+                timeout: 5000,
+            })
+            .component('InertiaLink', Link)
+            .component('InertiaHead', Head)
+            .mixin({
+                methods: { route }
+            })
+            .use(plugin)
+            .mount(el)
     },
-    render: () =>
-        h(App, {
-            initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: (name) => import(`@/Pages/${name}`).then((module) => module.default),
-        }),
 })
-    .use(plugin)
-    .use(Toast, {
-        transition: "Vue-Toastification__fade",
-        maxToasts: 5,
-        newestOnTop: true,
-        timeout: 5000,
-    });
-
-vueApp.mixin({
-    methods: {
-        route: (name, params, absolute) => route(name, params, absolute, Ziggy),
-    },
-});
-
-vueApp.component('InertiaLink', Link)
-
-vueApp.mount(el);
