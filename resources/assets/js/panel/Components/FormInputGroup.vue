@@ -1,6 +1,6 @@
 <template>
     <div class="space-y-2">
-        <Label :error="$attrs.error" :for="$attrs.id">{{ label }}</Label>
+        <Label :error="error" :for="$attrs.id">{{ label }}</Label>
         <Input v-bind="$attrs"/>
 
         <Transition
@@ -12,8 +12,8 @@
                 leave-active-class="transition duration-300 transform"
                 leave-to-class="translate-y-2 opacity-0"
         >
-            <FormErrorText v-if="$attrs.error" key="errorText">
-                {{ $attrs.error[0] }}
+            <FormErrorText v-if="error" key="errorText">
+                {{ error[0] }}
             </FormErrorText>
 
             <FormHelperText v-else-if="helperText" key="helperText">
@@ -42,6 +42,7 @@ export default {
             type: String,
             required: true,
         },
+        error: String,
         helperText: {
             default: () => false,
         },

@@ -20,19 +20,31 @@
             <form class="space-y-6" @submit.prevent="submit">
                 <FormInputGroup
                         v-model="form.title"
-                        :error="$page.props.errors.title"
+                        :error="form.errors.title"
                         helper-text="The project's title"
                         label="Title"
                         id="title"
                         required
                 />
-                <FormInputGroup v-model="form.url" label="App URL" id="app_url" required/>
+                <FormInputGroup
+                    v-model="form.url"
+                    :error="form.errors.url"
+                    label="App URL"
+                    id="app_url"
+                    required
+                />
 
                 <div class="grid grid-cols-2 gap-4">
-                    <FormInputGroup v-model="form.slack_webhook" label="Slack Webhook URL" id="slack_webhook_url"
-                                    required/>
+                    <FormInputGroup
+                        v-model="form.slack_webhook"
+                        :error="form.errors.slack_webhook"
+                        label="Slack Webhook URL"
+                        id="slack_webhook_url"
+                        required
+                    />
                     <FormInputGroup
                             v-model="form.discord_webhook"
+                            :error="form.errors.discord_webhook"
                             label="Discord Webhook URL"
                             id="discord_webhook_url"
                             required
@@ -42,6 +54,7 @@
 
                     <FormInputGroup
                             v-model="form.custom_webhook"
+                            :error="form.errors.custom_webhook"
                             label="Custom Webhook URL"
                             id="custom_webhook_url"
                             required
@@ -87,6 +100,7 @@ import Card from '@/Components/Card'
 import Button from '@/Components/Button'
 import FormInputGroup from '@/Components/FormInputGroup'
 import FormTextareaGroup from '@/Components/FormTextareaGroup'
+import { useForm } from '@inertiajs/inertia-vue3'
 
 export default {
     layout: AppLayout,
@@ -107,7 +121,7 @@ export default {
     data() {
         return {
             sending: false,
-            form: {
+            form: useForm ({
                 title: this.project.title,
                 url: this.project.url,
                 description: this.project.description,
@@ -115,21 +129,21 @@ export default {
                 slack_webhook: this.project.slack_webhook,
                 discord_webhook: this.project.discord_webhook,
                 custom_webhook: this.project.custom_webhook,
-            },
+            }),
         }
     },
 
     methods: {
         submit() {
-            this.$inertia.put(this.route('panel.projects.update', this.project.id), this.form, {
+            this.form.put(this.route('panel.projects.update', this.project.id), this.form, {
                 onStart: () => this.sending = true,
                 onFinish: () => this.sending = false
             })
         },
         destroy() {
-            if (confirm('Are you sure you want to delete this project?')) {
-                this.$inertia.delete(this.route('panel.projects.destroy', this.project.id))
-            }
+            this.form.delete(this.route('panel.projects.destroy', this.project.id),{
+              onBefore: () => confirm('Are you sure you want to delete this project?'),
+            })
         },
     },
 }
