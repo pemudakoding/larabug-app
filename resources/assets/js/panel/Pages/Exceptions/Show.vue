@@ -9,7 +9,7 @@
             <BreadcrumbsDivider/>
             <BreadcrumbsItem :href="route('panel.projects.show', project.id)">{{ project.title }}</BreadcrumbsItem>
             <BreadcrumbsDivider/>
-            <BreadcrumbsItem href="/projects/show/exception" class="whitespace-nowrap sm:whitespace-normal">
+            <BreadcrumbsItem :href="exception.route_url" class="whitespace-nowrap sm:whitespace-normal">
                 {{ exception.short_exception_text }}
             </BreadcrumbsItem>
         </Breadcrumbs>
