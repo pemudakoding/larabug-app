@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Profile;
 
-use Validator;
-use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rules\Password;
+use App\Http\Requests\Profile\UpdateProfileRequest;
+use App\Http\Requests\Profile\ChangePasswordRequest;
 
 class ProfileController extends Controller
 {
@@ -19,41 +17,15 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(UpdateProfileRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'required',
-                'string',
-                'max:255'
-            ],
-            'email' => [
-                'required',
-                'email',
-                'max:190',
-                Rule::unique('users')->ignore(auth()->user()->id)
-            ],
-        ]);
-
-        $request->user()->update($request->all());
+        $request->user()->update($request->validated());
 
         return redirect()->route('panel.profile.show')->with('success', 'Profile updated');
     }
 
-    public function changePassword(Request $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
-        $this->validate($request, [
-            'current' => 'password',
-            'password' => [
-                'required',
-                'confirmed',
-                Password::min(8)
-                    ->letters()
-                    ->numbers()
-                    ->uncompromised()
-            ],
-        ]);
-
         $request->user()->update([
             'password' => $request->password,
         ]);
