@@ -43,7 +43,9 @@ Route::group([
 
 Route::get('exception/{exception:publish_hash}', [PageController::class, 'exception'])->name('public.exception');
 
-Auth::routes();
+Auth::routes([
+    'register' => config('auth.register_enabled'),
+]);
 
 Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('socialite.login');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('socialite.callback');

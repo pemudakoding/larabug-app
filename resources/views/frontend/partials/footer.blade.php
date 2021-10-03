@@ -25,9 +25,11 @@
                 <li class="mt-1">
                     <a href="{{ route('login') }}" title="Login">Login</a>
                 </li>
-                <li class="mt-1">
-                    <a href="{{ route('register') }}" title="Get started" class="text-primary-500">Get started</a>
-                </li>
+                @if(config('auth.register_enabled'))
+                    <li class="mt-1">
+                        <a href="{{ route('register') }}" title="Get started" class="text-primary-500">Get started</a>
+                    </li>
+                @endif
             </ul>
             <ul class="border-l-2 border-gray-800 pl-4 text-gray-400">
                 <li class="font-medium text-primary-500 uppercase text-sm tracking-wider">Information</li>

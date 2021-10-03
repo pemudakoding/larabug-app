@@ -11,10 +11,12 @@
                 <p class="mt-4 text-lg | lg:text-xl">
                     LaraBug tracks all types of errors your application generates.
                 </p>
-                <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
-          | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
-                    Get started
-                </a>
+                @if(config('auth.register_enabled'))
+                    <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
+              | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
+                        Get started
+                    </a>
+                @endif
             </article>
             <div class="relative w-full rounded overflow-hidden bg-gray-200 shadow-xl select-none pointer-events-none transform-feature-r">
                 <div id="exceptions" class="p-4 grid gap-4">
@@ -114,10 +116,12 @@ public function show(): Exception {
                 <p class="mt-4 text-lg | lg:text-xl">
                     You can safely share your exceptions to collaborate on solutions. This makes solving errors easy.
                 </p>
-                <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
-          | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
-                    Get started
-                </a>
+                @if(config('auth.register_enabled'))
+                    <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
+              | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
+                        Get started
+                    </a>
+                @endif
             </article>
         </div>
     </div>
@@ -136,10 +140,12 @@ public function show(): Exception {
                 <p class="mt-4 text-lg | lg:text-xl">
                     Sometimes it is useful to know the flow of how an exception occured. With our easy feedback feature, it is possible for your users to leave feedback on how the error happened.
                 </p>
-                <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
-          | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
-                    Get started
-                </a>
+                @if(config('auth.register_enabled'))
+                    <a title="Start your 5-day free trial" href="{{ route('register') }}" class="mt-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
+              | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">
+                        Get started
+                    </a>
+                @endif
             </article>
             <div
                     class="relative w-full rounded overflow-hidden bg-gray-200 shadow-xl select-none pointer-events-none transform-feature-r"

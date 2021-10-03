@@ -13,15 +13,17 @@
                 <span class="font-medium">Lara</span><span class="text-primary-500">Bug</span> is a simple to use and implement error tracker<br /> built for the Laravel framework
             </p>
             @guest
-                <form class="flex flex-col mt-8 | lg:flex-row" method="GET" action="{{ route('register') }}">
-                    <input type="email" name="email" class="mb-4 bg-gray-100 placeholder-gray-400 border border-gray-100 rounded px-4 h-12 w-full appearance-none
-        | focus:outline-none focus:ring focus:ring-primary-200 focus:bg-white focus:border-primary-200
-        | lg:mb-0 lg:mr-4" type="email" placeholder="Enter your email address">
-                    <button type="submit" class="mr-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
-          | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">Get
-                        started
-                    </button>
-                </form>
+                @if(config('auth.register_enabled'))
+                    <form class="flex flex-col mt-8 | lg:flex-row" method="GET" action="{{ route('register') }}">
+                        <input type="email" name="email" class="mb-4 bg-gray-100 placeholder-gray-400 border border-gray-100 rounded px-4 h-12 w-full appearance-none
+            | focus:outline-none focus:ring focus:ring-primary-200 focus:bg-white focus:border-primary-200
+            | lg:mb-0 lg:mr-4" type="email" placeholder="Enter your email address">
+                        <button type="submit" class="mr-4 flex-shrink-0 rounded shadow font-medium text-white tracking-wider h-12 px-6 inline-flex justify-center items-center text-center bg-primary-500
+              | focus:outline-none focus:ring focus:ring-primary-200 | hover:bg-primary-400">Get
+                            started
+                        </button>
+                    </form>
+                @endif
             @endguest
         </article>
         <div class="w-full max-w-6xl mx-auto mt-16 px-4">

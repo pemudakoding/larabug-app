@@ -114,4 +114,14 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Register Enabled
+    |--------------------------------------------------------------------------
+    |
+    | This value determines if the registration is enabled or disabled.
+    |
+    */
+
+    'register_enabled' => env('AUTH_REGISTER_ENABLED', true),
 ];
