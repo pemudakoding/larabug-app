@@ -42,13 +42,7 @@ class ProfileController extends Controller
 
     public function changePassword(Request $request)
     {
-        $data = $request->only([
-            'current',
-            'password',
-            'password_confirmation',
-        ]);
-
-        $validator = Validator::make($data, [
+        $this->validate($request, [
             'current' => 'password',
             'password' => [
                 'required',
@@ -59,10 +53,6 @@ class ProfileController extends Controller
                     ->uncompromised()
             ],
         ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('panel.profile.show')->with('error', $validator->errors()->first());
-        }
 
         $request->user()->update([
             'password' => $request->password,
