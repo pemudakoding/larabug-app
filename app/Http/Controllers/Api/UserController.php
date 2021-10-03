@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\UserResource;
 use Illuminate\Http\Request;
+use App\Http\Requests\Api\RegisterFcmTokenRequest;
 
 class UserController extends Controller
 {
@@ -13,15 +14,8 @@ class UserController extends Controller
         return new UserResource($request->user());
     }
 
-    public function registerFcmToken(Request $request)
+    public function registerFcmToken(RegisterFcmTokenRequest $request)
     {
-        $this->validate($request, [
-            'token' => [
-                'required',
-                'string'
-            ]
-        ]);
-
         return $request->user('api')->fcmTokens()->create([
             'token' => $request->input('token'),
             'device' => $request->input('device')
