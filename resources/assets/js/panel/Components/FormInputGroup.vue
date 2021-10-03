@@ -42,7 +42,7 @@ export default {
             type: String,
             required: true,
         },
-        error: String,
+        error: Array,
         helperText: {
             default: () => false,
         },

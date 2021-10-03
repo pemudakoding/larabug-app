@@ -43,11 +43,32 @@
           </template>
 
           <form class="space-y-6" action="">
-            <FormInputGroup v-model="password.current" type="password" label="Current Password" id="current_password" required/>
+            <FormInputGroup
+                v-model="password.current"
+                :error="password.errors.current"
+                type="password"
+                label="Current Password"
+                id="current_password"
+                required
+            />
 
-            <FormInputGroup v-model="password.password" type="password" label="New Password" id="new_password" required/>
+            <FormInputGroup
+                v-model="password.password"
+                :error="password.errors.password"
+                type="password"
+                label="New Password"
+                id="new_password"
+                required
+            />
 
-            <FormInputGroup v-model="password.password_confirmation" type="password" label="Confirm New Password" id="confirm_new_password" required/>
+            <FormInputGroup
+                v-model="password.password_confirmation"
+                :error="password.errors.password_confirmation"
+                type="password"
+                label="Confirm New Password"
+                id="confirm_new_password"
+                required
+            />
           </form>
 
           <template #footer>
@@ -171,28 +192,24 @@ export default {
             });
         },
         changePassword() {
-            this.$inertia.patch(this.route('panel.profile.changePassword'), this.password, {
+            this.password.patch(this.route('panel.profile.changePassword', this.password), {
                 onStart: () => this.sending = true,
+                onSuccess: () => this.password.reset(),
                 onFinish: () => {
-                    this.sending = false;
-                    this.password = {
-                        current: null,
-                        password: null,
-                        password_confirmation: null
-                    }
+                    this.sending = false
+                    this.password.reset()
                 }
             });
         },
         updateSettings() {
             this.sending = true
 
-            this.form.patch(this.route('panel.profile.settings'), {
+            this.form.patch(this.route('panel.profile.settings', {
                 settings: this.form.settings,
                 newsletter: this.form.newsletter
+            }), {
+                onFinish: () => this.sending = false
             })
-                .then(() => {
-                    this.sending = false
-                })
         },
 
         logout() {
