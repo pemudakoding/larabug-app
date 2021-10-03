@@ -25,7 +25,10 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
+            'title' => [
+                'required',
+                'max:255',
+            ],
             'description' => [
                 'nullable',
                 'max:500',
@@ -41,6 +44,10 @@ class ProjectRequest extends FormRequest
                 'nullable',
                 new StartsWith(['https://discordapp.com/api/webhooks/', 'https://discord.com/api/webhooks/'])
             ],
+            'custom_webhook' => [
+                'url',
+                'nullable'
+            ]
         ];
     }
 }
