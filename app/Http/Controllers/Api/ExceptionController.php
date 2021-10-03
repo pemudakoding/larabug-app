@@ -16,35 +16,14 @@ class ExceptionController extends Controller
                 ->with('project:id,title')
                 ->latest('created_at')
                 ->limit(8)
-                ->get([
-                    'id',
-                    'status',
-                    'class',
-                    'fullUrl',
-                    'method',
-                    'file',
-                    'file_type',
-                    'line',
-                    'project_id',
-                    'exception',
-                    'created_at',
-                ])
+                ->get()
         );
     }
 
     public function show(Request $request, $exceptionId)
     {
         $exception = Exception::whereIn('project_id', $request->user()->projects()->pluck('id')->toArray())
-            ->findOrFail($exceptionId, [
-                'class',
-                'created_at',
-                'error',
-                'exception',
-                'id',
-                'project_id',
-                'line',
-                'status'
-            ]);
+            ->findOrFail($exceptionId);
 
         if ($exception->status == Exception::OPEN) {
             $exception->markAsRead();
