@@ -38,6 +38,7 @@ class ProjectController extends Controller
             'url',
             'description',
             'receive_email',
+            'notifications_disabled',
             'slack_webhook',
             'discord_webhook',
             'custom_webhook',

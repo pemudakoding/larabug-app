@@ -47,7 +47,13 @@ class ProjectRequest extends FormRequest
             'custom_webhook' => [
                 'url',
                 'nullable'
-            ]
+            ],
+            'receive_email' => [
+                'boolean'
+            ],
+            'notifications_disabled' => [
+                'boolean'
+            ],
         ];
     }
 }
