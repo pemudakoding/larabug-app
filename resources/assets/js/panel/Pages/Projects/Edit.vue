@@ -105,6 +105,14 @@
                             <label for="slack_webhook_enabled" class="font-medium text-gray-700">Call Slack Webhook</label>
                         </div>
                     </div>
+                    <FormInputGroup
+                        v-if="form.slack_webhook_enabled"
+                        v-model="form.slack_webhook"
+                        :error="form.errors.slack_webhook"
+                        label="Slack Webhook URL"
+                        id="slack_webhook_url"
+                        required
+                    />
                     <div class="relative flex items-start">
                         <div class="flex items-center h-5">
                             <input
@@ -120,6 +128,14 @@
                             <label for="discord_webhook_enabled" class="font-medium text-gray-700">Call Discord Webhook</label>
                         </div>
                     </div>
+                    <FormInputGroup
+                        v-if="form.discord_webhook_enabled"
+                        v-model="form.discord_webhook"
+                        :error="form.errors.discord_webhook"
+                        label="Discord Webhook URL"
+                        id="discord_webhook_url"
+                        required
+                    />
                     <div class="relative flex items-start">
                         <div class="flex items-center h-5">
                             <input
@@ -135,25 +151,8 @@
                             <label for="custom_webhook_enabled" class="font-medium text-gray-700">Call Custom Webhook</label>
                         </div>
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" :class="{'opacity-25': !form.notifications_enabled}">
                     <FormInputGroup
-                        v-model="form.slack_webhook"
-                        :error="form.errors.slack_webhook"
-                        label="Slack Webhook URL"
-                        id="slack_webhook_url"
-                        required
-                    />
-                    <FormInputGroup
-                            v-model="form.discord_webhook"
-                            :error="form.errors.discord_webhook"
-                            label="Discord Webhook URL"
-                            id="discord_webhook_url"
-                            required
-                    />
-
-                    <FormInputGroup
+                        v-if="form.custom_webhook_enabled"
                         v-model="form.custom_webhook"
                         :error="form.errors.custom_webhook"
                         label="Custom Webhook URL"
