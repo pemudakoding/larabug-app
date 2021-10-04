@@ -9,7 +9,7 @@
             <BreadcrumbsDivider/>
             <BreadcrumbsItem :href="route('panel.projects.show', project.id)">{{ project.title }}</BreadcrumbsItem>
             <BreadcrumbsDivider/>
-            <BreadcrumbsItem href="/projects/show">Installation</BreadcrumbsItem>
+            <BreadcrumbsItem :href="route('panel.projects.installation', project.id)">Installation</BreadcrumbsItem>
         </Breadcrumbs>
 
         <Card>
