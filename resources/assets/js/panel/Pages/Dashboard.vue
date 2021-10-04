@@ -44,6 +44,7 @@
                                 <Badge danger v-if="exception.status === 'OPEN'">{{ exception.status_text }}</Badge>
                                 &centerdot; {{ exception.human_date }} &centerdot;
                                 {{ exception.created_at }} &centerdot;
+                                {{ exception.project.title }} &centerdot;
                                 <Badge info v-if="exception.file_type === 'javascript'">Javascript</Badge>
                             </p>
                         </div>
