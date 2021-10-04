@@ -37,21 +37,36 @@ class ProjectRequest extends FormRequest
             'slack_webhook' => [
                 'url',
                 'nullable',
+                'required_if:slack_webhook_enabled,true',
                 new StartsWith('https://hooks.slack.com/services/')
             ],
             'discord_webhook' => [
                 'url',
                 'nullable',
+                'required_if:discord_webhook_enabled,true',
                 new StartsWith(['https://discordapp.com/api/webhooks/', 'https://discord.com/api/webhooks/'])
             ],
             'custom_webhook' => [
                 'url',
-                'nullable'
+                'nullable',
+                'required_if:custom_webhook_enabled,true',
             ],
             'receive_email' => [
                 'boolean'
             ],
-            'notifications_disabled' => [
+            'notifications_enabled' => [
+                'boolean'
+            ],
+            'mobile_notifications_enabled' => [
+                'boolean'
+            ],
+            'slack_webhook_enabled' => [
+                'boolean'
+            ],
+            'discord_webhook_enabled' => [
+                'boolean'
+            ],
+            'custom_webhook_enabled' => [
                 'boolean'
             ],
         ];

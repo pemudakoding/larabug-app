@@ -35,20 +35,26 @@
                 </div>
 
                 <div class="sm:col-span-6 border-t pt-4">
-                    <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
+                    <div class="-ml-4 -mt-2 flex items-center justify-between">
                         <div class="ml-4 mt-2">
                             <h2 class="text-xl font-medium text-blue-gray-900">Notifications</h2>
                             <p class="mt-1 text-sm text-blue-gray-500">Here you can change the notification settings for this project.</p>
                         </div>
                         <div class="ml-4 mt-2 flex-shrink-0">
-                            <Switch v-model="form.notifications_disabled" :class="[!form.notifications_disabled ? 'bg-primary-600' : 'bg-gray-200', 'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200']">
-                                <span class="sr-only">Notifications Disabled</span>
-                                <span aria-hidden="true" :class="[!form.notifications_disabled ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200']" />
-                            </Switch>
+                            <input
+                                :class="[
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
+      ]"
+                                id="notifications_enabled"
+                                type="checkbox"
+                                v-model="form.notifications_enabled" />
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 space-y-4" :class="{'opacity-25': form.notifications_disabled}">
+
+                <div class="mt-4 space-y-4" :class="{'opacity-25': !form.notifications_enabled}">
+                    <label class="text-base font-medium">On new exceptions</label>
                     <div class="relative flex items-start">
                         <div class="flex items-center h-5">
                             <input
@@ -64,9 +70,69 @@
                             <label for="receive_email" class="font-medium text-gray-700">Receive email on new exceptions</label>
                         </div>
                     </div>
+                    <div class="relative flex items-start">
+                        <div class="flex items-center h-5">
+                            <input
+                                :class="[
+            'text-primary-600 rounded border-gray-300 transition',
+            'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
+          ]"
+                                id="mobile_notifications_enabled"
+                                type="checkbox"
+                                v-model="form.mobile_notifications_enabled" />
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="mobile_notifications_enabled" class="font-medium text-gray-700">Receive mobile notification</label>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start">
+                        <div class="flex items-center h-5">
+                            <input
+                                :class="[
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
+      ]"
+                                id="slack_webhook_enabled"
+                                type="checkbox"
+                                v-model="form.slack_webhook_enabled" />
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="slack_webhook_enabled" class="font-medium text-gray-700">Call Slack Webhook</label>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start">
+                        <div class="flex items-center h-5">
+                            <input
+                                :class="[
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
+      ]"
+                                id="discord_webhook_enabled"
+                                type="checkbox"
+                                v-model="form.discord_webhook_enabled" />
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="discord_webhook_enabled" class="font-medium text-gray-700">Call Discord Webhook</label>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start">
+                        <div class="flex items-center h-5">
+                            <input
+                                :class="[
+        'text-primary-600 rounded border-gray-300 transition',
+        'focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-offset-0',
+      ]"
+                                id="custom_webhook_enabled"
+                                type="checkbox"
+                                v-model="form.custom_webhook_enabled" />
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="custom_webhook_enabled" class="font-medium text-gray-700">Call Custom Webhook</label>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4" :class="{'opacity-25': form.notifications_disabled}">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" :class="{'opacity-25': !form.notifications_enabled}">
                     <FormInputGroup
                         v-model="form.slack_webhook"
                         :error="form.errors.slack_webhook"
@@ -113,7 +179,6 @@ import Button from '@/Components/Button'
 import FormInputGroup from '@/Components/FormInputGroup'
 import FormTextareaGroup from '@/Components/FormTextareaGroup'
 import { useForm } from '@inertiajs/inertia-vue3'
-import {Switch} from "@headlessui/vue";
 
 export default {
     layout: AppLayout,
@@ -125,7 +190,6 @@ export default {
         Button,
         FormInputGroup,
         FormTextareaGroup,
-        Switch,
     },
     data() {
         return {
@@ -134,11 +198,15 @@ export default {
                 title: null,
                 url: null,
                 description: null,
-                receive_email: false,
+                receive_email: true,
                 slack_webhook: null,
+                slack_webhook_enabled: false,
                 discord_webhook: null,
+                discord_webhook_enabled: false,
                 custom_webhook: null,
-                notifications_disabled: false,
+                custom_webhook_enabled: false,
+                notifications_enabled: true,
+                mobile_notifications_enabled: true,
             }),
         }
     },
