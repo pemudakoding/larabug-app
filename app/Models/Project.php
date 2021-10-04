@@ -34,6 +34,7 @@ class Project extends Model implements HasMedia
         'title',
         'description',
         'receive_email',
+        'notifications_disabled',
         'slack_webhook',
         'discord_webhook',
         'custom_webhook'
@@ -46,7 +47,8 @@ class Project extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'receive_email' => 'boolean'
+        'receive_email' => 'boolean',
+        'notifications_disabled' => 'boolean'
     ];
 
     protected $appends = [
