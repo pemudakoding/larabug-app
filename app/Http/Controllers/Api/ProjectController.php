@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\ProjectRequest;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Exception;
 use App\Models\Project;
@@ -60,7 +61,7 @@ class ProjectController extends Controller
         );
     }
 
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
         $project = Project::create($request->only([
             'title',
