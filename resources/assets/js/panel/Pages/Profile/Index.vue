@@ -32,7 +32,7 @@
 
             <template #footer>
                 <div class="flex items-center space-x-3">
-                    <Button @click="update" primary>Save profile</Button>
+                    <Button @click="update" primary :disabled="form.processing">Save profile</Button>
                 </div>
             </template>
         </Card>
@@ -73,7 +73,7 @@
 
           <template #footer>
             <div class="flex items-center space-x-3">
-              <Button @click="changePassword" primary>Change password</Button>
+              <Button @click="changePassword" primary :disabled="password.processing">Change password</Button>
             </div>
           </template>
         </Card>
@@ -105,7 +105,7 @@
 
             <template #footer>
                 <div class="flex items-center space-x-3">
-                    <Button @click="updateSettings" primary>Save preferences</Button>
+                    <Button @click="updateSettings" primary :disabled="form.processing">Save preferences</Button>
                 </div>
             </template>
         </Card>
@@ -184,15 +184,13 @@ export default {
     },
     methods: {
         update() {
-            this.form.patch(this.route('panel.profile.update'), this.form, {
+            this.form.patch(this.route('panel.profile.update'), {
                 onStart: () => this.sending = true,
-                onFinish: () => {
-                    this.sending = false;
-                }
+                onFinish: () => this.sending = false
             });
         },
         changePassword() {
-            this.password.patch(this.route('panel.profile.changePassword', this.password), {
+            this.password.patch(this.route('panel.profile.changePassword'), {
                 onStart: () => this.sending = true,
                 onSuccess: () => this.password.reset(),
                 onFinish: () => {
@@ -204,10 +202,7 @@ export default {
         updateSettings() {
             this.sending = true
 
-            this.form.patch(this.route('panel.profile.settings', {
-                settings: this.form.settings,
-                newsletter: this.form.newsletter
-            }), {
+            this.form.patch(this.route('panel.profile.settings'), {
                 onFinish: () => this.sending = false
             })
         },

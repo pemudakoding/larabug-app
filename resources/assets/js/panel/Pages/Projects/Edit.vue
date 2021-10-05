@@ -164,7 +164,7 @@
 
             <template #footer>
                 <div class="flex items-center space-x-3">
-                    <Button @click="submit" primary>Update project</Button>
+                    <Button @click="submit" primary :disabled="form.processing">Update project</Button>
                     <Button as="inertia-link" :href="route('panel.projects.show', project.id)" secondary>Cancel</Button>
                     <Button @click="destroy" danger>Delete</Button>
                 </div>
@@ -223,7 +223,7 @@ export default {
 
     methods: {
         submit() {
-            this.form.put(this.route('panel.projects.update', this.project.id), this.form, {
+            this.form.put(this.route('panel.projects.update', this.project.id), {
                 onStart: () => this.sending = true,
                 onFinish: () => this.sending = false
             })

@@ -98,6 +98,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: 'Inter',
+        opacity: ['disabled'],
       },
     },
   },
