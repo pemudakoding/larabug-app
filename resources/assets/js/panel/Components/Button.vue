@@ -4,6 +4,7 @@
             :class="[
       'inline-flex px-3 h-9 items-center justify-center font-bold text-sm rounded-lg transition',
       'focus:outline-none focus:ring focus:ring-blue-200',
+      'disabled:cursor-not-allowed disabled:opacity-25',
 
       { 'bg-primary-600 text-white shadow': primary },
       { 'hover:bg-primary-500': primary },
@@ -21,6 +22,7 @@
       { 'hover:bg-green-500': success },
       { 'focus:bg-green-700': success },
     ]"
+            :disabled="disabled"
     >
         <slot></slot>
     </component>
@@ -48,6 +50,9 @@ export default {
         as: {
             default: () => 'button',
         },
+        disabled: {
+          default: () => false,
+        }
     },
 }
 </script>

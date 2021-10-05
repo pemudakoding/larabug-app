@@ -159,7 +159,7 @@
 
             <template #footer>
                 <div class="flex items-center space-x-3">
-                    <Button @click="submit" primary>Create project</Button>
+                    <Button @click="submit" primary :disabled="sending">Create project</Button>
                     <Button as="inertia-link" :href="route('panel.projects.index')" secondary>Cancel</Button>
                 </div>
             </template>
@@ -212,7 +212,7 @@ export default {
 
     methods: {
         submit() {
-            this.form.post(this.route('panel.projects.store'), this.form, {
+            this.form.post(this.route('panel.projects.store'), {
                 onStart: () => this.sending = true,
                 onFinish: () => this.sending = false
             })
