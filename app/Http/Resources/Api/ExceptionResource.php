@@ -37,6 +37,7 @@ class ExceptionResource extends JsonResource
             'markup_language' => $this->markup_language,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'human_date' => $this->human_date,
+            'project_title' => $this->project->title,
         ];
     }
 }
