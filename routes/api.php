@@ -13,7 +13,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('user', [\App\Http\Controllers\Api\UserController::class, 'show'])->name('api.user.show');
     Route::get('sponsors', [\App\Http\Controllers\Api\SponsorController::class, 'index'])->name('api.sponsors');
 
-    Route::group(['prefix' => 'exceptions', 'as' => 'api.exceptions'], function(){
+    Route::group(['prefix' => 'exceptions', 'as' => 'api.exceptions'], function () {
         Route::get('/', [\App\Http\Controllers\Api\ExceptionController::class, 'index'])->name('index');
         Route::get('{exception}', [\App\Http\Controllers\Api\ExceptionController::class, 'show'])->name('show');
         Route::post('{exception}/read', [\App\Http\Controllers\Api\ExceptionController::class, 'read'])->name('read');
@@ -21,7 +21,7 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('{exception}', [\App\Http\Controllers\Api\ExceptionController::class, 'destroy'])->name('destroy');
     });
 
-    Route::group(['prefix' => 'projects', 'as' => 'api.projects.'], function(){
+    Route::group(['prefix' => 'projects', 'as' => 'api.projects.'], function () {
         Route::get('/', [\App\Http\Controllers\Api\ProjectController::class, 'index'])->name('index');
         Route::post('/', [\App\Http\Controllers\Api\ProjectController::class, 'store'])->name('store');
         Route::get('{project}', [\App\Http\Controllers\Api\ProjectController::class, 'show'])->name('show');

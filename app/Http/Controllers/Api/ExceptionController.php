@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\Api\ExceptionResource;
 use App\Models\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ExceptionResource;
 
 class ExceptionController extends Controller
 {
@@ -56,7 +56,7 @@ class ExceptionController extends Controller
 
         if ($exception->publish_hash) {
             $exception->removePublic();
-        }else{
+        } else {
             $exception->makePublic();
         }
 

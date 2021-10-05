@@ -2,15 +2,15 @@
 
 namespace Tests\Feature;
 
-use App\Notifications\Discord\DiscordChannel;
-use App\Notifications\ExceptionWasCreated;
-use Illuminate\Support\Facades\Notification;
-use NotificationChannels\Fcm\FcmChannel;
-use NotificationChannels\Webhook\WebhookChannel;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Project;
 use Illuminate\Support\Facades\Mail;
+use NotificationChannels\Fcm\FcmChannel;
+use App\Notifications\ExceptionWasCreated;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\Discord\DiscordChannel;
+use NotificationChannels\Webhook\WebhookChannel;
 
 class LogApiHttpTest extends TestCase
 {
@@ -44,7 +44,8 @@ class LogApiHttpTest extends TestCase
         $this->assertCount(1, $this->project->fresh()->exceptions);
 
         Notification::assertSentTo(
-            [$this->project], ExceptionWasCreated::class
+            [$this->project],
+            ExceptionWasCreated::class
         );
     }
 

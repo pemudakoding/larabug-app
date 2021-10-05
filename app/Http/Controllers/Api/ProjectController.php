@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Api\ProjectRequest;
-use App\Http\Resources\Api\ProjectResource;
-use App\Models\Exception;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ProjectRequest;
+use App\Http\Resources\Api\ProjectResource;
 use App\Http\Resources\Api\ExceptionResource;
 
 class ProjectController extends Controller

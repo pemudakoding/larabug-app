@@ -3,22 +3,22 @@
 namespace App\Notifications;
 
 use App\Models\Exception;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
+use NotificationChannels\Fcm\FcmChannel;
+use NotificationChannels\Fcm\FcmMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\Discord\DiscordChannel;
 use App\Notifications\Discord\DiscordMessage;
-use Illuminate\Support\Str;
-use NotificationChannels\Fcm\FcmChannel;
-use NotificationChannels\Fcm\FcmMessage;
-use NotificationChannels\Fcm\Resources\AndroidConfig;
-use NotificationChannels\Fcm\Resources\AndroidFcmOptions;
-use NotificationChannels\Fcm\Resources\AndroidNotification;
-use NotificationChannels\Fcm\Resources\ApnsConfig;
-use NotificationChannels\Fcm\Resources\ApnsFcmOptions;
 use NotificationChannels\Webhook\WebhookChannel;
 use NotificationChannels\Webhook\WebhookMessage;
+use NotificationChannels\Fcm\Resources\ApnsConfig;
 use Illuminate\Notifications\Messages\SlackMessage;
+use NotificationChannels\Fcm\Resources\AndroidConfig;
+use NotificationChannels\Fcm\Resources\ApnsFcmOptions;
+use NotificationChannels\Fcm\Resources\AndroidFcmOptions;
+use NotificationChannels\Fcm\Resources\AndroidNotification;
 
 class ExceptionWasCreated extends Notification implements ShouldQueue
 {
