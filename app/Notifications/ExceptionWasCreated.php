@@ -49,19 +49,19 @@ class ExceptionWasCreated extends Notification implements ShouldQueue
     {
         $array = [];
 
-        if ($notifiable->slack_webhook) {
+        if ($notifiable->slack_webhook_enabled && $notifiable->slack_webhook) {
             $array[] = 'slack';
         }
 
-        if ($notifiable->discord_webhook) {
+        if ($notifiable->discord_webhook_enabled && $notifiable->discord_webhook) {
             $array[] = DiscordChannel::class;
         }
 
-        if ($notifiable->custom_webhook) {
+        if ($notifiable->custom_webhook_enabled && $notifiable->custom_webhook) {
             $array[] = WebhookChannel::class;
         }
 
-        if ($notifiable->users()->wherePivot('owner', true)->first()?->fcmTokens()->exists()) {
+        if ($notifiable->mobile_notifications_enabled && $notifiable->users()->wherePivot('owner', true)->first()?->fcmTokens()->exists()) {
             $array[] = FcmChannel::class;
         }
 

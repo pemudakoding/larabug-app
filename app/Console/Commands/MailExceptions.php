@@ -19,6 +19,7 @@ class MailExceptions extends Command
         $users = User::where('receive_email', true)
             ->whereHas('projects', function ($query) {
                 return $query
+                    ->where('notifications_enabled', true)
                     ->where('receive_email', true)
                     ->whereHas('exceptions', function ($query) {
                         return $query->where('mailed', false);
@@ -27,6 +28,7 @@ class MailExceptions extends Command
             ->with(['projects' => function ($query) {
                 return $query
                     ->select('id', 'title')
+                    ->where('notifications_enabled', true)
                     ->where('receive_email', true)
                     ->whereHas('exceptions', function ($query) {
                         return $query->where('mailed', false);

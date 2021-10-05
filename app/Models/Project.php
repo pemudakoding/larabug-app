@@ -18,6 +18,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string title
  * @property mixed pivot
  * @property boolean receive_email
+ * @property boolean notifications_enabled
+ * @property boolean mobile_notifications_enabled
+ * @property boolean slack_webhook_enabled
+ * @property boolean discord_webhook_enabled
+ * @property boolean custom_webhook_enabled
  * @property string key
  * @property mixed url
  */
@@ -34,9 +39,14 @@ class Project extends Model implements HasMedia
         'title',
         'description',
         'receive_email',
+        'notifications_enabled',
         'slack_webhook',
         'discord_webhook',
-        'custom_webhook'
+        'custom_webhook',
+        'mobile_notifications_enabled',
+        'slack_webhook_enabled',
+        'discord_webhook_enabled',
+        'custom_webhook_enabled',
     ];
 
     protected $dates = [
@@ -46,7 +56,12 @@ class Project extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'receive_email' => 'boolean'
+        'receive_email' => 'boolean',
+        'notifications_enabled' => 'boolean',
+        'mobile_notifications_enabled' => 'boolean',
+        'slack_webhook_enabled' => 'boolean',
+        'discord_webhook_enabled' => 'boolean',
+        'custom_webhook_enabled' => 'boolean',
     ];
 
     protected $appends = [
