@@ -12,6 +12,13 @@
 
                 <span class="font-medium">Lara</span><span class="text-primary-500">Bug</span> is a simple to use and implement error tracker<br /> built for the Laravel framework
             </p>
+
+            <div class="mt-5 flex justify-center">
+                <a target="_blank" title="Download on the App Store" href="https://apps.apple.com/nl/app/larabug/id1184315920">
+                    <img alt="Download one the App Store" src="{{ asset('images/app/apple-store.svg') }}" />
+                </a>
+            </div>
+
             @guest
                 @if(config('auth.register_enabled'))
                     <form class="flex flex-col mt-8 | lg:flex-row" method="GET" action="{{ route('register') }}">

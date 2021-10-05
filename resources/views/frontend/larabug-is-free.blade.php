@@ -4,30 +4,6 @@
 
 @section('content')
     <div class="relative py-16 bg-white overflow-hidden">
-        <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-            <div class="relative h-full text-lg max-w-prose mx-auto">
-                <svg class="absolute top-12 left-full transform translate-x-32" width="404" height="384" fill="none"
-                     viewBox="0 0 404 384">
-                    <defs>
-                        <pattern id="74b3fd99-0a6f-4271-bef2-e80eeafdf357" x="0" y="0" width="20" height="20"
-                                 patternUnits="userSpaceOnUse">
-                            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor"/>
-                        </pattern>
-                    </defs>
-                    <rect width="404" height="384" fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"/>
-                </svg>
-                <svg class="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32" width="404"
-                     height="384" fill="none" viewBox="0 0 404 384">
-                    <defs>
-                        <pattern id="f210dbf6-a58d-4871-961e-36d5016a0f49" x="0" y="0" width="20" height="20"
-                                 patternUnits="userSpaceOnUse">
-                            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor"/>
-                        </pattern>
-                    </defs>
-                    <rect width="404" height="384" fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"/>
-                </svg>
-            </div>
-        </div>
         <div class="relative px-4 sm:px-6 lg:px-8">
             <div class="text-lg max-w-prose mx-auto mb-6">
                 <p class="text-base text-center leading-6 text-primary-600 font-semibold tracking-wide uppercase">Free
@@ -51,6 +27,7 @@
                 <ul>
                     <li><strong>Website</strong>: open source, free to use under GPL-3.0 license</li>
                     <li><strong>Package</strong>: open source and welcome to receive PRs that improve the package</li>
+                    <li><strong>Mobile app</strong>: closed source as of now, considering open-sourcing</li>
                     <li><strong>Sponsors</strong>: we will be opening GitHub sponsors to receive a small amount of
                         funding to keep LaraBug going
                     </li>
@@ -77,13 +54,13 @@
             </div>
 
             <div class="bg-white">
-                <div class=" max-w-prose mx-auto py-16 sm:py-24 space-y-8">
+                <div class="max-w-prose mx-auto py-16 sm:py-24 space-y-8">
                     <h2 class="text-3xl leading-9 font-extrabold text-gray-900">
                         Frequently asked questions
                     </h2>
 
-                    <div class="border-t border-gray-200 pt-10">
-                        <dl class="space-y-10 md:grid md:gap-x-8 md:gap-y-12">
+                    <div class="border-t border-gray-200 py-5">
+                        <dl class="space-y-5 md:grid md:gap-x-8 md:gap-y-5">
                             <div class="space-y-2">
                                 <dt class="text-lg leading-6 font-medium text-gray-900">
                                     Free? So there must be some other catch, then?

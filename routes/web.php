@@ -24,18 +24,13 @@ Route::group([
         'minimal',
     ],
 ], function () {
-    // Route::get('requirements', [PageController::class, 'requirements'])->name('page.requirements');
     Route::get('features', [PageController::class, 'features'])->name('features');
     Route::get('pricing', [PageController::class, 'pricing'])->name('pricing');
     Route::get('branding', [PageController::class, 'branding'])->name('branding');
     Route::get('larabug-is-free', [PageController::class, 'larabugIsFree'])->name('larabug-is-free');
-    // Route::get('what-is-larabug', [PageController::class, 'explanation'])->name('page.explanation');
 
     Route::get('terms-of-service', [PageController::class, 'terms'])->name('terms');
     Route::get('privacy-policy', [PageController::class, 'policy'])->name('privacy');
-
-    // Route::get('contact', [ContactController::class, 'contact')->name('contact');
-    // Route::post('contact', [ContactController::class, 'send')->name('contact.send');
 
     Route::get('docs', [DocumentationController::class, 'index'])->name('docs.index');
     Route::get('docs/{category}/{item}', [DocumentationController::class, 'show'])->name('docs.show');

@@ -27,10 +27,7 @@ class FeedbackController extends Controller
     {
         $project = Project::whereHas('users', function ($query) {
             return $query
-                ->where('project_user.owner', true)
-                ->whereHas('subscriptions', function ($query) {
-                    return $query->where('stripe_plan', 'unlimited');
-                });
+                ->where('project_user.owner', true);
         })
             ->findOrFail($request->input('project'));
 

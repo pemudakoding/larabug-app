@@ -81,24 +81,28 @@
                             </div>
                         </div>
 
-                        <div class="prose" key="step-2" v-if="step === 2">
-                            <h2>Step 2 - Usage</h2>
-                            <p>
-                                Now all that is left to do is to add the 2 enviroment variables to your .env file:
-                            </p>
-                            <pre>
+                        <div v-if="step === 2" class="space-y-4">
+                            <div class="prose" key="step-2">
+                                <h2>Step 2 - Usage</h2>
+                                <p>
+                                    Now all that is left to do is to add the 2 enviroment variables to your .env file:
+                                </p>
+                                <pre>
 LB_KEY={{ $page.props.auth.user.api_token }}
 LB_PROJECT_KEY={{ project.key }}
 </pre>
-                            <p>Now test to see if it works, you can do this in two ways.</p>
-                            <h3>Option 1</h3>
-                            <p>Run this in your terminal:</p>
-                            <pre>php artisan larabug:test</pre>
-                            <h3>Option 2</h3>
-                            <p>Run this code in your application to see if the exception is received by LaraBug.</p>
-                            <pre>throw new \Exception('Testing my application!');</pre>
-
-                            <Button primary @click="step = 1">Back</Button>
+                                <p>Now test to see if it works, you can do this in two ways.</p>
+                                <h3>Option 1</h3>
+                                <p>Run this in your terminal:</p>
+                                <pre>php artisan larabug:test</pre>
+                                <h3>Option 2</h3>
+                                <p>Run this code in your application to see if the exception is received by LaraBug.</p>
+                                <pre>throw new \Exception('Testing my application!');</pre>
+                            </div>
+                            <div class="flex justify-between">
+                                <Button secondary @click="step = 1">Back</Button>
+                                <Button primary as="inertia-link" :href="route('panel.projects.show', project.id)">Finish</Button>
+                            </div>
                         </div>
                     </TransitionGroup>
                 </div>
