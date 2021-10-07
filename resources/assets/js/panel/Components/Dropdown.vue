@@ -1,5 +1,5 @@
 <template>
-    <div class="relative" x-data="{ open: true }">
+    <div class="relative">
         <div @click="optionListOpen = !optionListOpen">
             <slot name="button" />
         </div>
