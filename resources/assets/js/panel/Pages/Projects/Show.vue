@@ -32,7 +32,8 @@
                 <div class="p-6 space-y-1 bg-white">
                     <dt class="text-sm font-medium">Application URL</dt>
                     <dd class="text-base">
-                        <a :href="project.url" v-text="project.url"></a>
+                        <a :href="project.url" v-text="project.url" v-if="project.url"></a>
+                        <badge info v-else>None specified</badge>
                     </dd>
                 </div>
 

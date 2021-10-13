@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Api;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterFcmTokenRequest extends FormRequest

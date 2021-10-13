@@ -43,14 +43,14 @@ class ProcessException implements ShouldQueue
         }
 
         try {
-            $check = $this->project->exceptions()->where(function($query){
+            $check = $this->project->exceptions()->where(function ($query) {
                 return $query
                     ->where('exception', $this->data['exception'])
                     ->whereNotNull('snooze_until')
                     ->where('snooze_until', '>', now());
             })->exists();
 
-            if(!$check){
+            if (!$check) {
                 $exception = $this->project->exceptions()->create($this->data);
 
                 $exception->created_at = $this->date;

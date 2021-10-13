@@ -24,18 +24,13 @@ Route::group([
         'minimal',
     ],
 ], function () {
-    // Route::get('requirements', [PageController::class, 'requirements'])->name('page.requirements');
     Route::get('features', [PageController::class, 'features'])->name('features');
     Route::get('pricing', [PageController::class, 'pricing'])->name('pricing');
     Route::get('branding', [PageController::class, 'branding'])->name('branding');
     Route::get('larabug-is-free', [PageController::class, 'larabugIsFree'])->name('larabug-is-free');
-    // Route::get('what-is-larabug', [PageController::class, 'explanation'])->name('page.explanation');
 
     Route::get('terms-of-service', [PageController::class, 'terms'])->name('terms');
     Route::get('privacy-policy', [PageController::class, 'policy'])->name('privacy');
-
-    // Route::get('contact', [ContactController::class, 'contact')->name('contact');
-    // Route::post('contact', [ContactController::class, 'send')->name('contact.send');
 
     Route::get('docs', [DocumentationController::class, 'index'])->name('docs.index');
     Route::get('docs/{category}/{item}', [DocumentationController::class, 'show'])->name('docs.show');
@@ -80,16 +75,15 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
         ->name('feedback.index');
 
 
-    Route::group(['prefix' => 'profile'], function(){
+    Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::patch('password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
         Route::patch('settings', [ProfileController::class, 'settings'])->name('profile.settings');
 
-        Route::group(['prefix' => 'fcm-tokens'], function(){
+        Route::group(['prefix' => 'fcm-tokens'], function () {
             Route::get('/', [\App\Http\Controllers\Profile\FcmController::class, 'index'])->name('profile.fcm-tokens.index');
             Route::delete('{id}', [\App\Http\Controllers\Profile\FcmController::class, 'destroy'])->name('profile.fcm-tokens.destroy');
         });
     });
-
 });

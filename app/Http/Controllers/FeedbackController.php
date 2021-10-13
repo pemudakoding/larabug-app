@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\Project;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
@@ -27,10 +26,7 @@ class FeedbackController extends Controller
     {
         $project = Project::whereHas('users', function ($query) {
             return $query
-                ->where('project_user.owner', true)
-                ->whereHas('subscriptions', function ($query) {
-                    return $query->where('stripe_plan', 'unlimited');
-                });
+                ->where('project_user.owner', true);
         })
             ->findOrFail($request->input('project'));
 
