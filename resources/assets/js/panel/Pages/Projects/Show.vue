@@ -118,6 +118,8 @@
                             </div>
                             <div class="flex-1"></div>
 
+                            <span v-if="exception.project_version"><Badge gray big>{{ exception.project_version }}</Badge></span>
+
                             <span v-if="exception.environment"><Badge gray big>{{ exception.environment }}</Badge></span>
 
                             <svg

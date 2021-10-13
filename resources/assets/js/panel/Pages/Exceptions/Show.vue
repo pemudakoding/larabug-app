@@ -54,6 +54,13 @@
                     </dd>
                 </div>
 
+                <div v-if="exception.project_version">
+                    <dt class="text-sm font-medium">Project version</dt>
+                    <dd>
+                        <Code>{{ exception.project_version }}</Code>
+                    </dd>
+                </div>
+
                 <div>
                     <dt class="text-sm font-medium">Method</dt>
                     <dd>

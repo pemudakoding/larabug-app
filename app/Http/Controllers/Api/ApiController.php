@@ -44,7 +44,8 @@ class ApiController extends Controller
             'executor' => array_get($request->input('exception'), 'executor'),
             'storage' => array_get($request->input('exception'), 'storage'),
             'exception' => str_limit(array_get($request->input('exception'), 'exception'), 10000),
-            'user' => $request->input('user')
+            'user' => $request->input('user'),
+            'project_version' => array_get($request->input('exception'), 'project_version'),
         ], $project, now()));
 
         return response([
