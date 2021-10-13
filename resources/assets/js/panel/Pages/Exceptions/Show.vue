@@ -15,6 +15,35 @@
         </Breadcrumbs>
     </header>
 
+    <div class="flex w-full bg-white px-6 py-3 border-b border-gray-200 space-x-3">
+        <Button v-if="exception.status !== 'FIXED'" success @click="fixed">Mark as fixed</Button>
+
+        <Button v-if="!exception.publish_hash" @click="togglePublic" secondary>Share public</Button>
+
+        <Button v-if="exception.publish_hash" @click="togglePublic" danger>Remove from public</Button>
+
+        <Button v-if="exception.publish_hash" as="a" :href="exception.public_route_url" :target="`exception-${exception.id}`" secondary>View public</Button>
+
+        <Dropdown v-if="!exception.snooze_until">
+            <template v-slot:button>
+                <Button primary>
+                    Snooze
+                </Button>
+            </template>
+
+            <template v-slot:options>
+                <DropdownOption @click="snooze(minutes)" v-for="(option, minutes) in snoozeOptions" :key="minutes">
+                    {{ option }}
+                </DropdownOption>
+            </template>
+        </Dropdown>
+
+        <div v-if="exception.snooze_until" class="space-x-3">
+            <Button secondary @click="unSnooze">Unsnooze</Button>
+            <span>Snoozed until {{ exception.snooze_until }}</span>
+        </div>
+    </div>
+
     <div class="flex flex-col sm:flex-row flex-1">
         <aside class="w-full sm:w-1/4 sm:h-full bg-white border-r border-gray-200">
             <dl class="px-6 py-4 space-y-4">
@@ -65,62 +94,6 @@
                     <dd>
                         <Code>{{ exception.created_at }}</Code>
                     </dd>
-                </div>
-
-                <div>
-                    <dt class="text-sm font-medium mb-1">Public</dt>
-                    <dd class="grid space-y-2">
-                        <div>
-                            <Button v-if="!exception.publish_hash" @click="togglePublic" secondary>Share public</Button>
-                        </div>
-                        <div v-if="exception.publish_hash">
-                            <Button as="a" :href="exception.public_route_url" :target="`exception-${exception.id}`"
-                                    secondary>View
-                            </Button>
-                        </div>
-                        <div v-if="exception.publish_hash">
-                            <Button v-on:click="togglePublic" danger>
-                                Remove from public
-                            </Button>
-                        </div>
-                    </dd>
-                </div>
-
-                <div v-if="exception.status !== 'FIXED'">
-                    <Button success @click="fixed">Mark as fixed</Button>
-                </div>
-
-                <div v-if="!exception.snooze_until">
-                    <dt class="text-sm font-medium mb-1">Snooze exception</dt>
-                    <dd class="grid space-y-2">
-                        <select v-model="snoozeTime"
-                                class="block w-full px-3 h-12 max-w-lg border-gray-300 rounded bg-gray-50 transition">
-                            <option value="30">30 minutes</option>
-                            <option value="60">1 hour</option>
-                            <option value="120">2 hours</option>
-                            <option value="180">3 hours</option>
-                            <option value="240">4 hours</option>
-                            <option value="300">5 hours</option>
-                            <option value="360">6 hours</option>
-                            <option value="720">12 hours</option>
-                            <option value="1440">24 hours</option>
-                            <option value="10080">A week</option>
-                            <option value="43800">A month</option>
-                            <option value="5256000">Forever</option>
-                        </select>
-
-                        <div>
-                        <Button secondary @click="snooze">Snooze</Button>
-                        </div>
-                    </dd>
-                </div>
-
-                <div v-if="exception.snooze_until" class="space-y-2">
-                    <Badge class info>Snoozed until {{ exception.snooze_until }}</Badge>
-
-                    <div>
-                        <Button secondary @click="unSnooze">Unsnooze</Button>
-                    </div>
                 </div>
             </dl>
         </aside>
@@ -285,11 +258,15 @@ import ButtonRack from '@/Components/ButtonRack'
 import ButtonRackItem from '@/Components/ButtonRackItem'
 import Code from '@/Components/Code'
 import Prism from '../../../plugins/prism';
+import Dropdown from "../../Components/Dropdown";
+import DropdownOption from "../../Components/DropdownOption";
 
 export default {
 
     layout: ExceptionLayout,
     components: {
+      DropdownOption,
+      Dropdown,
         Breadcrumbs,
         BreadcrumbsItem,
         BreadcrumbsDivider,
@@ -311,6 +288,21 @@ export default {
             tab: 'exception',
 
             snoozeTime: 30,
+
+            snoozeOptions: {
+                30: '30 minutes',
+                60: '1 hour',
+                120: '2 hours',
+                180: '3 hours',
+                240: '4 hours',
+                300: '5 hours',
+                360: '6 hours',
+                720: '12 hours',
+                1440: '24 hours',
+                10080: 'A week',
+                43800: 'A month',
+                5256000: 'Forever (10 years)',
+            },
         }
     },
 
@@ -325,9 +317,9 @@ export default {
         fixed() {
             this.$inertia.post(this.route('panel.exceptions.fixed', [this.project.id, this.exception.id]));
         },
-        snooze() {
+        snooze(minutes) {
             this.$inertia.post(this.route('panel.exceptions.snooze', [this.project.id, this.exception.id]), {
-                snooze: this.snoozeTime
+                snooze: minutes
             });
         },
         unSnooze() {
