@@ -259,7 +259,7 @@ class Exception extends Model
 
     public function isGitCommit()
     {
-        return strlen($this->project_version) === 8;
+        return strlen($this->project_version) === 7;
     }
 
     public static function boot()
