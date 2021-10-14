@@ -257,6 +257,11 @@ class Exception extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function isGitCommit()
+    {
+        return strlen($this->project_version) === 7;
+    }
+
     public static function boot()
     {
         parent::boot();
