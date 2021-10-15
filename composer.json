@@ -92,7 +92,8 @@
     ],
     "format": [
       "vendor/bin/php-cs-fixer fix"
-    ]
+    ],
+    "pest-coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage"
   },
   "config": {
     "preferred-install": "dist",
