@@ -42,4 +42,4 @@ jobs:
         run: npm run prod
  
       - name: Run test suite
-        run: composer pest-coverage
+        run: ./vendor/bin/pest
