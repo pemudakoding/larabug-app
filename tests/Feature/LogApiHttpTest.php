@@ -10,7 +10,6 @@ use NotificationChannels\Fcm\FcmChannel;
 use NotificationChannels\Webhook\WebhookChannel;
 
 use function Pest\Laravel\be;
-use function PHPUnit\Framework\assertCount;
 
 beforeEach(function () {
     Notification::fake();
@@ -22,7 +21,8 @@ beforeEach(function () {
 });
 
 it('logs an exception', function () {
-    assertCount(0, $this->project->exceptions);
+    expect($this->project->exceptions)
+        ->toHaveCount(0);
 
     be($this->user, 'api')->post(route('exceptions.log'), [
         'project' => $this->project->key,
@@ -43,7 +43,8 @@ it('logs an exception', function () {
 it('logs an exception without notification', function () {
     $this->project->update(['notifications_enabled' => false]);
 
-    assertCount(0, $this->project->exceptions);
+    expect($this->project->exceptions)
+        ->toHaveCount(0);
 
     be($this->user, 'api')->post(route('exceptions.log'), [
         'project' => $this->project->key,
