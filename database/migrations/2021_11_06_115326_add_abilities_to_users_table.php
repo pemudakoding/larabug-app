@@ -14,7 +14,7 @@ class AddAbilitiesToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->json('abilities');
+            $table->json('abilities')->nullable();
         });
     }
 
