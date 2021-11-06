@@ -31,7 +31,7 @@ class UserResource extends Resource
             ->columns([
                 Columns\Text::make('name')->primary(),
                 Columns\Text::make('email'),
-
+                Columns\Boolean::make('is_admin'),
             ])
             ->filters([
                 //
