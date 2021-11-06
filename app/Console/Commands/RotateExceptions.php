@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Exception;
-use App\Models\User;
 use Illuminate\Console\Command;
 
 class RotateExceptions extends Command
