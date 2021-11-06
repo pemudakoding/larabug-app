@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Resources\Resource;
 use Filament\Resources\Forms\Form;
+use Filament\Forms\Components\Grid;
 use Filament\Resources\Tables\Table;
 use Filament\Resources\Tables\Columns;
 use Filament\Resources\Forms\Components;
@@ -18,6 +19,9 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Components\TextInput::make('name')->autofocus()->required(),
+                Grid::make([
+                    Components\Checkbox::make('is_admin'),
+                ])->columns(2),
             ]);
     }
 

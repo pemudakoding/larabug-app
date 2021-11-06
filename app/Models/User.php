@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Traits\Planable;
 use App\Mail\User\WelcomeEmail;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Concerns\IsFilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,11 +16,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property mixed is_admin
  * @property bool plan_notified
  */
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use Notifiable,
         Planable,
-        HasFactory;
+        HasFactory,
+        IsFilamentUser;
 
     protected $fillable = [
         'name',
@@ -55,6 +58,8 @@ class User extends Authenticatable
         'first_name',
         'settings'
     ];
+
+    public static $filamentUserColumn = 'is_admin';
 
     public function setPasswordAttribute($value)
     {
