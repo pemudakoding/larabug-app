@@ -204,4 +204,9 @@ class User extends Authenticatable implements FilamentUser
             $user->newsletters()->detach();
         });
     }
+
+    public function hasAbility($key)
+    {
+        return isset($this->abilities[$key]) && $this->abilities[$key];
+    }
 }
