@@ -45,7 +45,8 @@ class User extends Authenticatable implements FilamentUser
         'newsletter' => 'boolean',
         'receive_email' => 'boolean',
         'plan_notified' => 'boolean',
-        'projects.pivot.owner' => 'boolean'
+        'projects.pivot.owner' => 'boolean',
+        'abilities' => 'array',
     ];
 
     protected $dates = [
