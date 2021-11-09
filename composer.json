@@ -20,6 +20,7 @@
     "inertiajs/inertia-laravel": "^v0.4.4",
     "kblais/laravel-uuid": "^1.1",
     "kreait/firebase-php": "^5.19",
+    "larabug/larabug": "^2.4",
     "laravel-notification-channels/fcm": "^2.2.1",
     "laravel-notification-channels/webhook": "^2.2",
     "laravel/framework": "^8.0",
