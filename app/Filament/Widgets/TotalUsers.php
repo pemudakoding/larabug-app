@@ -11,7 +11,7 @@ class TotalUsers extends Widget
 
     public function render()
     {
-        $count = User::all()->count();
+        $count = User::count();
 
         return view(static::$view, [
             'count' => $count,
