@@ -11,7 +11,7 @@ class TotalExceptions extends Widget
 
     public function render()
     {
-        $count = Exception::all()->count();
+        $count = Exception::count();
 
         return view(static::$view, [
             'count' => $count,
