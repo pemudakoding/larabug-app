@@ -18,12 +18,10 @@ class ExceptionGrowth extends Widget
         $previousMonth = Exception::query()
             ->where('created_at', '>=', $previousMonthStart)
             ->where('created_at', '<=', $thisMonthStart)
-            ->get()
             ->count();
 
         $thisMonth = Exception::query()
             ->where('created_at', '>=', $thisMonthStart)
-            ->get()
             ->count();
 
         if ($previousMonth === 0) {
