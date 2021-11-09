@@ -26,7 +26,11 @@ class ExceptionGrowth extends Widget
             ->get()
             ->count();
 
-        $growth = round(($thisMonth - $previousMonth) / $previousMonth * 100);
+        if ($previousMonth === 0) {
+            $growth = 0;
+        } else {
+            $growth = round(($thisMonth - $previousMonth) / $previousMonth * 100);
+        }
 
         return view(static::$view, [
             'growth' => $growth,
