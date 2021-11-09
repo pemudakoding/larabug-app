@@ -11,7 +11,7 @@ class TotalProjects extends Widget
 
     public function render()
     {
-        $count = Project::all()->count();
+        $count = Project::count();
 
         return view(static::$view, [
             'count' => $count,
