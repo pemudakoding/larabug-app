@@ -13,7 +13,9 @@
     "coconutcraig/laravel-postmark": "^2.9",
     "cviebrock/eloquent-sluggable": "^8.0.1",
     "fideloper/proxy": "^4.2",
-    "filament/filament": "^v1.12.0",
+    "filament/filament": "dev-main",
+    "filament/forms": "dev-main",
+    "filament/tables": "dev-main",
     "fruitcake/laravel-cors": "^2.0",
     "google/recaptcha": "~1.1",
     "guzzlehttp/guzzle": "^7.3",
@@ -56,6 +58,20 @@
     "nunomaduro/collision": "^5.0",
     "pestphp/pest": "^1.20",
     "pestphp/pest-plugin-laravel": "^1.1"
+  },
+  "repositories": {
+    "admin": {
+      "type": "path",
+      "url": "../filament/filament/packages/admin"
+    },
+    "forms": {
+      "type": "path",
+      "url": "../filament/filament/packages/forms"
+    },
+    "tables": {
+      "type": "path",
+      "url": "../filament/filament/packages/tables"
+    }
   },
   "autoload": {
     "classmap": [
