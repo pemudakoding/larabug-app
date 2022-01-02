@@ -123,10 +123,6 @@
                 </div>
             </form>
         </Card>
-
-        <div>
-            <Button secondary @click="logout">Logout</Button>
-        </div>
     </div>
 </template>
 
@@ -205,10 +201,6 @@ export default {
             this.form.patch(this.route('panel.profile.settings'), {
                 onFinish: () => this.sending = false
             })
-        },
-
-        logout() {
-            this.$inertia.post(this.route('logout'));
         }
     },
 
