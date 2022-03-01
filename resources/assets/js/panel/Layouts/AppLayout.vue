@@ -83,7 +83,7 @@
 					Profile
 				</NavListItem>
 
-				<NavListItem is="button" @click="logout">
+				<NavListItem class="border-t border-primary-800" is="button" @click="logout">
 					<template #icon>
 						<svg
 							class="w-6 h-6 text-primary-400"
