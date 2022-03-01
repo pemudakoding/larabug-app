@@ -4,11 +4,9 @@ namespace App\Models;
 
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
-use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\ProjectWasCreated;
 use Illuminate\Notifications\Notifiable;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -26,12 +24,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string key
  * @property mixed url
  */
-class Project extends Model implements HasMedia
+class Project extends Model
 {
     use Uuid,
         Filterable,
         Notifiable,
-        InteractsWithMedia,
         HasFactory;
 
     protected $fillable = [
@@ -112,37 +109,6 @@ class Project extends Model implements HasMedia
     public function scopeWantsEmail($query)
     {
         return $query->where('receive_email', true);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
-    public function getDefaultImage($type = '')
-    {
-        $media = $this->getFirstMedia('projects', ['default' => true]);
-
-        if ($media) {
-            return $media->getUrl($type);
-        }
-
-        $media = $this->getFirstMedia('projects');
-
-        if ($media) {
-            return $media->getUrl($type);
-        }
-
-        return false;
-    }
-
-    public function getScreenshotAttribute()
-    {
-        if ($media = $this->getFirstMediaUrl('projectSiteScreenshot')) {
-            return url($media);
-        }
-
-        return false;
     }
 
     public function users()

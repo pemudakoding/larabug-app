@@ -47,10 +47,4 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
-    'ploi' => [
-        'client_id' => env('PLOI_CLIENT_ID'),
-        'client_secret' => env('PLOI_CLIENT_SECRET'),
-        'redirect' => env('PLOI_CALLBACK')
-    ]
 ];
