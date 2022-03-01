@@ -18,6 +18,7 @@
     <div class="flex w-full bg-white px-6 py-3 border-b border-gray-200 space-x-3">
         <Button v-if="exception.status !== 'FIXED'" success @click="fixed">Mark as fixed</Button>
 
+
         <Button v-if="!exception.publish_hash" @click="togglePublic" secondary>Share public</Button>
 
         <Button v-if="exception.publish_hash" @click="togglePublic" danger>Remove from public</Button>
@@ -42,6 +43,8 @@
             <Button secondary @click="unSnooze">Unsnooze</Button>
             <span>Snoozed until {{ exception.snooze_until }}</span>
         </div>
+		
+        <Button @click="throwInTrash" danger>Delete</Button>
     </div>
 
     <div class="flex flex-col sm:flex-row flex-1">
@@ -318,9 +321,6 @@ export default {
     },
 
     methods: {
-        togglePublic() {
-            this.$inertia.post(this.route('panel.exceptions.toggle-public', [this.project.id, this.exception.id]));
-        },
         fixed() {
             this.$inertia.post(this.route('panel.exceptions.fixed', [this.project.id, this.exception.id]));
         },
@@ -329,9 +329,15 @@ export default {
                 snooze: minutes
             });
         },
+        throwInTrash() {
+            this.$inertia.delete(this.route('panel.exceptions.show', [this.project.id, this.exception.id]));
+        },
+        togglePublic() {
+            this.$inertia.post(this.route('panel.exceptions.toggle-public', [this.project.id, this.exception.id]));
+        },
         unSnooze() {
             this.$inertia.post(this.route('panel.exceptions.un-snooze', [this.project.id, this.exception.id]));
-        }
+        },
     }
 }
 </script>

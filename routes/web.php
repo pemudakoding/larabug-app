@@ -61,6 +61,7 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
 
     Route::delete('projects/{id}/exceptions/delete-all', [ExceptionController::class, 'deleteAll'])->name('exceptions.delete-all');
     Route::post('projects/{id}/exceptions/delete-selected', [ExceptionController::class, 'deleteSelected'])->name('exceptions.delete-selected');
+    Route::post('projects/{id}/exceptions/delete-fixed', [ExceptionController::class, 'deleteFixed'])->name('exceptions.delete-fixed');
     Route::resource('projects/{id}/exceptions', ExceptionController::class);
     Route::post('projects/{id}/exceptions/{exception}/fixed', [ExceptionController::class, 'fixed'])->name('exceptions.fixed');
     Route::post('projects/{id}/exceptions/{exception}/snooze', [ExceptionController::class, 'snooze'])->name('exceptions.snooze');
