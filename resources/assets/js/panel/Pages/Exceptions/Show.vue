@@ -18,7 +18,6 @@
     <div class="flex w-full bg-white px-6 py-3 border-b border-gray-200 space-x-3">
         <Button v-if="exception.status !== 'FIXED'" success @click="fixed">Mark as fixed</Button>
 
-        <Button @click="throwInTrash" danger>Delete</Button>
 
         <Button v-if="!exception.publish_hash" @click="togglePublic" secondary>Share public</Button>
 
@@ -44,6 +43,8 @@
             <Button secondary @click="unSnooze">Unsnooze</Button>
             <span>Snoozed until {{ exception.snooze_until }}</span>
         </div>
+		
+        <Button @click="throwInTrash" danger>Delete</Button>
     </div>
 
     <div class="flex flex-col sm:flex-row flex-1">
