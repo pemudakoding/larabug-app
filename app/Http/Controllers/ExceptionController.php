@@ -212,6 +212,15 @@ class ExceptionController extends Controller
         return redirect()->route('panel.projects.show', $id)->with('success', 'All exceptions have been cleared up');
     }
 
+    public function deleteFixed(Request $request, $id)
+    {
+        $project = $request->user()->projects()->findOrFail($id);
+
+        $project->exceptions()->where('status', Exception::FIXED)->delete();
+
+        return redirect()->route('panel.projects.show', $id)->with('success', 'All exceptions marked as fixed have been cleared up');
+    }
+
     public function deleteSelected(Request $request, $id)
     {
         $project = $request->user()

@@ -69,6 +69,7 @@
                     <ButtonRackItem @click="handleMarking('read')">Mark {{ selected.length ? 'selected' : 'all' }} read</ButtonRackItem>
                     <ButtonRackItem @click="handleMarking('fixed')">Mark {{ selected.length ? 'selected' : 'all' }} fixed</ButtonRackItem>
                     <ButtonRackItem @click="deleteSelected" v-if="selected.length">Delete selected</ButtonRackItem>
+                    <ButtonRackItem @click="deleteFixedExceptions">Delete fixed</ButtonRackItem>
                     <ButtonRackItem @click="deleteAllExceptions">Delete all</ButtonRackItem>
                 </ButtonRack>
             </template>
@@ -265,6 +266,18 @@ export default {
                 .catch(() => {
                     this.sending = false;
                 })
+        },
+
+        deleteFixedExceptions() {
+            this.sending = true;
+
+            this.$inertia.post(this.route('panel.exceptions.delete-fixed', this.project.id))
+                .then(() => {
+                    this.sending = false;
+                })
+                .catch(() => {
+                    this.sending = false;
+                });
         },
 
         deleteSelected() {
