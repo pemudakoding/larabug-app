@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * @property mixed plan
@@ -187,7 +188,7 @@ class User extends Authenticatable implements FilamentUser
         });
 
         static::created(function ($user) {
-            \Mail::to($user)->send(new WelcomeEmail($user));
+            Mail::to($user)->send(new WelcomeEmail($user));
         });
 
         static::deleting(function (self $user) {
