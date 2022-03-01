@@ -88,7 +88,7 @@ class ExceptionController extends Controller
         /*
          * Return redirect back to save filter
          */
-        return redirect()->route('panel.projects.show', $project->id)->with('success', 'Deleted the exception!');
+        return redirect()->route('panel.projects.show', $project->id)->with('success', 'Exception has been removed');
     }
 
     public function fixed($id, $exception)
