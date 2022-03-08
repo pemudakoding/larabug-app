@@ -47,4 +47,8 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+
+    'horizon' => [
+        'token' => env('HORIZON_TOKEN')
+    ]
 ];
