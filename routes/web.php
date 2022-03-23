@@ -52,7 +52,7 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('introduction', [HomeController::class, 'introduction'])->name('introduction');
 
-    Route::group(['middleware' => 'verified'], function () {
+    Route::group(['middleware' => config('auth.verify_enabled') ? 'verified' : []], function () {
         Route::resource('projects', ProjectController::class);
         Route::get('projects/{id}/installation', [ProjectController::class, 'installation'])->name('projects.installation');
         Route::get('projects/{id}/feedback-installation', [ProjectController::class, 'feedbackInstallation'])->name('projects.feedback-installation');
