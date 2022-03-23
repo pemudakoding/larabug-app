@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Planable;
 use App\Mail\User\WelcomeEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
  * @property mixed is_admin
  * @property bool plan_notified
  */
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     use Notifiable,
         Planable,
