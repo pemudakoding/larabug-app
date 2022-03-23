@@ -44,7 +44,7 @@ class ProjectRequest extends FormRequest
                 'url',
                 'nullable',
                 'required_if:discord_webhook_enabled,true',
-                new StartsWith(['https://discordapp.com/api/webhooks/', 'https://discord.com/api/webhooks/'])
+                new StartsWith(['https://discordapp.com/api/webhooks/', 'https://discord.com/api/webhooks/', 'https://canary.discord.com/api/webhooks'])
             ],
             'custom_webhook' => [
                 'url',
