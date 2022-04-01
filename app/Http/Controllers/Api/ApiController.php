@@ -14,7 +14,16 @@ class ApiController extends Controller
 {
     public function log(Request $request)
     {
-        $project = $request->user()->projects()->where('key', $request->input('project'))->firstOrFail();
+        /* @var $user \App\Models\User */
+        $user = $request->user();
+
+        if (!$user->hasVerifiedEmail()) {
+            return response()->json([
+                'error' => 'This is not an verified account.'
+            ])->setStatusCode(422);
+        }
+
+        $project = $user->projects()->where('key', $request->input('project'))->firstOrFail();
 
         // Legacy support for LaraBug packages lower than version 2
         if ($legacyExecutor = $request->input('exegutor')) {
