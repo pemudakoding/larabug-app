@@ -16,7 +16,7 @@ beforeEach(function () {
     Mail::fake();
 
     $this->project = Project::factory()->create();
-    $this->user = User::factory()->create();
+    $this->user = User::factory()->create(['email_verified_at' => now()]);
     $this->user->projects()->save($this->project, ['owner' => true]);
 });
 
