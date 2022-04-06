@@ -31,16 +31,14 @@ class ProjectResource extends Resource
                 Columns\TextColumn::make('total_exceptions')
                     ->sortable(),
 
-                Columns\TextColumn::make('created_at')
-                    ->sortable(),
-
                 Columns\TextColumn::make('users.email')
                     ->sortable()
                     ->searchable()
                     ->url(fn ($record) => route('filament.resources.users.edit', $record->users()->first()?->id)),
 
                 Columns\TextColumn::make('created_at')
-                    ->sortable(),
+                    ->sortable()
+                    ->dateTime(),
 
                 Columns\BooleanColumn::make('notifications_enabled')
                     ->label('Notifications'),
