@@ -160,13 +160,6 @@
                     >
                         User
                     </button>
-                    <button
-                        class="h-12 px-3 text-xs font-medium text-gray-500 uppercase border-b-2 rounded-none"
-                        :class="[ tab === 'feedback' ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500']"
-                        @click="tab = 'feedback'"
-                    >
-                        Feedback
-                    </button>
                 </header>
             </div>
 
