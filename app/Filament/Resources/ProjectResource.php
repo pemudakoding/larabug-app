@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\ProjectResource\RelationManagers\UsersRelationManager;
 use Filament\Resources\Form;
 use Filament\Tables\Columns;
 use Filament\Resources\Table;
@@ -17,7 +18,9 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                Components\TextInput::make('title')->autofocus()->required(),
+                Components\Card::make()->schema([
+                    Components\TextInput::make('title')->autofocus()->required(),
+                ]),
             ]);
     }
 
@@ -63,7 +66,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UsersRelationManager::class,
         ];
     }
 
