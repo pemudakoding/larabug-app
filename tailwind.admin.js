@@ -2,10 +2,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     content: [
-        './resources/views/**/*.blade.php',
-        './resources/assets/js/frontend/**/*.js',
+        './resources/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+    darkMode: 'class',
     theme: {
         colors: {
             current: 'currentColor',
