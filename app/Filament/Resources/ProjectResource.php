@@ -25,8 +25,37 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Columns\TextColumn::make('title')->searchable(),
-                Columns\TextColumn::make('created_at')->sortable(),
+                Columns\TextColumn::make('title')
+                    ->searchable(),
+
+                Columns\TextColumn::make('total_exceptions')
+                    ->sortable(),
+
+                Columns\TextColumn::make('created_at')
+                    ->sortable(),
+
+                Columns\TextColumn::make('users.email')
+                    ->sortable()
+                    ->searchable()
+                    ->url(fn ($record) => route('filament.resources.users.edit', $record->users()->first()?->id)),
+
+                Columns\TextColumn::make('created_at')
+                    ->sortable(),
+
+                Columns\BooleanColumn::make('notifications_enabled')
+                    ->label('Notifications'),
+
+                Columns\BooleanColumn::make('receive_email')
+                    ->label('Email'),
+
+                Columns\BooleanColumn::make('mobile_notifications_enabled')
+                    ->label('Mobile'),
+
+                Columns\BooleanColumn::make('slack_webhook_enabled')
+                    ->label('Slack'),
+
+                Columns\BooleanColumn::make('discord_webhook_enabled')
+                    ->label('Discord'),
             ])
             ->filters([
                 //

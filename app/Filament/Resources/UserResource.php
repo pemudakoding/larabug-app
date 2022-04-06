@@ -18,14 +18,16 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Components\TextInput::make('name')->autofocus()->required(),
-                Grid::make()
-                    ->schema([
-                        Components\Checkbox::make('is_admin'),
-                    ]),
+                Components\Card::make()->schema([
+                    Components\TextInput::make('name')->autofocus()->required(),
+                    Grid::make()
+                        ->schema([
+                            Components\Checkbox::make('is_admin'),
+                        ]),
 
-                Components\MultiSelect::make('abilities')
-                    ->options(config('auth.abilities')),
+                    Components\MultiSelect::make('abilities')
+                        ->options(config('auth.abilities')),
+                ]),
             ]);
     }
 
