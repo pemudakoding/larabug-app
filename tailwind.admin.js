@@ -1,11 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
     content: [
-        './resources/views/**/*.blade.php',
-        './resources/assets/js/frontend/**/*.js',
+        './resources/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+    darkMode: 'class',
     theme: {
         colors: {
             current: 'currentColor',
@@ -81,6 +82,9 @@ module.exports = {
                 800: '#1e429f',
                 900: '#233876',
             },
+            danger: colors.rose,
+            success: colors.green,
+            warning: colors.yellow,
         },
         extend: {
             fontFamily: {

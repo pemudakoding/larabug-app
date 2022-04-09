@@ -18,6 +18,7 @@ return [
      * Environments where LaraBug should report
      */
     'environments' => [
+        'local',
         'production'
     ],
 
@@ -42,5 +43,9 @@ return [
      * Use minimal frontend mode
      */
     'minimal_frontend' => env('MINIMAL_FRONTEND', true),
+
+    'verify_ssl' => false,
+
+    'server' => 'https://larabug.test/api/log',
 
 ];
