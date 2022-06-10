@@ -99,7 +99,7 @@
           </div>
         </footer>
       </div>
-        <main class="flex flex-col flex-1 overflow-hidden pl-[64px]">
+        <main class="flex flex-col flex-1 overflow-hidden pl-16">
             <slot></slot>
         </main>
     </div>
