@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col md:flex-row min-h-screen bg-primary-100">
-      <div class="flex flex-col w-full md:w-16 text-white bg-primary-900 flex-shrink-0">
+      <div class="flex flex-col w-full md:w-16 text-white bg-primary-900 flex-shrink-0 md:h-screen md:fixed">
         <div class="flex-shrink-0 p-4 flex flex-row items-center justify-between md:justify-center">
           <p class="text-xl font-bold">🐞</p>
           <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
@@ -99,7 +99,7 @@
           </div>
         </footer>
       </div>
-        <main class="flex flex-col flex-1 overflow-hidden">
+        <main class="flex flex-col flex-1 overflow-hidden pl-[64px]">
             <slot></slot>
         </main>
     </div>
