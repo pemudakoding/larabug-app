@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Kblais\Uuid\Uuid;
 use DateTimeInterface;
 use EloquentFilter\Filterable;
@@ -65,12 +67,12 @@ class Exception extends Model
         'markup_language'
     ];
 
-    public function getHumanDateAttribute()
+    public function getHumanDateAttribute(): string
     {
         return $this->created_at->diffForHumans();
     }
 
-    public function getRouteUrlAttribute()
+    public function getRouteUrlAttribute(): string
     {
         return route('panel.exceptions.show', [$this->project_id, $this]);
     }
@@ -89,7 +91,7 @@ class Exception extends Model
         return trans('status.' . strtoupper($this->status));
     }
 
-    public function getMarkupLanguageAttribute()
+    public function getMarkupLanguageAttribute(): string
     {
         $pathinfo = pathinfo($this->file);
 
@@ -125,7 +127,7 @@ class Exception extends Model
         })->toArray());
     }
 
-    public function getShortExceptionTextAttribute()
+    public function getShortExceptionTextAttribute(): string
     {
         if (!$this->exception) {
             return '-No exception text-';
@@ -154,20 +156,19 @@ class Exception extends Model
         return $query->whereStatus(self::OPEN);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function project()
+    public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function feedback()
+    public function feedback(): HasMany
     {
         return $this->hasMany(Feedback::class);
+    }
+
+    public function issue(): BelongsTo
+    {
+        return $this->belongsTo(Issue::class);
     }
 
     public function occurences()

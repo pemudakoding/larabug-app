@@ -28,7 +28,7 @@ class ProcessException implements ShouldQueue
     {
         $this->data = $data;
         $this->project = $project;
-        $this->date = $date ? $date : now();
+        $this->date = $date ?: now();
     }
 
     /**
@@ -38,33 +38,42 @@ class ProcessException implements ShouldQueue
      */
     public function handle()
     {
-        if (!is_array($this->data)) {
+        if (! is_array($this->data)) {
             return;
         }
 
         try {
-            $check = $this->project->exceptions()->where(function ($query) {
-                return $query
-                    ->where('exception', $this->data['exception'])
-                    ->whereNotNull('snooze_until')
-                    ->where('snooze_until', '>', now());
-            })->exists();
+            $exception = $this->project->exceptions()->create($this->data);
 
-            if (!$check) {
-                $exception = $this->project->exceptions()->create($this->data);
+            $exception->created_at = $this->date;
+            $exception->save();
 
-                $exception->created_at = $this->date;
-                $exception->save();
+            $issue = $this->project->issues()
+                ->firstOrCreate([
+                    'exception' => $this->data['exception'],
+                    'line' => $this->data['line'],
+                ], [
+                    'exception_id' => $exception->id,
+                ]);
 
-                $this->project->last_error_at = $this->date;
-                $this->project->total_exceptions++;
-                $this->project->save();
-            }
+            $issue->update([
+                'last_occurred_at' => $this->date,
+            ]);
+
+            $exception->issue()->associate($issue)->save();
+
+            $this->project->last_error_at = $this->date;
+            $this->project->total_exceptions++;
+            $this->project->save();
         } catch (\Exception $exception) {
+            // TODO: handle exception
         }
 
         if ($this->project->exceptions()->count(['id']) > 3000) {
-            $this->project->exceptions()->orderBy('created_at', 'asc')->limit(1000)->delete();
+            $this->project->exceptions()
+                ->orderBy('created_at')
+                ->limit(1000)
+                ->delete();
         }
     }
 }

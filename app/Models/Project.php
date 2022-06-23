@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
@@ -111,19 +115,24 @@ class Project extends Model
         return $query->where('receive_email', true);
     }
 
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\User::class)->withPivot('owner');
     }
 
-    public function group()
+    public function group(): BelongsTo
     {
         return $this->belongsTo(\App\Models\ProjectGroup::class);
     }
 
-    public function exceptions()
+    public function exceptions(): HasMany
     {
         return $this->hasMany(\App\Models\Exception::class);
+    }
+
+    public function issues(): HasMany
+    {
+        return $this->hasMany(Issue::class);
     }
 
     public function unreadExceptions()
@@ -135,7 +144,7 @@ class Project extends Model
             });
     }
 
-    public function feedback()
+    public function feedback(): HasManyThrough
     {
         return $this->hasManyThrough(Feedback::class, Exception::class);
     }
