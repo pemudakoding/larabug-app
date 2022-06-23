@@ -65,6 +65,7 @@ Route::middleware('auth')->prefix('panel')->name('panel.')->group(function () {
 
         Route::get('issues', [IssuesController::class, 'index'])->name('issues.index');
         Route::get('issues/{id}', [IssuesController::class, 'show'])->name('issues.show');
+        Route::patch('issues/{id}/status', [IssuesController::class, 'updateStatus'])->name('issues.update-status');
 
         Route::delete('projects/{id}/exceptions/delete-all', [ExceptionController::class, 'deleteAll'])->name('exceptions.delete-all');
         Route::post('projects/{id}/exceptions/delete-selected', [ExceptionController::class, 'deleteSelected'])->name('exceptions.delete-selected');

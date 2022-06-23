@@ -13,6 +13,29 @@
     <Card>
       <template #header>
         <h2 class="text-xl font-bold">Issue</h2>
+
+        <div class="space-x-3">
+          <Button
+              :danger="issue.status === 'OPEN'"
+              :secondary="issue.status !== 'OPEN'"
+              @click="updateStatus('OPEN')">
+            Open
+          </Button>
+
+          <Button
+              :primary="issue.status === 'READ'"
+              :secondary="issue.status !== 'READ'"
+              @click="updateStatus('READ')">
+            Read
+          </Button>
+
+          <Button
+              :success="issue.status === 'FIXED'"
+              :secondary="issue.status !== 'FIXED'"
+              @click="updateStatus('FIXED')">
+            Fixed
+          </Button>
+        </div>
       </template>
 
       <dl class="grid grid-cols-3 gap-px overflow-hidden bg-gray-100 rounded-b-lg">
@@ -45,48 +68,6 @@
           <dt class="text-sm font-medium">New occurrences</dt>
           <dd class="text-base">{{ issue.unread_exceptions_count }}</dd>
         </div>
-
-<!--        <div class="p-6 space-y-1 bg-white">
-          <dt class="text-sm font-medium">Application URL</dt>
-          <dd class="text-base">
-            <a :href="project.url" v-text="project.url" v-if="project.url"></a>
-            <badge info v-else>None specified</badge>
-          </dd>
-        </div>-->
-
-<!--        <div class="p-6 space-y-1 bg-white">
-          <dt class="text-sm font-medium">API Key</dt>
-          <dd class="text-sm">
-            <Code>{{ project.key }}</Code>
-          </dd>
-
-          <dd class="pt-3">
-            <button @click="refreshToken" class="flex items-center text-sm space-x-2 border-b border-dotted text-primary-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                   stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-              </svg>
-              <span>Refresh token</span>
-            </button>
-          </dd>
-        </div>-->
-
-<!--        <div class="p-6 space-y-1 bg-white">
-          <dt class="text-sm font-medium">New exceptions</dt>
-          <dd class="text-base">{{ project.unread_exceptions_count }}</dd>
-        </div>
-
-        <div class="p-6 space-y-1 bg-white">
-          <dt class="text-sm font-medium">Total exceptions</dt>
-          <dd class="text-base">{{ project.total_exceptions }}</dd>
-        </div>
-
-        <div class="p-6 space-y-1 bg-white">
-          <dt class="text-sm font-medium">Description</dt>
-          <dd class="text-base" v-if="project.description">{{ project.description }}</dd>
-          <dd class="text-base" v-else>-No description-</dd>
-        </div>-->
       </dl>
     </Card>
 
@@ -176,10 +157,14 @@ import ButtonRackItem from '@/Components/ButtonRackItem'
 import Code from '@/Components/Code'
 import Paginator from '@/Components/Paginator'
 import EditProject from '@/Partials/EditProject'
+import Dropdown from "../../Components/Dropdown";
+import DropdownOption from "../../Components/DropdownOption";
 
 export default {
   layout: AppLayout,
   components: {
+    DropdownOption,
+    Dropdown,
     EditProject,
     Breadcrumbs,
     BreadcrumbsItem,
@@ -213,6 +198,13 @@ export default {
         has_feedback: this.filters.has_feedback
       },
     }
+  },
+  methods: {
+    updateStatus(status) {
+      this.$inertia.patch(this.route('panel.issues.update-status', [this.issue.id]), {
+        status: status,
+      });
+    },
   },
 }
 </script>

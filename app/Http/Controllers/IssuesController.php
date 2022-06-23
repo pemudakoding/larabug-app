@@ -65,4 +65,20 @@ class IssuesController extends Controller
             'total_occurrences' => $issue->exceptions()->count(),
         ]);
     }
+
+    public function updateStatus($id)
+    {
+        $projectIds = auth()->user()->projects()->pluck('id');
+
+        $issue = Issue::query()
+            ->firstWhere('id', $id);
+
+        abort_unless($projectIds->contains($issue->project_id), 403);
+
+        $issue->update([
+            'status' => request()->input('status'),
+        ]);
+
+        return redirect()->route('panel.issues.show', $issue->id)->with('success', 'Changed issue status successfully');
+    }
 }
