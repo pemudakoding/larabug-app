@@ -43,28 +43,38 @@ class ProcessException implements ShouldQueue
         }
 
         try {
-            $exception = $this->project->exceptions()->create($this->data);
+            $check = $this->project->exceptions()->where(function ($query) {
+                return $query
+                    ->where('exception', $this->data['exception'])
+                    ->where('line', $this->data['line'])
+                    ->whereNotNull('snooze_until')
+                    ->where('snooze_until', '>', now());
+            })->exists();
 
-            $exception->created_at = $this->date;
-            $exception->save();
+            if (! $check) {
+                $exception = $this->project->exceptions()->create($this->data);
 
-            $issue = $this->project->issues()
-                ->firstOrCreate([
-                    'exception' => $this->data['exception'],
-                    'line' => $this->data['line'],
-                ], [
-                    'exception_id' => $exception->id,
+                $exception->created_at = $this->date;
+                $exception->save();
+
+                $issue = $this->project->issues()
+                    ->firstOrCreate([
+                        'exception' => $this->data['exception'],
+                        'line' => $this->data['line'],
+                    ], [
+                        'exception_id' => $exception->id,
+                    ]);
+
+                $issue->update([
+                    'last_occurred_at' => $this->date,
                 ]);
 
-            $issue->update([
-                'last_occurred_at' => $this->date,
-            ]);
+                $exception->issue()->associate($issue)->save();
 
-            $exception->issue()->associate($issue)->save();
-
-            $this->project->last_error_at = $this->date;
-            $this->project->total_exceptions++;
-            $this->project->save();
+                $this->project->last_error_at = $this->date;
+                $this->project->total_exceptions++;
+                $this->project->save();
+            }
         } catch (\Exception $exception) {
             // TODO: handle exception
         }
