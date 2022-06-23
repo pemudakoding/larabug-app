@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
+use App\Models\Concerns\HasSparklines;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Issue extends Model
 {
-    use Uuid, Filterable;
+    use Uuid, Filterable, HasSparklines;
 
     protected $guarded = [
         'id',
