@@ -65,7 +65,7 @@ class IssuesController extends Controller
         $projectIds = auth()->user()->projects()->pluck('id');
 
         $issue = Issue::query()
-            ->firstWhere('id', $id);
+            ->findOrFail($id);
 
         abort_unless($projectIds->contains($issue->project_id), 403);
 
