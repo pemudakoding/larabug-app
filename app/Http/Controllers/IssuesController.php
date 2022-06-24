@@ -34,21 +34,21 @@ class IssuesController extends Controller
 
         abort_unless($projectIds->contains($issue->project_id), 403);
 
-        $exceptions = $issue
-            ->exceptions()
-            ->filter(request()->only('search', 'status', 'has_feedback'))
-            ->withCount('feedback')
-            ->latest()
-            ->paginate(10);
+//        $exceptions = $issue
+//            ->exceptions()
+//            ->filter(request()->only('search', 'status', 'has_feedback'))
+//            ->withCount('feedback')
+//            ->latest()
+//            ->paginate(10);
+        $exceptions = collect();
 
-        $affectedVersions = [];
-//        $affectedVersions = $issue->exceptions()
-//            ->pluck('project_version')
-//            ->unique()
-//            ->filter()
-//            ->sort()
-//            ->values()
-//            ->toArray();
+        $affectedVersions = $issue->exceptions()
+            ->pluck('project_version')
+            ->unique()
+            ->filter()
+            ->sort()
+            ->values()
+            ->toArray();
 
         return inertia('Issues/Show', [
             'issue' => $issue,
