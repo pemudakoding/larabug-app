@@ -67,6 +67,7 @@ class ProcessException implements ShouldQueue
 
                 $issue->update([
                     'last_occurred_at' => $this->date,
+                    'status' => 'OPEN',
                 ]);
 
                 $exception->issue()->associate($issue)->save();
