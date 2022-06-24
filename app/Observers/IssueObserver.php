@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Issue;
+use App\Notifications\IssueStatusUpdatedNotification;
 
 class IssueObserver
 {
@@ -19,5 +20,11 @@ class IssueObserver
                 'status' => $issue->status,
             ]);
         }
+
+        /*if ($issue->isDirty('status')) {
+
+        }*/
+
+        $issue->project->notify(new IssueStatusUpdatedNotification($issue));
     }
 }
