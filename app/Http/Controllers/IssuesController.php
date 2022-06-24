@@ -28,7 +28,6 @@ class IssuesController extends Controller
         $projectIds = auth()->user()->projects()->pluck('id');
 
         $issue = Issue::query()
-            ->withCount('unreadExceptions')
             ->findOrFail($id);
 
         abort_unless($projectIds->contains($issue->project_id), 403);
