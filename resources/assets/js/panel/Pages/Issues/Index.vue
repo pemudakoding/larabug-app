@@ -29,7 +29,7 @@
 
             <div class="flex-1">
               <p class="font-medium text-bold">{{ issue.exception }}</p>
-              <p class="text-sm text-gray-600">{{ issue.last_occurred_at_human }} &centerdot; {{ issue.project_name }}</p>
+              <p class="text-sm text-gray-600">{{ issue.last_occurred_at_human }} &centerdot; {{ issue.project.title }}</p>
             </div>
 
             <div class="text-green-400" style="width: 150px;">
