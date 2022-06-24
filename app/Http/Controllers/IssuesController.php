@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Issue;
-use App\Models\Project;
 
 class IssuesController extends Controller
 {
@@ -30,7 +29,7 @@ class IssuesController extends Controller
 
         $issue = Issue::query()
             ->withCount('unreadExceptions')
-            ->firstWhere('id', $id);
+            ->findOrFail('id', $id);
 
         abort_unless($projectIds->contains($issue->project_id), 403);
 
@@ -56,7 +55,7 @@ class IssuesController extends Controller
             'filters' => request()->only('search'),
             'affected_versions' => implode(', ', $affectedVersions) ?: '-',
             'last_occurrence_human' => $issue->last_occurred_at->diffForHumans(),
-            'total_occurrences' => $issue->exceptions()->count(),
+            'total_occurrences' => 0 //$issue->exceptions()->count(),
         ]);
     }
 
