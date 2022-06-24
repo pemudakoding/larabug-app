@@ -8,8 +8,7 @@ use NotificationChannels\Fcm\FcmChannel;
 use App\Notifications\ExceptionWasCreated;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Discord\DiscordChannel;
-
-use NotificationChannels\Webhook\WebhookChannel;
+use App\Notifications\CustomWebhook\WebhookChannel;
 
 beforeEach(function () {
     Notification::fake();

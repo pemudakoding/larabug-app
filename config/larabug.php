@@ -44,8 +44,25 @@ return [
      */
     'minimal_frontend' => env('MINIMAL_FRONTEND', true),
 
-    'verify_ssl' => false,
+    /*
+    |--------------------------------------------------------------------------
+    | Server setting
+    |--------------------------------------------------------------------------
+    |
+    | This setting allows you to change the server.
+    |
+    */
 
-    'server' => 'https://larabug.test/api/log',
+    'server' => env('LB_SERVER', 'https://www.larabug.com/api/log'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Verify SSL setting
+    |--------------------------------------------------------------------------
+    |
+    | Enables / disables the SSL verification when sending exceptions to LaraBug
+    | Never turn SSL verification off on production instances
+    |
+    */
+    'verify_ssl' => env('LB_VERIFY_SSL', true),
 ];
