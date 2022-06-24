@@ -34,13 +34,12 @@ class IssuesController extends Controller
 
         abort_unless($projectIds->contains($issue->project_id), 403);
 
-//        $exceptions = $issue
-//            ->exceptions()
-//            ->filter(request()->only('search', 'status', 'has_feedback'))
-//            ->withCount('feedback')
-//            ->latest()
-//            ->paginate(10);
-        $exceptions = collect();
+        $exceptions = $issue
+            ->exceptions()
+            ->filter(request()->only('search', 'status', 'has_feedback'))
+            ->withCount('feedback')
+            ->latest()
+            ->paginate(10);
 
         $affectedVersions = $issue->exceptions()
             ->pluck('project_version')
