@@ -29,7 +29,7 @@ class IssuesController extends Controller
 
         $issue = Issue::query()
             ->withCount('unreadExceptions')
-            ->findOrFail('id', $id);
+            ->findOrFail($id);
 
         abort_unless($projectIds->contains($issue->project_id), 403);
 
