@@ -55,7 +55,7 @@ class IssuesController extends Controller
             'filters' => request()->only('search'),
             'affected_versions' => implode(', ', $affectedVersions) ?: '-',
             'last_occurrence_human' => $issue->last_occurred_at->diffForHumans(),
-            'total_occurrences' => 0 //$issue->exceptions()->count(),
+            'total_occurrences' => $issue->exceptions()->count(),
         ]);
     }
 
