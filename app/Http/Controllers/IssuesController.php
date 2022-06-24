@@ -41,13 +41,14 @@ class IssuesController extends Controller
             ->latest()
             ->paginate(10);
 
-        $affectedVersions = $issue->exceptions()
-            ->pluck('project_version')
-            ->unique()
-            ->filter()
-            ->sort()
-            ->values()
-            ->toArray();
+        $affectedVersions = [];
+//        $affectedVersions = $issue->exceptions()
+//            ->pluck('project_version')
+//            ->unique()
+//            ->filter()
+//            ->sort()
+//            ->values()
+//            ->toArray();
 
         return inertia('Issues/Show', [
             'issue' => $issue,
