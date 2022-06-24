@@ -60,6 +60,7 @@ class Exception extends Model
     protected $appends = [
         'human_date',
         'public_route_url',
+        'issue_route_url',
         'route_url',
         'status_text',
         'short_exception_text',
@@ -84,6 +85,15 @@ class Exception extends Model
         }
 
         return route('public.exception', $this);
+    }
+
+    public function getIssueRouteUrlAttribute(): ?string
+    {
+        if (! $this->issue_id) {
+            return null;
+        }
+
+        return route('panel.issues.show', $this->issue_id);
     }
 
     public function getStatusTextAttribute()

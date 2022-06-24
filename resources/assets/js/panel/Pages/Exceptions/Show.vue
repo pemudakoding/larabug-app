@@ -19,11 +19,14 @@
         <Button v-if="exception.status !== 'FIXED'" success @click="fixed">Mark as fixed</Button>
 
 
+
         <Button v-if="!exception.publish_hash" @click="togglePublic" secondary>Share public</Button>
 
         <Button v-if="exception.publish_hash" @click="togglePublic" danger>Remove from public</Button>
 
         <Button v-if="exception.publish_hash" as="a" :href="exception.public_route_url" :target="`exception-${exception.id}`" secondary>View public</Button>
+
+        <Button v-if="exception.issue_id" as="a" :href="exception.issue_route_url" :target="`issue-${exception.issue_id}`" secondary>View issue</Button>
 
         <Dropdown v-if="!exception.snooze_until">
             <template v-slot:button>
