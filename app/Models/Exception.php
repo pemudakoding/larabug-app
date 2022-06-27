@@ -282,7 +282,7 @@ class Exception extends Model
         });
 
         static::created(function ($exception) {
-            if ($exception->project->notifications_enabled) {
+            if ($exception->project && $exception->project->notifications_enabled) {
                 $exception->project->notify(new ExceptionWasCreated($exception));
             }
         });
