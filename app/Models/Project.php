@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Notifications\IssueStatusUpdatedNotification;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Kblais\Uuid\Uuid;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
@@ -44,6 +49,14 @@ class Project extends Model
         'slack_webhook_enabled',
         'discord_webhook_enabled',
         'custom_webhook_enabled',
+        'issue_receive_email',
+        'issue_slack_webhook',
+        'issue_discord_webhook',
+        'issue_custom_webhook',
+        'issue_mobile_notifications_enabled',
+        'issue_slack_webhook_enabled',
+        'issue_discord_webhook_enabled',
+        'issue_custom_webhook_enabled',
     ];
 
     protected $dates = [
@@ -59,6 +72,11 @@ class Project extends Model
         'slack_webhook_enabled' => 'boolean',
         'discord_webhook_enabled' => 'boolean',
         'custom_webhook_enabled' => 'boolean',
+        'issue_receive_email' => 'boolean',
+        'issue_mobile_notifications_enabled' => 'boolean',
+        'issue_slack_webhook_enabled' => 'boolean',
+        'issue_discord_webhook_enabled' => 'boolean',
+        'issue_custom_webhook_enabled' => 'boolean',
     ];
 
     protected $appends = [
@@ -81,18 +99,30 @@ class Project extends Model
         return '<script src="' . $this->getFeedbackScriptUrl() . '"></script>';
     }
 
-    public function routeNotificationForSlack()
+    public function routeNotificationForSlack($notification)
     {
+        if ($notification instanceof IssueStatusUpdatedNotification) {
+            return $this->issue_slack_webhook;
+        }
+
         return $this->slack_webhook;
     }
 
-    public function routeNotificationForDiscord()
+    public function routeNotificationForDiscord($notification)
     {
+        if ($notification instanceof IssueStatusUpdatedNotification) {
+            return $this->issue_discord_webhook;
+        }
+
         return $this->discord_webhook;
     }
 
-    public function routeNotificationForWebhook()
+    public function routeNotificationForWebhook($notification)
     {
+        if ($notification instanceof IssueStatusUpdatedNotification) {
+            return $this->issue_custom_webhook;
+        }
+
         return $this->custom_webhook;
     }
 
@@ -111,19 +141,24 @@ class Project extends Model
         return $query->where('receive_email', true);
     }
 
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\User::class)->withPivot('owner');
     }
 
-    public function group()
+    public function group(): BelongsTo
     {
         return $this->belongsTo(\App\Models\ProjectGroup::class);
     }
 
-    public function exceptions()
+    public function exceptions(): HasMany
     {
         return $this->hasMany(\App\Models\Exception::class);
+    }
+
+    public function issues(): HasMany
+    {
+        return $this->hasMany(Issue::class);
     }
 
     public function unreadExceptions()
@@ -135,7 +170,7 @@ class Project extends Model
             });
     }
 
-    public function feedback()
+    public function feedback(): HasManyThrough
     {
         return $this->hasManyThrough(Feedback::class, Exception::class);
     }
@@ -175,6 +210,7 @@ class Project extends Model
 
         static::deleting(function (self $project) {
             $project->exceptions()->delete();
+            $project->issues()->delete();
             $project->feedback()->delete();
         });
     }
