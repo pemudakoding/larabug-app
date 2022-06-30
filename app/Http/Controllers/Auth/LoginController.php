@@ -95,7 +95,7 @@ class LoginController extends Controller
         }
 
         /* @var $socialUser \App\Models\SocialUser */
-        $socialUser = SocialUser::where('provider_id', $social->getId())
+        $socialUser = SocialUser::query()->where('provider_id', $social->getId())
             ->where('provider', $provider)
             ->first();
 
@@ -117,11 +117,11 @@ class LoginController extends Controller
                 ]);
             }
 
-            $user = User::where('email', $social->getEmail())
+            $user = User::query()->where('email', $social->getEmail())
                 ->first();
 
             if (!$user) {
-                $user = User::create([
+                $user = User::query()->create([
                     'name' => $social->getName(),
                     'email' => $social->getEmail(),
                     'password' => str_random()

@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         $projects = auth()->user()->projects()->get(['id'])->pluck('id')->toArray();
 
-        $exceptions = Exception::whereIn('project_id', $projects)
+        $exceptions = Exception::query()->whereIn('project_id', $projects)
             ->with('project:id,title')
             ->latest('created_at')
             ->limit(8)
@@ -31,7 +31,7 @@ class HomeController extends Controller
         $totalExceptions = auth()->user()->projects()->sum('total_exceptions');
         $totalProjects = auth()->user()->projects()->count();
 
-        $exceptionChart = Exception::whereIn('project_id', $projects)
+        $exceptionChart = Exception::query()->whereIn('project_id', $projects)
             ->where('created_at', '>', now()->subDays(7))
             ->oldest()
             ->select(['created_at'])
