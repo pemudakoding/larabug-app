@@ -34,7 +34,7 @@ class ProjectController extends Controller
 
     public function store(ProjectRequest $request)
     {
-        $project = Project::create($request->only([
+        $project = Project::query()->create($request->only([
             'title',
             'url',
             'description',
