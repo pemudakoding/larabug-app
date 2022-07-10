@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\SocialUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Spatie\Honeypot\ProtectAgainstSpam;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -54,7 +55,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return response('', 409)->header('x-inertia-location', '/');
+        return response('', Response::HTTP_CONFLICT)->header('x-inertia-location', '/');
     }
 
     /**
