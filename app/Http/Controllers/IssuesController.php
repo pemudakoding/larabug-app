@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Issue;
+use Illuminate\Http\Response;
 
 class IssuesController extends Controller
 {
@@ -27,10 +28,9 @@ class IssuesController extends Controller
     {
         $projectIds = auth()->user()->projects()->pluck('id');
 
-        $issue = Issue::query()
-            ->findOrFail($id);
+        $issue = Issue::query()->findOrFail($id);
 
-        abort_unless($projectIds->contains($issue->project_id), 403);
+        abort_unless($projectIds->contains($issue->project_id), Response::HTTP_FORBIDDEN);
 
         $exceptions = $issue
             ->exceptions()
@@ -62,10 +62,9 @@ class IssuesController extends Controller
     {
         $projectIds = auth()->user()->projects()->pluck('id');
 
-        $issue = Issue::query()
-            ->findOrFail($id);
+        $issue = Issue::query()->findOrFail($id);
 
-        abort_unless($projectIds->contains($issue->project_id), 403);
+        abort_unless($projectIds->contains($issue->project_id), Response::HTTP_FORBIDDEN);
 
         $issue->update([
             'status' => request()->input('status'),

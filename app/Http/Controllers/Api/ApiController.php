@@ -6,6 +6,7 @@ use Ramsey\Uuid\Uuid;
 use App\Models\Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Jobs\Projects\ProcessException;
 use App\Http\Requests\Api\FeedbackRequest;
@@ -20,7 +21,7 @@ class ApiController extends Controller
         if (!$user->hasVerifiedEmail()) {
             return response()->json([
                 'error' => 'This is not an verified account.'
-            ])->setStatusCode(422);
+            ])->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $project = $user->projects()->where('key', $request->input('project'))->firstOrFail();
@@ -35,7 +36,7 @@ class ApiController extends Controller
         ) {
             return response()->json([
                 'error' => 'Did not receive the correct parameters to process this exception'
-            ])->setStatusCode(422);
+            ])->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         dispatch_sync(new ProcessException([
