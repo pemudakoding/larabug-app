@@ -83,8 +83,6 @@
       "@php artisan package:discover"
     ],
     "post-update-cmd": [
-      "@php artisan ide-helper:generate",
-      "@php artisan ide-helper:meta",
       "@php artisan horizon:publish"
     ],
     "format": [
@@ -94,7 +92,10 @@
   "config": {
     "preferred-install": "dist",
     "sort-packages": true,
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
   },
   "extra": {
     "laravel": {
