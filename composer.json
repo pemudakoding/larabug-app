@@ -17,7 +17,7 @@
     "inertiajs/inertia-laravel": "^v0.5.4",
     "kblais/laravel-uuid": "^2.0.0",
     "larabug/larabug": "^2.4",
-    "laravel-notification-channels/fcm": "^2.4.0",
+    "laravel-notification-channels/fcm": "*",
     "laravel/framework": "^9.0.2",
     "laravel/helpers": "^1.1",
     "laravel/horizon": "^5",
@@ -106,5 +106,11 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./packages/fcm"
+    }
+  ]
 }

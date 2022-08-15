@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e6a5cd3410c891714cefa27e0855ed8",
+    "content-hash": "b4c3133529e97c78ac0b04265a702ecd",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2910,17 +2910,11 @@
         },
         {
             "name": "laravel-notification-channels/fcm",
-            "version": "2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-notification-channels/fcm.git",
-                "reference": "11666eaf5e7f3c492673f1298ac37026550b3d55"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/fcm/zipball/11666eaf5e7f3c492673f1298ac37026550b3d55",
-                "reference": "11666eaf5e7f3c492673f1298ac37026550b3d55",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/fcm",
+                "reference": "b36833e5dceb070005ecaff3e8bdcd34c7923626"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2 || ^7.0",
@@ -2947,7 +2941,16 @@
                     "NotificationChannels\\Fcm\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "NotificationChannels\\Fcm\\Test\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -2961,11 +2964,9 @@
             ],
             "description": "FCM (Firebase Cloud Messaging) Notifications Driver for Laravel",
             "homepage": "https://github.com/laravel-notification-channels/fcm",
-            "support": {
-                "issues": "https://github.com/laravel-notification-channels/fcm/issues",
-                "source": "https://github.com/laravel-notification-channels/fcm/tree/2.4.0"
-            },
-            "time": "2022-02-15T00:26:51+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "laravel/framework",
