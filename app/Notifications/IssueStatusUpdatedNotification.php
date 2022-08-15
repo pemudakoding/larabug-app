@@ -106,6 +106,7 @@ class IssueStatusUpdatedNotification extends Notification
             // Android sound
             ->setAndroid(
                 AndroidConfig::create()
+                    ->setTtl(4 * 604800)
                     ->setFcmOptions(AndroidFcmOptions::create()->setAnalyticsLabel('analytics'))
                     ->setNotification(AndroidNotification::create()->setSound('default'))
             )
