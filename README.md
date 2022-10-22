@@ -29,6 +29,29 @@ Configure your database in the `.env` file and then run:
 php artisan migrate
 ```
 
+###Docker
+
+### Getting up and running...
+
+Go into the docker folder and run:
+`docker-compose up -d --build`
+
+Set your database .env variables:
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=larbug
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
+
+Running artisan commands:
+
+`docker exec -it larabug php artisan <command>`
+
+The Application will be running on `localhost:1337`
+
 ## Important to know
 
 This project is created by me [back in 2016](https://laraveldaily.com/dennis-larabug-growing-faster-imagine/), it is very old, and the code doesn't even look remotely to what I code now. The point here
