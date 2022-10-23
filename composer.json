@@ -17,7 +17,7 @@
     "inertiajs/inertia-laravel": "^v0.5.4",
     "kblais/laravel-uuid": "^2.0.0",
     "larabug/larabug": "^2.4",
-    "laravel-notification-channels/fcm": "*",
+    "laravel-notification-channels/fcm": "dev-master",
     "laravel/framework": "^9.0.2",
     "laravel/helpers": "^1.1",
     "laravel/horizon": "^5",
