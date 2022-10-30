@@ -50,7 +50,7 @@ Running artisan commands:
 
 `docker exec -it larabug php artisan <command>`
 
-The Application will be running on `localhost:1337`
+The Application will be running on `localhost:1337` and PhpMyAdmin is running on `localhost:8010`
 
 ## Important to know
 

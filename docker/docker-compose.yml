@@ -35,6 +35,18 @@ services:
     networks:
       - larabug
 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on: [ db ]
+    ports:
+      - "8010:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=secret
+    networks:
+      - larabug
+
 networks:
   larabug:
     driver: bridge
