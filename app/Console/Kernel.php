@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
      * @return void
      */
@@ -40,7 +40,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('rotate:exceptions')->twiceDaily();
 
-        $schedule->command('mail:exceptions')->everyFifteenMinutes();
+        $schedule->command('mail:exceptions')->everyFifteenMinutes()->when(function () {
+            return config('larabug.should_email_exceptions');
+        });
 
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
 

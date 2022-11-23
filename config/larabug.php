@@ -2,6 +2,8 @@
 
 return [
 
+    'should_email_exceptions' => env('SHOULD_EMAIL_EXCEPTIONS', true),
+
     /*
      * This is your authorization key which you get from your profile.
      * @ http://www.larabug.com
