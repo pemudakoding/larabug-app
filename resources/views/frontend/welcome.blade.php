@@ -8,17 +8,20 @@
             </h1>
             <p class="text-lg leading-relaxed text-gray-700 mt-4 lg:text-xl">
                 Your users do not always report errors, <span class="font-medium">Lara</span><span
-                        class="text-primary-500">Bug</span> does.<br />
+                        class="text-primary-500">Bug</span> does.<br/>
 
-                <span class="font-medium">Lara</span><span class="text-primary-500">Bug</span> is a simple to use and implement error tracker<br /> built for the Laravel framework
+                <span class="font-medium">Lara</span><span class="text-primary-500">Bug</span> is a simple to use and
+                implement error tracker<br/> built for the Laravel framework
             </p>
 
             <div class="mt-5 flex justify-center space-x-4">
-                <a target="_blank" title="Download on the App Store" href="https://apps.apple.com/nl/app/larabug/id1184315920">
-                    <img alt="Download one the App Store" src="{{ asset('images/app/apple-store.svg') }}" />
+                <a target="_blank" title="Download on the App Store"
+                   href="https://apps.apple.com/nl/app/larabug/id1184315920">
+                    <img alt="Download one the App Store" src="{{ asset('images/app/apple-store.svg') }}"/>
                 </a>
-                <a target="_blank" title="Download on the Google Play Store" href="https://play.google.com/store/apps/details?id=com.larabug.mobile">
-                    <img alt="Download one the Google Play Store" src="{{ asset('images/app/google-play.svg') }}" />
+                <a target="_blank" title="Download on the Google Play Store"
+                   href="https://play.google.com/store/apps/details?id=com.larabug.mobile">
+                    <img alt="Download one the Google Play Store" src="{{ asset('images/app/google-play.svg') }}"/>
                 </a>
             </div>
 
@@ -49,13 +52,20 @@
     -->
     <div class="bg-gray-100">
         <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-2">
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5 mb-10">
                 <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                     <img class="h-12" src="{{ asset('images/larabug-logo-small.png') }}" alt="LaraBug">
                 </div>
+                <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                    <a target="_blank" href="https://invoyer.com/?ref=larabug.com">
+                        <img class="h-12" src="{{ asset('images/sponsors/invoyer-logo.svg') }}" alt="Invoyer">
+                    </a>
+                </div>
             </div>
             <p class="text-gray-500 text-center">
-                Your logo here? <a href="https://github.com/sponsors/Cannonb4ll" class="text-primary-500" target="_blank">Consider sponsoring</a>, LaraBug is a free product to track your Laravel exceptions with.
+                Your logo here? <a href="https://github.com/sponsors/Cannonb4ll" class="text-primary-500"
+                                   target="_blank">Consider sponsoring</a>, LaraBug is a free product to track your
+                Laravel exceptions with.
             </p>
         </div>
     </div>
@@ -93,7 +103,8 @@
                 </article>
                 <article>
                     <i class="text-5xl fa-fw fad fa-bell text-primary-500"></i>
-                    <h3 class="mt-4 text-2xl leading-tight tracking-tighter font-medium | lg:text-3xl">Notifications</h3>
+                    <h3 class="mt-4 text-2xl leading-tight tracking-tighter font-medium | lg:text-3xl">
+                        Notifications</h3>
                     <p class="mt-2 text-lg text-gray-600 | lg:text-xl">
                         Send notifications to e-mail, Discord or Slack to get notified right away about new exceptions.
                     </p>
