@@ -31,7 +31,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'receive_email',
         'newsletter',
         'locale',
-        'settings'
+        'settings',
+        'mailer',
     ];
 
     protected $hidden = [
@@ -42,6 +43,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     protected $casts = [
         'settings' => 'array',
+        'mailer' => 'array',
         'is_admin' => 'boolean',
         'newsletter' => 'boolean',
         'receive_email' => 'boolean',

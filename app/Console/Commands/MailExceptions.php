@@ -44,6 +44,7 @@ class MailExceptions extends Command
                 return [
                     'name' => $user->name,
                     'email' => $user->email,
+                    'mailer' => $user->mailer,
 
                     'projects' => $user->projects->map(function ($project) {
                         return [
