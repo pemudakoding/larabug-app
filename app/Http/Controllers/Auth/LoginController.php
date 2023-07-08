@@ -85,6 +85,12 @@ class LoginController extends Controller
      */
     public function handleProviderCallback(Request $request, $provider = 'facebook')
     {
+        if (!in_array($provider, $this->supportedProviders)) {
+            return redirect()->route('login')->withErrors([
+                'provider' => 'This provider (' . $provider . ') is not supported.'
+            ]);
+        }
+        
         /* @var $driver \Laravel\Socialite\Contracts\Provider */
         $driver = Socialite::driver($provider);
 
