@@ -55,6 +55,7 @@ class ExceptionEmail extends Mailable implements ShouldQueue
         }
 
         return $this
+            ->mailer()
             ->to($this->collection['email'], $this->collection['name'])
             ->subject('New exceptions in projects ' . $this->collection['projects']->take(3)->pluck('title')->implode(', '))
             ->markdown('emails.exception');
