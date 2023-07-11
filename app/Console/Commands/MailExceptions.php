@@ -17,6 +17,7 @@ class MailExceptions extends Command
     public function handle()
     {
         $users = User::query()->where('receive_email', true)
+            ->whereNotNull('mailer')
             ->whereHas('projects', function ($query) {
                 return $query
                     ->where('notifications_enabled', true)
