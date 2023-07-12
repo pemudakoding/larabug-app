@@ -70,6 +70,10 @@ return [
             'transport' => 'array',
         ],
 
+        'custom' => [
+            'transport' => 'custom',
+        ],
+
         'failover' => [
             'transport' => 'failover',
             'mailers' => [

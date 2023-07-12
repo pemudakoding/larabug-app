@@ -14,6 +14,7 @@ class ProfileController extends Controller
         return inertia('Profile/Index', [
             'user' => auth()->user(),
             'settings' => auth()->user()->settings,
+            'mailer' => auth()->user()->mailer ?? [],
         ]);
     }
 
@@ -38,7 +39,12 @@ class ProfileController extends Controller
         $request->user()->update([
             'settings' => $request->input('settings'),
             'newsletter' => $request->input('newsletter', true),
+            'mailer' => $request->input('mailer'),
         ]);
+
+        ray(auth()->user()->toArray());
+
+        ray($request->input('mailer'));
 
         return redirect()->route('panel.profile.show')->with('success', 'Profile settings updated');
     }

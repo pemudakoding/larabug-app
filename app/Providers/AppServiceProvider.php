@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\MailManager;
 use Filament\Facades\Filament;
+use Illuminate\Mail\Mailer;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
