@@ -14,6 +14,7 @@ class ProjectResource extends JsonResource
             'unread_exceptions' => $this->unread_exceptions_count,
             'total_exceptions' => (int)$this->total_exceptions,
             'last_error_at' => $this->last_error_at,
+            'key' => $this->key,
             'created_at' => $this->created_at,
         ];
     }
