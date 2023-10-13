@@ -22,7 +22,10 @@ class ProjectRequest extends FormRequest
                 'nullable',
                 'max:500',
             ],
-            'url' => 'nullable',
+            'url' => [
+                'nullable',
+                'url'
+            ],
         ];
     }
 }
